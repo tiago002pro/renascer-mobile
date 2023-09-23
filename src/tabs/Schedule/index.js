@@ -4,7 +4,7 @@ import { View, StyleSheet, Text, Image } from "react-native";
 import image from './../../assets/teste.jpg';
 import image2 from './../../assets/teste2.jpg';
 
-export default function Events() {
+export default function Schedule() {
   return (
     <View style={styles.container}>
       <Text style={styles.text}>

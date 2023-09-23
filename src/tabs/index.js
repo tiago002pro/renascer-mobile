@@ -3,7 +3,7 @@ import { MaterialIcons } from 'react-native-vector-icons';
 
 import Home from "../tabs/Home";
 import Videos from "../tabs/Videos";
-import Events from "../tabs/Events";
+import Schedule from "../tabs/Schedule";
 import Content from "../tabs/Content";
 import More from "../tabs/More";
 
@@ -22,33 +22,37 @@ export default function Tabs() {
       }}
     >
       <Tab.Screen name="Home" component={Home} options={{
+        headerShown: false,
         tabBarLabel: 'Home',
         tabBarIcon: ({ size, color }) => (
           <MaterialIcons name="home" size={size} color={color}/>
         )
       }}/>
       <Tab.Screen name="Videos" component={Videos} options={{
+        headerShown: false,
         tabBarLabel: 'Vídeos',
         tabBarIcon: ({ size, color }) => (
           <MaterialIcons name="play-arrow" size={size} color={color}/>
         )
       }}/>
       <Tab.Screen name="Programação da igreja" 
-        component={Events} 
+        component={Schedule} 
         options={{
-          
+        headerShown: false,
         tabBarLabel: 'Programação',
         tabBarIcon: ({ size, color }) => (
           <MaterialIcons name="event" size={size} color={color}/>
         )
       }}/>
       <Tab.Screen name="Content" component={Content} options={{
+        headerShown: false,
         tabBarLabel: 'Conteúdo',
         tabBarIcon: ({ size, color }) => (
           <MaterialIcons name="language" size={size} color={color}/>
         )
       }}/>
       <Tab.Screen name="More" component={More} options={{
+        headerShown: false,
         tabBarLabel: 'Mais',
         tabBarIcon: ({ size, color }) => (
           <MaterialIcons name="more-horiz" size={size} color={color}/>
