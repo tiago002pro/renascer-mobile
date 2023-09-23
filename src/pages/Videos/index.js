@@ -1,15 +1,12 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
 
-import MenuBar from "../../components/MenuBar";
-
 export default function Videos() {
   return (
     <View style={styles.container}>
       <View style={styles.data}>
-        
+
       </View>
-      <MenuBar/>
     </View>
   )
 }
