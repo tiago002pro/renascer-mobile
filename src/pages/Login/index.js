@@ -1,7 +1,10 @@
 import React from "react";
 import { View, Image, Text, StyleSheet, TouchableOpacity, TextInput } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
 export default function Login() {
+  const navigation = useNavigation();
+
   return (
     <View style={styles.container}>
 
@@ -26,7 +29,7 @@ export default function Login() {
           placeholder="Senha"
         />
 
-        <TouchableOpacity style={styles.buttonLogin}>
+        <TouchableOpacity style={styles.buttonLogin} onPress={() => navigation.navigate('Tabs')}>
           <Text style={styles.buttonLoginText}>Fazer login</Text>
         </TouchableOpacity>
       </View>
