@@ -1,22 +1,20 @@
 import React from "react";
-import { View, Image, Text, StyleSheet, TouchableOpacity, TextInput } from "react-native";
-import { useNavigation } from "@react-navigation/native";
+import { Image, Text, StyleSheet, TouchableOpacity, TextInput } from "react-native";
+import { VStack, Box } from 'native-base';
 
-export default function Login() {
-  const navigation = useNavigation();
+export default function Login({ navigation }) {
 
   return (
-    <View style={styles.container}>
-
-      <View style={styles.containerLogo}>
+    <VStack style={styles.container}>
+      <Box style={styles.containerLogo}>
         <Image 
           source={require("./../../assets/logo.png")} 
           style={{ width: "35%" }}
           resizeMode="contain"
         />
-      </View>
+      </Box>
 
-      <View style={styles.containerForm}>
+      <Box style={styles.containerForm}>
         <Text style={styles.title}>Faça o login</Text>
 
         <TextInput
@@ -32,9 +30,8 @@ export default function Login() {
         <TouchableOpacity style={styles.buttonLogin} onPress={() => navigation.navigate('Tabs')}>
           <Text style={styles.buttonLoginText}>Fazer login</Text>
         </TouchableOpacity>
-      </View>
-
-    </View>
+      </Box>
+    </VStack>
   )
 }
 
