@@ -1,10 +1,7 @@
 import React from "react";
 import { View, Image, Text, StyleSheet, TouchableOpacity } from "react-native";
-import { useNavigation } from "@react-navigation/native";
 
-export default function Welcome() {
-  const navigation = useNavigation();
-
+export default function Welcome({ navigation }) {
   return (
     <View style={styles.container}>
 
