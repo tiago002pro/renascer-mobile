@@ -5,7 +5,7 @@ import { VStack, Box } from 'native-base';
 export default function Login({ navigation }) {
 
   return (
-    <VStack style={styles.container}>
+    <VStack style={styles.container} safeArea>
       <Box style={styles.containerLogo}>
         <Image 
           source={require("./../../assets/logo.png")} 

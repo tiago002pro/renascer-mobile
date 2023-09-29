@@ -1,43 +1,46 @@
 import React from "react";
-import { View, Image, Text, StyleSheet, TouchableOpacity } from "react-native";
+import { Image, Text, StyleSheet, TouchableOpacity } from "react-native";
+import { VStack, Box } from 'native-base';
+import ButtonComponent from "../../components/Button";
 
 export default function Welcome({ navigation }) {
   return (
-    <View style={styles.container}>
-
-      <View style={styles.containerLogo}>
+    <VStack flex={1} background={"orange.500"}>
+      <Box style={styles.containerLogo}>
         <Image 
           source={require("./../../assets/logo.png")} 
           style={{ width: "35%" }}
           resizeMode="contain"
         />
-      </View>
+      </Box>
 
-      <View style={styles.containerForm}>
+      <Box style={styles.containerForm}>
         <Text style={styles.title}>Bem-vindo(a)</Text>
         <Text style={styles.text}>Escolha uma opção</Text>
 
-        <TouchableOpacity style={styles.buttonLogin} onPress={ () => navigation.navigate("Login") }>
+        {/* <TouchableOpacity style={styles.buttonLogin} onPress={ () => navigation.navigate("Login") }>
           <Text style={styles.buttonLoginText}>Fazer login</Text>
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.buttonRegister} onPress={ () => navigation.navigate("Home")}>
           <Text style={styles.buttonRegisterText}>Cadastre-se</Text>
-        </TouchableOpacity>
-      </View>
+        </TouchableOpacity> */}
 
-    </View>
+        <ButtonComponent onPress={ () => navigation.navigate("Login") }>Fazer login</ButtonComponent>
+        <ButtonComponent bg={"white"} borderColor={"gray.200"} color={"gray.300"}>Cadastre-se</ButtonComponent>
+      </Box>
+    </VStack>
   )
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#F0A500"
+    // backgroundColor: "#F0A500"
   },
   containerLogo: {
     flex: 1,
-    backgroundColor: "#F0A500",
+    // backgroundColor: "orange.100",
     justifyContent: "center",
     alignItems: "center",
   },
