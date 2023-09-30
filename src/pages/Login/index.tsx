@@ -1,14 +1,17 @@
 import React from "react";
-import { Image, Text, StyleSheet, TouchableOpacity, TextInput } from "react-native";
-import { VStack, Box } from 'native-base';
+import { StyleSheet } from "react-native";
+import { VStack, Box, Image, Text } from 'native-base';
+import ButtonComponent from "../../components/ButtonComponent";
+import InputComponent from "../../components/InputComponent";
 
 export default function Login({ navigation }) {
 
   return (
-    <VStack style={styles.container} safeArea>
+    <VStack flex={1} background={"orange.500"}>
       <Box style={styles.containerLogo}>
         <Image 
-          source={require("./../../assets/logo.png")} 
+          source={require("./../../assets/logo.png")}
+          alt="logo"
           style={{ width: "35%" }}
           resizeMode="contain"
         />
@@ -17,37 +20,23 @@ export default function Login({ navigation }) {
       <Box style={styles.containerForm}>
         <Text style={styles.title}>Faça o login</Text>
 
-        <TextInput
-          style={styles.input} 
-          placeholder="E-mail"
-        />
+        <InputComponent placeholder="E-mail"/>
+        <InputComponent placeholder="Senha"/>
 
-        <TextInput
-          style={styles.input} 
-          placeholder="Senha"
-        />
-
-        <TouchableOpacity style={styles.buttonLogin} onPress={() => navigation.navigate('Tabs')}>
-          <Text style={styles.buttonLoginText}>Fazer login</Text>
-        </TouchableOpacity>
+        <ButtonComponent onPress={ () => navigation.navigate("Tabs") }>Fazer login</ButtonComponent>
       </Box>
     </VStack>
   )
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#F0A500"
-  },
   containerLogo: {
     flex: 1,
-    backgroundColor: "#F0A500",
     justifyContent: "center",
     alignItems: "center",
   },
   containerForm: {
-    flex: 1,
+    flex: 2,
     backgroundColor: "#fff",
     borderTopLeftRadius: 25,
     borderTopRightRadius: 25,
@@ -56,9 +45,10 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 24,
+    lineHeight: 24,
     fontWeight: "bold",
     marginTop: 20,
-    marginBottom: 5,
+    marginBottom: 20,
   },
   input: {
     fontSize: 16,
@@ -71,7 +61,7 @@ const styles = StyleSheet.create({
     borderColor: "#F0A500",
     paddingStart: "5%",
     paddingEnd: "5%",
-    marginBottom: 20,
+    marginBottom: 10,
   },
   buttonLogin: {
     backgroundColor: "#F0A500",
