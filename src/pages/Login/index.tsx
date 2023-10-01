@@ -7,12 +7,12 @@ import InputComponent from "../../components/InputComponent";
 export default function Login({ navigation }) {
 
   return (
-    <VStack flex={1} background={"orange.500"}>
+    <VStack flex={1} background={"orange.400"}>
       <Box style={styles.containerLogo}>
         <Image 
           source={require("./../../assets/logo.png")}
           alt="logo"
-          style={{ width: "35%" }}
+          style={{ width: "50%" }}
           resizeMode="contain"
         />
       </Box>

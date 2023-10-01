@@ -14,7 +14,7 @@ export default function Tabs() {
     <Tab.Navigator
       screenOptions={{
         tabBarStyle: {
-          backgroundColor: "#1a1a1a",
+          backgroundColor: "#626262",
           borderTopColor: "transparent",
           paddingTop: 10,
         },

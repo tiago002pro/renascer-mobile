@@ -6,19 +6,19 @@ import ButtonComponent from "../../components/ButtonComponent";
 
 export default function Welcome({ navigation }) {
   return (
-    <VStack flex={1} background={"orange.500"}>
+    <VStack flex={1} background={"orange.400"}>
       <Box style={styles.containerLogo}>
         <Image 
           source={require("./../../assets/logo.png")} 
           alt="logo"
-          style={{ width: "35%" }}
+          style={{ width: "50%" }}
           resizeMode="contain"
         />
       </Box>
 
       <Box style={styles.containerForm}>
         <Text style={styles.title}>Bem-vindo(a)</Text>
-        <Text style={styles.text}>Escolha uma opção</Text>
+        <Text style={styles.text} color={"gray.300"}>Escolha uma opção</Text>
 
         <ButtonComponent onPress={ () => navigation.navigate("Login") }>Fazer login</ButtonComponent>
         <ButtonComponent bg={"white"} borderColor={"gray.200"} color={"gray.300"}>Cadastre-se</ButtonComponent>
@@ -51,6 +51,7 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 16,
     lineHeight: 16,
-    color: "#1a1a1a"
+    marginBottom: 20,
+    fontWeight: "bold",
   },
 });
