@@ -9,6 +9,10 @@ export const THEME = extendTheme({
     orange: {
       700: "#F0A500",
     },
+    blue: {
+      200: '#5f6477de',
+      300: '#5f6477'
+    },
     while: "#fff",
     black: "#000",
     backgroud: "#f4f5f7",
