@@ -1,12 +1,12 @@
 import { Box, Image, Text } from "native-base";
-import { Dimensions, StyleSheet } from "react-native";
+import { Dimensions, StyleSheet, TouchableOpacity } from "react-native";
 import { MaterialIcons } from 'react-native-vector-icons';
 
 const width = Dimensions.get('screen').width;
 
-export default function BannerVideo({image, title, speaker}) {
+export default function BannerVideo({navigation, video}) {
   return (
-    <Box mb={10}>
+    <TouchableOpacity onPress={ () => navigation.navigate("WatchVideo",{ video: video}) }>
       <Box
         justifyContent={"center"}
         alignItems={"center"}
@@ -14,9 +14,9 @@ export default function BannerVideo({image, title, speaker}) {
       >
         <Image
           source={{
-            uri: `https://img.youtube.com/vi/${image}/0.jpg`
+            uri: `https://img.youtube.com/vi/${video.urlImg}/0.jpg`
           }} 
-          alt={title}
+          alt={video.id}
           w={"100%"}
           h={378/768*width}
           borderRadius={5}
@@ -34,17 +34,17 @@ export default function BannerVideo({image, title, speaker}) {
           color={"white"}
           fontWeight={"bold"}
         >
-          {title}
+          {video.title}
         </Text>
         <Text
           fontSize={"sm"}
           lineHeight={"sm"}
           color={"white"}
         >
-          {speaker}
+          {video.speaker}
         </Text>
       </Box>
-    </Box>
+    </TouchableOpacity>
   );
 }
 

@@ -6,7 +6,7 @@ import ButtonComponent from "../../components/ButtonComponent";
 
 export default function Welcome({ navigation }) {
   return (
-    <VStack flex={1} background={"orange.400"}>
+    <VStack flex={1} background={"blue.300"}>
       <Box style={styles.containerLogo}>
         <Image 
           source={require("./../../assets/logo.png")} 
@@ -20,8 +20,19 @@ export default function Welcome({ navigation }) {
         <Text style={styles.title}>Bem-vindo(a)</Text>
         <Text style={styles.text} color={"gray.300"}>Escolha uma opção</Text>
 
-        <ButtonComponent onPress={ () => navigation.navigate("Login") }>Fazer login</ButtonComponent>
-        <ButtonComponent bg={"white"} borderColor={"gray.200"} color={"gray.300"}>Cadastre-se</ButtonComponent>
+        <ButtonComponent 
+          onPress={() => navigation.navigate("Login")}
+        >
+          Fazer login
+        </ButtonComponent>
+        <ButtonComponent 
+          onPress={() => navigation.navigate("Register")}
+          bg={"white"}
+          borderColor={"gray.200"}
+          color={"blue.300"}
+        >
+          Cadastre-se
+        </ButtonComponent>
       </Box>
     </VStack>
   )
@@ -47,11 +58,13 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     marginTop: 20,
     marginBottom: 5,
+    fontFamily: "MontserratBold",
   },
   text: {
     fontSize: 16,
     lineHeight: 16,
     marginBottom: 20,
     fontWeight: "bold",
+    fontFamily: "MontserratMedium",
   },
 });

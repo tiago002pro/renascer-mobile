@@ -7,7 +7,7 @@ import InputComponent from "../../components/InputComponent";
 export default function Login({ navigation }) {
 
   return (
-    <VStack flex={1} background={"orange.400"}>
+    <VStack flex={1} background={"blue.300"}>
       <Box style={styles.containerLogo}>
         <Image 
           source={require("./../../assets/logo.png")}
