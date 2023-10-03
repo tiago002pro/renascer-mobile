@@ -11,14 +11,22 @@ export default function ButtonComponent({ children, color, ...props }: ButtonPro
   return (
     <Button
       w={"100%"}
-      bg={"orange.500"}
-      borderColor={"orange.500"}
+      bg={"blue.300"}
+      borderColor={"transparent"}
       borderWidth={3}
-      borderRadius={"lg"}
-      _focus={{backgroundColor: "red"}}
-      _pressed={{backgroundColor: "orange.700", borderColor: "orange.700"}}
+      borderRadius={30}
+      colorScheme={"red"}
+      _pressed={{
+        backgroundColor: "blue.200",
+        borderColor: "transparent",
+      }}
       mt={2}
-      _text={{fontSize:"sm", lineHeight: "sm", fontWeight:"bold", color: color || "white"}}
+      _text={{
+        fontSize:"md",
+        lineHeight: "md",
+        color: color || "white",
+        fontFamily: "MontserratMedium"
+      }}
       {...props}
     >
       {children}
