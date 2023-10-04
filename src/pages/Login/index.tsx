@@ -1,29 +1,31 @@
 import React from "react";
 import { StyleSheet } from "react-native";
-import { VStack, Box, Image, Text } from 'native-base';
+import { VStack, Box, Image } from 'native-base';
 import ButtonComponent from "../../components/ButtonComponent";
-import InputComponent from "../../components/InputComponent";
+import TextInputComponent from "../../components/TextInputComponent";
 
 export default function Login({ navigation }) {
 
   return (
-    <VStack flex={1} background={"blue.300"}>
+    <VStack flex={1} background={"white"} safeArea>
       <Box style={styles.containerLogo}>
         <Image 
-          source={require("./../../assets/logo.png")}
+          source={require("./../../assets/logo-cor.png")}
           alt="logo"
-          style={{ width: "50%" }}
+          style={{ width: "40%" }}
           resizeMode="contain"
         />
       </Box>
 
       <Box style={styles.containerForm}>
-        <Text style={styles.title}>Faça o login</Text>
+        <TextInputComponent placeholder={"Email"} icon={"person"}/>
+        <TextInputComponent placeholder={"Senha"} icon={"lock"}/>
 
-        <InputComponent placeholder="E-mail"/>
-        <InputComponent placeholder="Senha"/>
-
-        <ButtonComponent onPress={ () => navigation.navigate("Tabs") }>Fazer login</ButtonComponent>
+        <ButtonComponent 
+          onPress={ () => navigation.navigate("Tabs") }
+        >
+          Entrar
+        </ButtonComponent>
       </Box>
     </VStack>
   )
@@ -38,43 +40,7 @@ const styles = StyleSheet.create({
   containerForm: {
     flex: 2,
     backgroundColor: "#fff",
-    borderTopLeftRadius: 25,
-    borderTopRightRadius: 25,
     paddingStart: "5%",
     paddingEnd: "5%",
-  },
-  title: {
-    fontSize: 24,
-    lineHeight: 24,
-    fontWeight: "bold",
-    marginTop: 20,
-    marginBottom: 20,
-  },
-  input: {
-    fontSize: 16,
-    height: 45,
-    width: "100%",
-    borderRadius: 5,
-    justifyContent: "center",
-    alignItems: "center",
-    borderWidth: 1,
-    borderColor: "#F0A500",
-    paddingStart: "5%",
-    paddingEnd: "5%",
-    marginBottom: 10,
-  },
-  buttonLogin: {
-    backgroundColor: "#F0A500",
-    height: 45,
-    width: "100%",
-    borderRadius: 5,
-    justifyContent: "center",
-    alignItems: "center",
-    marginTop: 20,
-  },
-  buttonLoginText: {
-    fontSize: 14,
-    color: "#fff",
-    fontWeight: "bold",
-  },
+  }
 });

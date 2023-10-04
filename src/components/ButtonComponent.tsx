@@ -17,7 +17,7 @@ export default function ButtonComponent({ children, color, ...props }: ButtonPro
       borderRadius={30}
       colorScheme={"red"}
       _pressed={{
-        backgroundColor: "blue.200",
+        backgroundColor: "blue.400",
         borderColor: "transparent",
       }}
       mt={2}
@@ -25,7 +25,6 @@ export default function ButtonComponent({ children, color, ...props }: ButtonPro
         fontSize:"md",
         lineHeight: "md",
         color: color || "white",
-        fontFamily: "MontserratMedium"
       }}
       {...props}
     >

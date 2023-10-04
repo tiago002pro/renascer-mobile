@@ -6,10 +6,10 @@ import ButtonComponent from "../../components/ButtonComponent";
 
 export default function Welcome({ navigation }) {
   return (
-    <VStack flex={1} background={"blue.300"}>
+    <VStack flex={1} background={"white"} safeArea>
       <Box style={styles.containerLogo}>
         <Image 
-          source={require("./../../assets/logo.png")} 
+          source={require("./../../assets/logo-cor.png")} 
           alt="logo"
           style={{ width: "50%" }}
           resizeMode="contain"
@@ -23,7 +23,7 @@ export default function Welcome({ navigation }) {
         <ButtonComponent 
           onPress={() => navigation.navigate("Login")}
         >
-          Fazer login
+          Entrar
         </ButtonComponent>
         <ButtonComponent 
           onPress={() => navigation.navigate("Register")}
@@ -65,6 +65,5 @@ const styles = StyleSheet.create({
     lineHeight: 16,
     marginBottom: 20,
     fontWeight: "bold",
-    fontFamily: "MontserratMedium",
   },
 });
