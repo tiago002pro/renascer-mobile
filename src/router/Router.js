@@ -7,6 +7,7 @@ import Welcome from "../pages/Welcome";
 import Register from "../pages/Register";
 import WatchVideo from "../pages/WatchVideo";
 import Tabs from "../tabs";
+import Profile from "../pages/Profile";
 
 const Stack = createNativeStackNavigator();
 
@@ -29,6 +30,7 @@ export default function Routes() {
           }}
         />
         <Stack.Screen name="Login" component={Login} options={{ headerShown: false }}/>
+        <Stack.Screen name="Profile" component={Profile} options={{ headerShown: false }}/>
         <Stack.Screen name="WatchVideo" component={WatchVideo} options={{ headerShown: false }}/>
         <Stack.Screen name="Tabs" component={Tabs} options={{ headerShown: false }}/>
       </Stack.Navigator>

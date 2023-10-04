@@ -30,7 +30,7 @@ export default function Tabs({navigation}) {
           headerTitleAlign: "center",
           headerShadowVisible: false,
           headerRight: () => (
-            <Button backgroundColor={"transparent"} onPress={ () => navigation.navigate("Login") }>
+            <Button backgroundColor={"transparent"} onPress={ () => navigation.navigate("Profile") }>
               <MaterialIcons name="person" size={30} color={"#1a1a1a"}/>
             </Button>
           ),
