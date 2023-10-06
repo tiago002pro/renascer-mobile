@@ -3,11 +3,28 @@ import { StyleSheet } from "react-native";
 import { MaterialIcons } from 'react-native-vector-icons';
 import { THEME } from "../styles/theme";
 
-export default function TextInputComponent({ placeholder, icon }) {
+interface InputProps {
+  placeholder?: string;
+  passWordType?: boolean;
+  icon?: string;
+  value?: string;
+  onChangeText?: (text: string) => void;
+}
+
+export default function TextInputComponent({
+  placeholder,
+  passWordType,
+  icon,
+  value,
+  onChangeText
+}: InputProps): JSX.Element {
   return (
     <Box mb={3}>
       <Input
+        onChangeText={onChangeText}
         placeholder={placeholder}
+        value={value}
+        secureTextEntry={passWordType}
         InputLeftElement = {
           <Icon as = {
             <MaterialIcons 
