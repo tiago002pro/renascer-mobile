@@ -13,19 +13,21 @@ export default function ButtonComponent({ children, color, bg, bntFunction, ...p
     <Button
       onPress={bntFunction}
       w={"100%"}
-      bg={bg || "blue.300"}
+      bg={bg || "orange.400"}
       borderColor={"transparent"}
       borderWidth={3}
       borderRadius={30}
       _pressed={{
-        backgroundColor: "blue.400",
+        backgroundColor: "orange.500",
         borderColor: "transparent",
       }}
       mt={2}
       _text={{
-        fontSize:"md",
-        lineHeight: "md",
+        fontSize:"sm",
+        lineHeight: "sm",
         color: color || "white",
+        textTransform: "uppercase",
+        fontWeight:"bold"
       }}
       {...props}
     >

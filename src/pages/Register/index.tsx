@@ -1,7 +1,8 @@
-import { Button, Text, View } from "native-base";
+import { View } from "native-base";
 import TextInputComponent from "../../components/TextInputComponent";
 import { useState } from "react";
 import { doRegister } from "../../services/AuthenticationService";
+import ButtonComponent from "../../components/ButtonComponent";
 
 export default function Register({ navigation }: any)
 {
@@ -43,22 +44,7 @@ export default function Register({ navigation }: any)
       {/* <TextInputComponent placeholder={"Data de nascimento"} icon={"cake"}/> */}
       {/* <TextInputComponent placeholder={"Confirmar senha"} icon={"lock"}/> */}
 
-      <Button
-        onPress={register}
-        backgroundColor={"blue.300"}
-        borderRadius={30}
-        height={50}
-      >
-        <Text
-          color={"white"}
-          fontSize={"sm"}
-          lineHeight={"sm"}
-          textTransform={"uppercase"}
-          fontFamily={"MontserratLight"}
-        >
-          Registrar
-        </Text>
-      </Button>
+      <ButtonComponent onPress={register}>Cadastrar</ButtonComponent>
     </View>
   );
 }

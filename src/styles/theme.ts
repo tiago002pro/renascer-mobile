@@ -15,8 +15,8 @@ export const THEME = extendTheme({
     },
     while: "#fff",
     black: "#000",
-    backgroud: "#f4f5f7",
-    backgroudVideo: "#1a1a1a",
+    backgroud: "#1a1a1a",
+    backgroud2: "#f4f5f7",
   },
   fontSizes: {
     xs: 12,

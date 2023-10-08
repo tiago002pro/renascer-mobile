@@ -1,12 +1,13 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { MaterialIcons } from 'react-native-vector-icons';
+import { Button } from "native-base";
 
 import Home from "../tabs/Home";
 import Videos from "../tabs/Videos";
 import Schedule from "../tabs/Schedule";
 import Content from "../tabs/Content";
 import More from "../tabs/More";
-import { Button } from "native-base";
+import { THEME } from "../styles/theme";
 
 const Tab = createBottomTabNavigator();
 
@@ -15,7 +16,7 @@ export default function Tabs({navigation}) {
     <Tab.Navigator
       screenOptions={{
         tabBarStyle: {
-          backgroundColor: "#1a1a1a",
+          backgroundColor: THEME.colors.backgroud,
           borderTopColor: "transparent",
           paddingTop: 10,
         },
@@ -23,15 +24,36 @@ export default function Tabs({navigation}) {
       }}
     >
       <Tab.Screen 
-        name="Home"
+        name={"Home"}
         component={Home}
         options={{
           headerShown: true,
           headerTitleAlign: "center",
           headerShadowVisible: false,
+          headerTintColor: "white",
+          headerStyle: {
+            backgroundColor: THEME.colors.backgroud,
+          },
           headerRight: () => (
-            <Button backgroundColor={"transparent"} onPress={ () => navigation.navigate("Profile") }>
-              <MaterialIcons name="person" size={30} color={"#1a1a1a"}/>
+            // <Button backgroundColor={"transparent"} onPress={ () => navigation.navigate("Profile") }>
+            //   <MaterialIcons name="person" size={30} color={"white"}/>
+            // </Button>
+            <Button
+              onPress={ () => navigation.navigate("Login") }
+              backgroundColor={"transparent"}
+              borderColor={"orange.500"}
+              borderWidth={1}
+              p={1}
+              _text={{
+                textTransform: "uppercase",
+                fontSize: "xs"
+              }}
+              _pressed={{
+                backgroundColor: "orange.500",
+                borderColor: "transparent",
+              }}
+            >
+              Login
             </Button>
           ),
           tabBarIcon: ({ size, color }) => (

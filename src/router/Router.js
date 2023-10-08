@@ -15,23 +15,32 @@ const Stack = createNativeStackNavigator();
 
 export default function Routes() {
   return (
-    <NavigationContainer>
+    <NavigationContainer options={{headerStyle: {padding: "50"}}}>
       <Stack.Navigator>
-        <Stack.Screen name="Welcome" component={Welcome} options={{ headerShown: false }}/>
+        <Stack.Screen
+          name="Tabs"
+          component={Tabs}
+          options={{
+            headerShown: false,
+            headerShadowVisible: false,
+          }}
+        />
+
         <Stack.Screen 
           name="Register"
           component={Register} 
           options={{
             headerShown: true,
             title:"Cadastre-se",
-            headerTintColor: "black",
-            headerShadowVisible: false,
+            headerTintColor: "white",
+            headerShadowVisible: false, 
             headerStyle: {
-              backgroundColor: THEME.colors.backgroud
+              backgroundColor: THEME.colors.backgroud,
             }
           }}
         />
         <Stack.Screen name="Login" component={Login} options={{ headerShown: false }}/>
+
         <Stack.Screen
           name="Profile"
           component={Profile}
@@ -42,7 +51,9 @@ export default function Routes() {
             headerShadowVisible: false,
             headerTitleAlign: "center",
             headerTitleStyle: {
-              fontFamily: "MontserratRegular",
+              // fontFamily: "MontserratRegular",
+              fontSize: THEME.fontSizes.sm,
+              fontWeight: "bold"
             },
             headerStyle: {
               backgroundColor: THEME.colors.blue[100],
@@ -54,8 +65,9 @@ export default function Routes() {
             // )
           }}
         />
+
         <Stack.Screen name="WatchVideo" component={WatchVideo} options={{ headerShown: false }}/>
-        <Stack.Screen name="Tabs" component={Tabs} options={{ headerShown: false }}/>
+        {/* <Stack.Screen name="Welcome" component={Welcome} options={{ headerShown: false }}/> */}
       </Stack.Navigator>
     </NavigationContainer>
   );

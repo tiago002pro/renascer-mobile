@@ -29,16 +29,22 @@ export default function TextInputComponent({
           <Icon as = {
             <MaterialIcons 
               name={icon}
-              color={THEME.colors.blue[300]}
+              color={THEME.colors.white}
               style={styles.icon}
             />
           }/>
         }
-        borderRadius={30}
+        color={"white"}
+        borderColor={"transparent"}
+        borderRadius={10}
         fontSize={"sm"}
         lineHeight={"sm"}
         height={"16"}
         alignItems={"center"}
+        backgroundColor={"black"}
+        _focus={{
+          borderColor: "orange.500",
+        }}
       />
     </Box>
   )
@@ -49,5 +55,6 @@ const styles = StyleSheet.create({
     fontSize: THEME.fontSizes.lg,
     lineHeight: THEME.fontSizes.lg,
     left: 10,
+    marginRight: 5,
   }
 });
