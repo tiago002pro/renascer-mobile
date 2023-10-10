@@ -1,17 +1,27 @@
+import React, { useEffect } from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { MaterialIcons } from 'react-native-vector-icons';
 import { Button } from "native-base";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { THEME } from "../styles/theme";
 
 import Home from "../tabs/Home";
 import Videos from "../tabs/Videos";
 import Schedule from "../tabs/Schedule";
 import Content from "../tabs/Content";
 import More from "../tabs/More";
-import { THEME } from "../styles/theme";
 
 const Tab = createBottomTabNavigator();
 
 export default function Tabs({navigation}) {
+  var token = null
+  useEffect(() => {
+    async function verifyLogin() {
+      token = await AsyncStorage.getItem('token')
+      console.log("TOKEN", token);
+    }
+    verifyLogin()
+  })
   return (
     <Tab.Navigator
       screenOptions={{
@@ -34,28 +44,32 @@ export default function Tabs({navigation}) {
           headerStyle: {
             backgroundColor: THEME.colors.backgroud,
           },
-          headerRight: () => (
-            // <Button backgroundColor={"transparent"} onPress={ () => navigation.navigate("Profile") }>
-            //   <MaterialIcons name="person" size={30} color={"white"}/>
-            // </Button>
-            <Button
-              onPress={ () => navigation.navigate("Login") }
-              backgroundColor={"transparent"}
-              borderColor={"orange.500"}
-              borderWidth={1}
-              p={1}
-              _text={{
-                textTransform: "uppercase",
-                fontSize: "xs"
-              }}
-              _pressed={{
-                backgroundColor: "orange.500",
-                borderColor: "transparent",
-              }}
-            >
-              Login
-            </Button>
-          ),
+          headerRight: () => {
+            return token ? (
+              <Button backgroundColor={"transparent"} onPress={ () => navigation.navigate("Profile") }>
+                <MaterialIcons name="person" size={30} color={"white"}/>
+              </Button>
+            )
+            : (
+              <Button
+                onPress={ () => navigation.navigate("Login") }
+                backgroundColor={"transparent"}
+                borderColor={"orange.500"}
+                borderWidth={1}
+                p={1}
+                _text={{
+                  textTransform: "uppercase",
+                  fontSize: "xs"
+                }}
+                _pressed={{
+                  backgroundColor: "orange.500",
+                  borderColor: "transparent",
+                }}
+              >
+                Login
+              </Button>
+            )
+          },
           tabBarIcon: ({ size, color }) => (
             <MaterialIcons name="home" size={size} color={color}/>
           )
