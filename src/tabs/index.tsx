@@ -5,11 +5,11 @@ import { Button } from "native-base";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { THEME } from "../styles/theme";
 
-import Home from "../tabs/Home";
-import Videos from "../tabs/Videos";
-import Schedule from "../tabs/Schedule";
-import Content from "../tabs/Content";
-import More from "../tabs/More";
+import Home from "./Home";
+import Videos from "./Videos";
+import Schedule from "./Schedule";
+import Content from "./Content";
+import More from "./More";
 
 const Tab = createBottomTabNavigator();
 
