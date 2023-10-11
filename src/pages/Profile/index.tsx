@@ -1,10 +1,25 @@
+import React, { useEffect, useState } from "react";
 import { Box, Button, Image, Text, VStack } from "native-base";
 import { MaterialIcons } from 'react-native-vector-icons';
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 import profileImage from './../../assets/profile.jpg';
 import { THEME } from "../../styles/theme";
+import { load } from "../../services/UserService";
+import { User } from "../../interface/User.interface";
 
 export default function Profile() {
+  const [user, setUser] = useState('') as any
+
+  useEffect(() => {
+    async function verifyLogin() {
+      const userId = await AsyncStorage.getItem('userId')
+      const data: User = await load(Number(userId))
+      setUser(data)
+    }
+    verifyLogin()
+  }, [])
+
   return (
     <VStack 
       flex={1}
@@ -38,23 +53,23 @@ export default function Profile() {
             alignItems={"center"}
           />
         </Box>
-        <Text fontSize={"md"} >Tiago Barbosa</Text>
-        <Text fontSize={"xs"} >tiagobarbosa02@outlook.com</Text>
+        <Text fontSize={"md"} >{user.name}</Text>
+        <Text fontSize={"xs"} >{user.login}</Text>
       </Box>
 
       <Box p={"5%"} flex={2}>
         <Box
-          backgroundColor={"backgroud"}
+          backgroundColor={"backgroudLight"}
           borderRadius={10}
           w={"100%"}
         >
           <Box p={"5%"}>
-            <Text fontSize={"sm"} fontFamily={"FuturaBold"} letterSpacing={.5}>Data de nascimento</Text>
-            <Text fontSize={"sm"} fontFamily={"FuturaMedium"} letterSpacing={.5}>22/09/1996</Text>
+            <Text fontSize={"sm"} letterSpacing={.5}>Data de nascimento</Text>
+            <Text fontSize={"sm"} letterSpacing={.5}>22/09/1996</Text>
           </Box>
           <Box p={"5%"} borderTopColor={"gray.200"} borderTopWidth={1}>
-            <Text fontSize={"sm"} fontFamily={"FuturaBold"} letterSpacing={.5}>Endereço</Text>
-            <Text fontSize={"sm"} fontFamily={"FuturaMedium"} letterSpacing={.5}>22/09/1996</Text>
+            <Text fontSize={"sm"} letterSpacing={.5}>Endereço</Text>
+            <Text fontSize={"sm"} letterSpacing={.5}>22/09/1996</Text>
           </Box>
         </Box>
       </Box>
@@ -81,14 +96,13 @@ export default function Profile() {
           >
             <MaterialIcons 
               name="delete"
-              color={"blue"}
+              color={THEME.colors.red[500]}
               size={THEME.fontSizes.lg}
             />
             <Text 
               marginLeft={2}
               fontSize={"md"}
-              color={"blue.700"}
-              fontFamily={"FuturaMedium"}
+              color={"red.500"}
               letterSpacing={.5}
             >
               Excluir minha conta
