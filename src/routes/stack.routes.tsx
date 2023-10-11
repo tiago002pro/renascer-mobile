@@ -1,6 +1,5 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import ProfileNew from '../screens/Profile';
 import Login from '../pages/Login';
 
 const Stack = createNativeStackNavigator()

@@ -18,7 +18,7 @@ export default function Login({ navigation }: any) {
     async function verifyLogin() {
       const token = await AsyncStorage.getItem('token')
       if (token) {
-        navigation.replace('Tabs')
+        navigation.replace('Feed')
       }
       setLoading(false)
     }
@@ -26,9 +26,9 @@ export default function Login({ navigation }: any) {
   }, [])
 
   async function login() {
-    const retult = await doLogin(email, passWord)
-    if (retult) {
-      const { token } = retult
+    const result = await doLogin(email, passWord)
+    if (result) {
+      const { token } = result
       const tokenDecoded: any = jwtDecode(token)
       AsyncStorage.setItem('token', token)
       AsyncStorage.setItem('userId', tokenDecoded.id)
