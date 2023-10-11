@@ -9,12 +9,11 @@ import Register from "../pages/Register";
 import WatchVideo from "../pages/WatchVideo";
 import Tabs from "../tabs";
 import Profile from "../pages/Profile";
-import { Button } from "native-base";
 
 const Stack = createNativeStackNavigator();
 
 export default function Routes() {
-  return (
+    return (
     <NavigationContainer options={{headerStyle: {padding: "50"}}}>
       <Stack.Navigator>
         <Stack.Screen
@@ -51,16 +50,20 @@ export default function Routes() {
             headerShadowVisible: false,
             headerTitleAlign: "center",
             headerTitleStyle: {
-              // fontFamily: "MontserratRegular",
               fontSize: THEME.fontSizes.sm,
-              fontWeight: "bold"
+              fontWeight: "bold",
             },
             headerStyle: {
               backgroundColor: THEME.colors.blue[100],
             },
             // headerLeft: () => (
-            //   <Button backgroundColor={"transparent"} onPress={() => history.goBack()}>
+            //   <Button backgroundColor={"transparent"} onPress={() => {}}>
             //     <MaterialIcons name="chevron-left" size={40} color={"#1a1a1a"}/>
+            //   </Button>
+            // ),
+            // headerRight: () => (
+            //   <Button backgroundColor={"transparent"} onPress={() => logout()} padding={0} right={-10}>
+            //     <MaterialIcons name="logout" size={25} color={"#1a1a1a"}/>
             //   </Button>
             // )
           }}
