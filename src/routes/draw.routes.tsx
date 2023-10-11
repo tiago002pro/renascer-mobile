@@ -3,12 +3,16 @@ import { MaterialIcons } from 'react-native-vector-icons';
 
 import TabRoutes from './tab.routes';
 import StackRoutes from './stack.routes';
+import CustomDrawer from '../components/CustomDrawer';
 
 const Drawer = createDrawerNavigator()
 
 export default function DrawerRoutes() {
   return(
-    <Drawer.Navigator screenOptions={{ title: '' }}>
+    <Drawer.Navigator 
+      screenOptions={{ title: '' }}
+      drawerContent={CustomDrawer}
+    >
       <Drawer.Screen
         name='home'
         component={TabRoutes}
