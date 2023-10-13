@@ -3,7 +3,7 @@ import { StyleSheet, Text, View } from "react-native";
 export default function Video() {
   return(
     <View style={styles.container}>
-      <Text style={styles.title}>New</Text>
+      <Text style={styles.title}>Vídeo</Text>
     </View>
   );
 }

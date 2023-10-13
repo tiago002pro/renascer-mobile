@@ -1,6 +1,6 @@
 import { Box, Icon, Input } from "native-base";
 import { StyleSheet } from "react-native";
-import { MaterialIcons } from 'react-native-vector-icons';
+import { Feather } from 'react-native-vector-icons';
 import { THEME } from "../styles/theme";
 
 interface InputProps {
@@ -27,21 +27,19 @@ export default function TextInputComponent({
         secureTextEntry={passWordType}
         InputLeftElement = {
           <Icon as = {
-            <MaterialIcons 
+            <Feather 
               name={icon}
-              color={THEME.colors.white}
+              color={THEME.colors.gray[600]}
               style={styles.icon}
             />
           }/>
         }
-        color={"white"}
+        style={styles.input}
+        color={"black"}
         borderColor={"transparent"}
-        borderRadius={10}
         fontSize={"sm"}
         lineHeight={"sm"}
-        height={"16"}
-        alignItems={"center"}
-        backgroundColor={"black"}
+        backgroundColor={"gray.100"}
         _focus={{
           borderColor: "orange.500",
         }}
@@ -51,10 +49,14 @@ export default function TextInputComponent({
 }
 
 const styles = StyleSheet.create({
+  input: {
+    height: 50,
+    color: '#000',
+  },
   icon: {
     fontSize: THEME.fontSizes.lg,
     lineHeight: THEME.fontSizes.lg,
     left: 10,
-    marginRight: 5,
+    marginRight: 10,
   }
 });

@@ -2,8 +2,8 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import { MaterialIcons } from 'react-native-vector-icons';
 
 import TabRoutes from './tab.routes';
-import StackRoutes from './stack.routes';
 import CustomDrawer from '../components/CustomDrawer';
+import StackRoutes from './stack.routes';
 
 const Drawer = createDrawerNavigator()
 
@@ -14,20 +14,21 @@ export default function DrawerRoutes() {
       drawerContent={CustomDrawer}
     >
       <Drawer.Screen
-        name='home'
-        component={TabRoutes}
+        name='Profile'
+        component={StackRoutes}
         options={{
-          drawerIcon: ({color, size}) => <MaterialIcons name="home" color={color} size={size} />,
-          drawerLabel: 'Início'
+          headerShown: false,
+          drawerIcon: ({color, size}) => <MaterialIcons name="person" color={color} size={size} />,
+          drawerLabel: 'Meu Perfil'
         }}
       />
 
       <Drawer.Screen
-        name='profile'
-        component={StackRoutes}
+        name='Home'
+        component={TabRoutes}
         options={{
-          drawerIcon: ({color, size}) => <MaterialIcons name="person" color={color} size={size} />,
-          drawerLabel: 'Meu Perfil'
+          drawerIcon: ({color, size}) => <MaterialIcons name="home" color={color} size={size} />,
+          drawerLabel: 'Home',
         }}
       />
     </Drawer.Navigator>

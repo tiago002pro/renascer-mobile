@@ -1,4 +1,5 @@
 import { Button, ITagProps } from "native-base";
+import { StyleSheet } from "react-native";
 import { ReactNode } from "react";
 
 interface ButtonProps extends ITagProps {
@@ -6,17 +7,15 @@ interface ButtonProps extends ITagProps {
   color?: string;
   bg?: string;
   bntFunction?: any;
+  props?: any;
 }
 
-export default function ButtonComponent({ children, color, bg, bntFunction, ...props }: ButtonProps) {
+export default function ButtonComponent({ children, color, bg, bntFunction, ...props }: any) {
   return (
     <Button
       onPress={bntFunction}
-      w={"100%"}
+      style={styles.btn}
       bg={bg || "orange.400"}
-      borderColor={"transparent"}
-      borderWidth={3}
-      borderRadius={30}
       _pressed={{
         backgroundColor: "orange.500",
         borderColor: "transparent",
@@ -35,3 +34,14 @@ export default function ButtonComponent({ children, color, bg, bntFunction, ...p
     </Button>
   );
 }
+
+const styles = StyleSheet.create({
+  btn: {
+    height: 50,
+    borderColor: 'transparent',
+    shadowOffset: {width: -2, height: 5},  
+    shadowColor: '#171717',  
+    shadowOpacity: 0.2,  
+    shadowRadius: 3,
+  }
+});

@@ -6,13 +6,11 @@ export const THEME = extendTheme({
       300: '#8D8D99',
       700: '#626262'
     },
-    orange: {
-      700: "#F0A500",
-    },
     blue: {
       300: '#5f6477',
       400: '#4a5374',
     },
+    orangeNew: "#F0A500",
     while: "#fff",
     black: "#000",
     backgroud: "#1a1a1a",

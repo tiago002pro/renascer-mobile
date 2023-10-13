@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View } from "react-native";
 
-export default function Feed() {
+export default function Feed({ navigation }) {
   return(
     <View style={styles.container}>
       <Text style={styles.title}>Feed</Text>
