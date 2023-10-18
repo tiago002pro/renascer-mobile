@@ -19,7 +19,7 @@ export default function CustomDrawer(props) {
     console.log("CustomDrawer (logout) userId => ", userId);
     await AsyncStorage.removeItem('token')
     await AsyncStorage.removeItem('userId')
-    navigation.navigate('Profile', {screen: 'Login'})
+    navigation.navigate('StackRoutes', {screen: 'Login'})
   }
 
   return(

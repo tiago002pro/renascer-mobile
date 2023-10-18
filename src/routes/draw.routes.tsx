@@ -23,7 +23,7 @@ export default function DrawerRoutes() {
       />
 
       <Drawer.Screen
-        name='Profile'
+        name='StackRoutes'
         component={StackRoutes}
         options={{
           headerShown: false,

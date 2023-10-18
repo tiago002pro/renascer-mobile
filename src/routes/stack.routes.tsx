@@ -7,14 +7,16 @@ import { Button } from 'native-base';
 import Login from '../screens/Login';
 import Profile from '../screens/Profile';
 import Register from '../screens/Register';
+import Leadership from '../screens/Leadership';
+import About from '../screens/About';
 
 const Stack = createNativeStackNavigator()
 
 export default function StackRoutes() {
   const navigation: any = useNavigation()
 
-  function openScreen() {
-    navigation.navigate('Home')
+  function goBack() {
+    navigation.goBack()
   }
 
   return(
@@ -28,7 +30,7 @@ export default function StackRoutes() {
           headerShadowVisible: false,
           statusBarStyle: 'light',
           headerLeft: () => (
-            <Button onPress={openScreen} p={0} style={styles.btn}>
+            <Button onPress={goBack} p={0} style={styles.btn}>
               <MaterialIcons name="chevron-left" size={30} style={styles.backBtn}/>
             </Button>
           )
@@ -48,6 +50,38 @@ export default function StackRoutes() {
           title: "Cadastre-se",
           headerBackVisible: false,
           headerShadowVisible: false,
+        }}
+      />
+
+      <Stack.Screen
+        name='Leadership'
+        component={Leadership}
+        options={{
+          headerShown: true,
+          title: "Liderança",
+          headerBackVisible: false,
+          headerShadowVisible: false,
+          headerLeft: () => (
+            <Button onPress={goBack} p={0} style={styles.btn}>
+              <MaterialIcons name="chevron-left" size={30} style={styles.backBtn}/>
+            </Button>
+          )
+        }}
+      />
+
+      <Stack.Screen
+        name='About'
+        component={About}
+        options={{
+          headerShown: true,
+          title: "A Renascer",
+          headerBackVisible: false,
+          headerShadowVisible: false,
+          headerLeft: () => (
+            <Button onPress={goBack} p={0} style={styles.btn}>
+              <MaterialIcons name="chevron-left" size={30} style={styles.backBtn}/>
+            </Button>
+          )
         }}
       />
     </Stack.Navigator>
