@@ -4,6 +4,7 @@ import { DrawerContentScrollView, DrawerItem, DrawerItemList } from "@react-navi
 import { MaterialIcons } from 'react-native-vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 import profileImage from './../assets/profile.jpg';
 import React from 'react';
@@ -11,14 +12,20 @@ import React from 'react';
 export default function CustomDrawer(props) {
   const navigation: any = useNavigation()
 
-  function openScreen() {
-    navigation.navigate('Profile')
+  async function logout() {
+    const token = await AsyncStorage.getItem('token')
+    const userId = await AsyncStorage.getItem('userId')
+    console.log("CustomDrawer (logout) token => ", token);
+    console.log("CustomDrawer (logout) userId => ", userId);
+    await AsyncStorage.removeItem('token')
+    await AsyncStorage.removeItem('userId')
+    navigation.navigate('Profile', {screen: 'Login'})
   }
 
   return(
     <SafeAreaView style={{flex: 1}}>
       <DrawerContentScrollView {...props}>
-        <Button style={styles.container} onPress={openScreen}>
+        <Button style={styles.container} onPress={() => {}}>
           <Box style={styles.userArea} backgroundColor={'gray.100'}>
             <Box style={styles.imageArea}>
               <Image source={profileImage} alt='' style={styles.image} />
@@ -34,7 +41,7 @@ export default function CustomDrawer(props) {
       <View>
         <DrawerItem
           label="Sair"
-          onPress={() => navigation.navigate('Login')}
+          onPress={logout}
           icon={({color, size}) => <MaterialIcons name="logout" color={color} size={size} />}
         />
       </View>

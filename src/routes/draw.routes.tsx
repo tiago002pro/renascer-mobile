@@ -14,6 +14,15 @@ export default function DrawerRoutes() {
       drawerContent={CustomDrawer}
     >
       <Drawer.Screen
+        name='Home'
+        component={TabRoutes}
+        options={{
+          drawerIcon: ({color, size}) => <MaterialIcons name="home" color={color} size={size} />,
+          drawerLabel: 'Home',
+        }}
+      />
+
+      <Drawer.Screen
         name='Profile'
         component={StackRoutes}
         options={{
@@ -23,14 +32,6 @@ export default function DrawerRoutes() {
         }}
       />
 
-      <Drawer.Screen
-        name='Home'
-        component={TabRoutes}
-        options={{
-          drawerIcon: ({color, size}) => <MaterialIcons name="home" color={color} size={size} />,
-          drawerLabel: 'Home',
-        }}
-      />
     </Drawer.Navigator>
   );
 }

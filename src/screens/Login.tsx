@@ -1,12 +1,52 @@
-import { Box, Button, Image, Text, VStack } from "native-base";
-import React, { useState } from "react";
+import { Box, Button, Image, Text, VStack, useToast } from "native-base";
+import React, { useEffect, useState } from "react";
 import { StyleSheet } from "react-native";
 import TextInputComponent from "../components/TextInputComponent";
 import ButtonComponent from "../components/ButtonComponent";
+import { doLogin } from "../services/AuthenticationService";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import jwtDecode from "jwt-decode";
 
 export default function Login({ navigation }) {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [loading, setLoading] = useState(true)
+  const toast = useToast();
+
+  useEffect(() => {
+    async function verifyLogin() {
+      const token = await AsyncStorage.getItem('token')
+      const userId = await AsyncStorage.getItem('userId')
+      console.log("LOGIN -> token: ", token);
+      console.log("LOGIN -> userId: ", userId);
+      if (token || userId) {
+        navigation.navigate('Home')
+      }
+      setLoading(false)
+    }
+    verifyLogin()
+  }, [])
+
+  async function login() {
+    const result = await doLogin(email, password)
+    if (result) {
+      const { token } = result
+      const tokenDecoded: any = jwtDecode(token)
+      await AsyncStorage.setItem('token', token)
+      await AsyncStorage.setItem('userId', tokenDecoded.id)
+      navigation.navigate('Home')
+    } else {
+      toast.show({
+        title: "Erro no login",
+        description: "O email ou senha não conferem",
+        backgroundColor: "red.500"
+      })
+    }
+  }
+
+  if(loading) {
+    return null
+  }
 
   return(
     <VStack style={styles.container} safeArea>
@@ -34,7 +74,7 @@ export default function Login({ navigation }) {
           passWordType={true}
         />
 
-        <ButtonComponent bntFunction={() => navigation.navigate('Home')}>
+        <ButtonComponent bntFunction={login}>
           Entrar
         </ButtonComponent>
 

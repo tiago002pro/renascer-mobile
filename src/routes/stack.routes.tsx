@@ -3,7 +3,6 @@ import { MaterialIcons } from 'react-native-vector-icons';
 import { StyleSheet } from 'react-native'
 import { useNavigation } from '@react-navigation/native';
 import { Button } from 'native-base';
-import { THEME } from './../styles/theme';
 
 import Login from '../screens/Login';
 import Profile from '../screens/Profile';
@@ -21,17 +20,13 @@ export default function StackRoutes() {
   return(
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen
-        name='home'
+        name='Root'
         component={Profile}
         options={{
           headerShown: true,
           title: "Meu perfil",
           headerShadowVisible: false,
           statusBarStyle: 'light',
-          statusBarColor: THEME.colors.white,
-          headerStyle: {
-            backgroundColor: THEME.colors.white,
-          },
           headerLeft: () => (
             <Button onPress={openScreen} p={0} style={styles.btn}>
               <MaterialIcons name="chevron-left" size={30} style={styles.backBtn}/>
@@ -39,10 +34,12 @@ export default function StackRoutes() {
           )
         }}
       />
+
       <Stack.Screen
         name='Login'
         component={Login}
       />
+
       <Stack.Screen
         name='Register'
         component={Register}

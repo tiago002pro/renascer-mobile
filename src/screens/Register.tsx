@@ -3,12 +3,23 @@ import { Box, Button, Text, VStack } from "native-base";
 import { StyleSheet } from "react-native";
 import TextInputComponent from "../components/TextInputComponent";
 import ButtonComponent from "../components/ButtonComponent";
+import { doRegister } from "../services/AuthenticationService";
 
 export default function Register({ navigation }) {
   const [name, setName] = useState('')
-  const [email, setEmail] = useState('')
+  const [login, setLogin] = useState('')
   const [password, setPassword] = useState('')
   const [phone, setPhone] = useState('')
+  const [role] = useState('USER')
+
+  async function register() {
+    const result = await doRegister({name, login, password, phone, role})
+    if (result) {
+      navigation.replace('Login')
+    } else {
+      console.log("Erro");
+    }
+  }
 
   return(
     <VStack style={styles.container} safeArea>
@@ -21,8 +32,8 @@ export default function Register({ navigation }) {
       <TextInputComponent
         placeholder={"E-mail"}
         icon={"mail"}
-        value={email}
-        onChangeText={setEmail}
+        value={login}
+        onChangeText={setLogin}
       />
       <TextInputComponent
         placeholder={"Senha"}
@@ -37,7 +48,7 @@ export default function Register({ navigation }) {
         value={phone}
         onChangeText={setPhone}
       />
-      <ButtonComponent onPress={() => navigation.navigate('Home')}>Cadastrar</ButtonComponent>
+      <ButtonComponent onPress={register}>Cadastrar</ButtonComponent>
       <Box style={styles.footerArea}>
         <Text color={'gray.500'}>Já possui conta?</Text>
         <Button
