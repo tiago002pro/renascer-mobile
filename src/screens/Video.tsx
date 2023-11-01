@@ -1,22 +1,41 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet } from "react-native";
+import { Box, ScrollView, Text, VStack } from "native-base";
+import CarouselVideo from "../components/CarouselVideo";
+
+import sermons from './../assets/json/sermon.json';
 
 export default function Video() {
   return(
-    <View style={styles.container}>
-      <Text style={styles.title}>Vídeo</Text>
-    </View>
+    <ScrollView style={styles.container}>
+      <Box>
+        <Text style={styles.title}>Em destaque</Text>
+        <CarouselVideo data={sermons}/>
+      </Box>
+
+      <Box>
+        <Text style={styles.title}>Em destaque</Text>
+        <CarouselVideo data={sermons}/>
+      </Box>
+
+      <Box>
+        <Text style={styles.title}>Em destaque</Text>
+        <CarouselVideo data={sermons}/>
+      </Box>
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    padding: '5%',
+    backgroundColor: '#000',
   },
   title: {
-    fontSize: 22,
+    fontSize: 20,
     fontWeight: 'bold',
-  }
+    color: '#FFF',
+    marginBottom: 20,
+    justifyContent: 'flex-start'
+  },
 });

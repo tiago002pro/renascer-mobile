@@ -7,7 +7,7 @@ import Routes from "./src/routes";
 export default function App() {
   return (
     <NativeBaseProvider theme={THEME}>
-      <StatusBar backgroundColor={THEME.colors.backgroud} barStyle='dark-content'/>
+      <StatusBar backgroundColor={THEME.colors.backgroud} barStyle='light-content'/>
       <Routes />
     </NativeBaseProvider>
   );

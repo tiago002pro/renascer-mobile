@@ -2,11 +2,49 @@ import { Box, VStack, Image, Text, Button, Icon } from "native-base";
 import { StyleSheet } from "react-native";
 import { Feather } from 'react-native-vector-icons';
 import { MaterialIcons } from 'react-native-vector-icons';
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { THEME } from "../styles/theme";
 
 import profileImage from './../assets/profile.jpg';
+import { useEffect, useState } from "react";
+import { loadUser } from "../services/UserService";
+import { User } from "../interface/User.interface";
 
-export default function Profile() {
+export default function Profile({ navigation }) {
+
+
+
+  const [user, setUser] = useState()
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    async function getUser() {
+      const userId = await AsyncStorage.getItem('userId')
+      console.log("Profile (getUser) userId => ", userId);
+      if (!userId) {
+        navigation.navigate('Login')
+      } else {
+        const user = await loadUser(3).then((response) => response)
+        // console.log("USER.name => ", user.name);
+        // console.log("USER.login => ", user.login);
+        // console.log("USER.phone => ", user.phone);
+        // setUser(user)
+        console.log("USER", user);
+        // console.log("USER", user);
+        // console.log("USER", user);
+        // console.log("USER", user);
+        // console.log("USER", user);
+        
+      }
+      setLoading(false)
+    }
+    getUser()
+  }, [])
+
+  if(loading) {
+    return null
+  }
+
   return(
     <VStack style={styles.container}>
       <Box>

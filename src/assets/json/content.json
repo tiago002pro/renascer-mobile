@@ -1,0 +1,41 @@
+{
+  "title": "Igreja Renascer, uma igreja, uma família!",
+  "text": "Uma família que acolhe todas as pessoas, um espaço pra fortalecer famílias na fé, um lugar para adorar e exaltar a Jesus. A Igreja renascer foi plantada em Maringá no ano de 2003 pelos pastores Marcio e Selma Ribeiro. A Renascer sempre se fundamentou nas escrituras sagradas, na oração e no mover do espirito santo, promovendo transformação através do evangelho. Nossa missão é adorar a Deus, proclamar o Evangelho no poder do Espírito Santo, fazer discípulos de Jesus e amar ao próximo. Nossa visão é ser uma igreja fiel às Escrituras Sagradas, relevante à sociedade, que promove a transformação do ser humano e o seu desenvolvimento por meio do evangelho, em conformidade com os valores bíblicos.",
+  "leadership": {
+    "title": "Pr. Marcio Ribeiro",
+    "sub-title": "Bem-vindo à Igreja Renascer. É muito bom ter você aqui conosco!",
+    "text": "Aqui na Renascer nós prezamos por um relacionamento com Deus Pai, Filho e Espírito. Assim, nossa prioridade é passar tempo aprendendo a amar melhor a Deus e ao nosso próximo. Entendemos que isso é feito através dos momentos de louvor, adoração, estudo da Palavra e também aprendendo como desenvolver nossos dons. Desejamos que a Igreja Renascer seja um lugar onde todos que entrarem sejam instigados a um andar de intimidade com Deus!"
+  },
+  "values": [
+    {
+      "id": 1,
+      "title": "Autoridade bíblica",
+      "description": "A Bíblia como fonte de autoridade única de doutrina e conduta prática."
+    },
+    {
+      "id": 2,
+      "title": "Santidade",
+      "description": "A busca da santidade como ideal de vida cristã."
+    },
+    {
+      "id": 3,
+      "title": "Família",
+      "description": "Família, na perspectiva bíblica, como fundamento da sociedade."
+    },
+    {
+      "id": 4,
+      "title": "Acolhimento",
+      "description": "Acolhimento gracioso à todas as pessoas."
+    },
+    {
+      "id": 5,
+      "title": "Ética",
+      "description": "Ética e transparência nas relações com a sociedade."
+    },
+    {
+      "id": 6,
+      "title": "Mordomia",
+      "description": "Mordomia de tudo que Deus dá ao cristão, para a edificação da igreja e evangelização do mundo."
+    }
+  ]
+}

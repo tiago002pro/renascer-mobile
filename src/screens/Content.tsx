@@ -4,6 +4,7 @@ import ButtonComponent from "../components/ButtonComponent";
 export default function Content({ navigation }) {
   return(
     <View style={styles.container}>
+        <ButtonComponent bntFunction={() => navigation.navigate('Leadership')}>Liderança</ButtonComponent>
         <ButtonComponent bntFunction={() => navigation.navigate('StackRoutes', {screen: 'Leadership'})}>Liderança</ButtonComponent>
         <ButtonComponent bntFunction={() => navigation.navigate('StackRoutes', {screen: 'About'})}>Sobre nós</ButtonComponent>
     </View>
