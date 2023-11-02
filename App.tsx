@@ -1,15 +1,22 @@
 import React from 'react';
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
+import { NativeBaseProvider } from 'native-base';
+
+import Routes from './src/routes';
+import { AuthProvider } from './src/contexts/auth';
+
+import { THEME } from './src/styles/theme';
 
 export default function App() {
   return (
-    <NavigationContainer>
-      <View style={styles.container}>
-        <StatusBar style="auto" />
-      </View>
-    </NavigationContainer>
+    <NativeBaseProvider theme={THEME}>
+      <NavigationContainer>
+        <AuthProvider>
+          <Routes />
+        </AuthProvider>
+      </NavigationContainer>
+    </NativeBaseProvider>
   );
 }
 

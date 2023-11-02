@@ -1,18 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Box, Button, Image, Text, VStack } from "native-base";
 import { StyleSheet } from "react-native";
 
-import { signIn } from "../../services/auth";
 import TextInputComponent from "../../components/TextInputComponent";
 import ButtonComponent from "../../components/ButtonComponent";
+import AuthContext from "../../contexts/auth";
 
 export default function SignIn({ navigation }) {
+  const {signed, signIn} = useContext(AuthContext);
+  console.log("signed", signed);
+
+
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
   async function handleSignIn() {
-    const response = await signIn(email, password)
-    console.log("response", response);
+    signIn(email, password);
   }
 
   return (
