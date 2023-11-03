@@ -3,7 +3,7 @@ import SignIn from "../pages/SignIn";
 
 const AuthStack = createStackNavigator();
 
-export default function AuthStackRoutes() {
+export default function AuthRoutes() {
 	return (
 		<AuthStack.Navigator>
 			<AuthStack.Screen name="SignIn" component={SignIn} />
