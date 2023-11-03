@@ -1,3 +1,4 @@
+import { RegisterUser } from "../interfaces/Register.interface";
 import api from "./api";
 import jwtDecode from "jwt-decode";
 
@@ -26,6 +27,17 @@ export async function doLogin(login: string, password: string): Promise<Response
     }
   } catch(error) {
     console.log("error", error);
+    return null
+  }
+}
+
+export async function doRegister(user: RegisterUser) {
+  if (!user.name || !user.login || !user.password) return null
+  try {
+    const result = await api.post('/auth/register', user)
+    return result.data
+  } catch (error) {
+    console.log(error);
     return null
   }
 }
