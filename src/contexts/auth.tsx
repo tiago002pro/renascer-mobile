@@ -19,7 +19,7 @@ interface AuthContextData {
 
 const AuthContext = createContext<AuthContextData>({} as AuthContextData);
 
-export const AuthProvider: React.FC = ({ children }: any) => {
+export const AuthProvider = ({ children }: any) => {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
 
@@ -28,17 +28,15 @@ export const AuthProvider: React.FC = ({ children }: any) => {
       const storageToken = await AsyncStorage.getItem('@RNAuth:token');
       const storageUser = await AsyncStorage.getItem('@RNAuth:user');
 
-      await new Promise(resolve => setTimeout(resolve, 2000))
-
       if (storageToken && storageUser) {
         api.defaults.headers['Authorization'] = `Bearer ${storageToken}`;
 
         setUser(JSON.parse(storageUser));
-        setLoading(false);
       }
     }
 
     loadStorageData();
+    setLoading(false);
   }, []);
 
   async function signIn(email, password) {
@@ -53,12 +51,13 @@ export const AuthProvider: React.FC = ({ children }: any) => {
 
   async function signOut() {
     AsyncStorage.clear().then(() => {
+      api.defaults.headers['Authorization'] = null
       setUser(null);
     })
   }
 
   return (
-    <AuthContext.Provider value={{ signed: !!user, user: user, loading, signIn, signOut }}>
+    <AuthContext.Provider value={{ signed: !!user, user, loading, signIn, signOut }}>
       {children}
     </AuthContext.Provider>
   );
