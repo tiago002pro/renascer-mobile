@@ -1,3 +1,5 @@
+import { registerRootComponent } from 'expo';
+import 'react-native-gesture-handler';
 import React from 'react';
 import { StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
@@ -8,7 +10,7 @@ import { AuthProvider } from './src/contexts/auth';
 
 import { THEME } from './src/styles/theme';
 
-export default function App() {
+export default function registerRootComponentApp() {
   return (
     <NativeBaseProvider theme={THEME}>
       <NavigationContainer>
@@ -19,12 +21,3 @@ export default function App() {
     </NativeBaseProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
