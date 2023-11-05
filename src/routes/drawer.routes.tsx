@@ -1,5 +1,5 @@
 import { createDrawerNavigator } from "@react-navigation/drawer";
-import { Feather } from '@expo/vector-icons';
+import { MaterialIcons } from '@expo/vector-icons';
 import TabRoutes from "./tab.routes";
 import StackRoutes from "./stack.routes";
 import CustomDrawer from "../components/CustomDrawer";
@@ -16,17 +16,20 @@ export default function DrawerRoutes() {
         name="home"
         component={TabRoutes}
         options={{
-          drawerIcon: ({ color, size }) => <Feather name="home" color={color} size={size} />,
+          drawerIcon: ({ color, size }) => <MaterialIcons name="home" color={color} size={size} />,
           drawerLabel: "Início",
         }}
       />
 
       <Drawer.Screen
-        name="stack"
+        name="StackRoutes"
         component={StackRoutes}
         options={{
-          drawerIcon: ({ color, size }) => <Feather name="user" color={color} size={size} />,
+          drawerIcon: ({ color, size }) => <MaterialIcons name="person" color={color} size={size} />,
           drawerLabel: "Perfil",
+          drawerItemStyle: {
+            display: "none"
+          }
         }}
       />
     </Drawer.Navigator>

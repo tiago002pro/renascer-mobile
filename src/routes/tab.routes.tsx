@@ -1,5 +1,5 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { Feather } from '@expo/vector-icons';
+import { MaterialIcons } from '@expo/vector-icons';
 
 import Feed from "../screens/Feed";
 import New from "../screens/New";
@@ -13,7 +13,7 @@ export default function TabRoutes() {
         name="Feed" 
         component={Feed}
         options={{
-          tabBarIcon: ({ color, size }) => <Feather name="home" color={color} size={size} />,
+          tabBarIcon: ({ color, size }) => <MaterialIcons name="home" color={color} size={size} />,
           tabBarLabel: "Início",
         }}
       />
@@ -21,7 +21,7 @@ export default function TabRoutes() {
         name="New" 
         component={New}
         options={{
-          tabBarIcon: ({ color, size }) => <Feather name="plus" color={color} size={size} />,
+          tabBarIcon: ({ color, size }) => <MaterialIcons name="play-arrow" color={color} size={size} />,
           tabBarLabel: "Novo",
         }}
       />
