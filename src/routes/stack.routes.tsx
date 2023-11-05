@@ -8,7 +8,7 @@ export default function StackRoutes() {
 	return (
 		<Stack.Navigator>
 			<Stack.Screen
-        name="home"
+        name="stack"
         component={Profile}
       /> 
 		</Stack.Navigator>
