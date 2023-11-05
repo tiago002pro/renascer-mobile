@@ -32,8 +32,6 @@ export async function doLogin(login: string, password: string): Promise<Response
 }
 
 export async function doRegister(user: RegisterUser) {
-  console.log("doRegister", user);
-  
   if (!user.name || !user.login || !user.password) return null
   try {
     const result = await api.post('/auth/register', user)
