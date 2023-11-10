@@ -28,7 +28,6 @@ export default function DrawerRoutes() {
           drawerIcon: ({ color, size }) => <MaterialIcons name="person" color={color} size={size} />,
           drawerLabel: "Perfil",
           drawerItemStyle: {
-            display: "none"
           }
         }}
       />
