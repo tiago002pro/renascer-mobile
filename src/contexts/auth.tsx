@@ -29,6 +29,8 @@ export const AuthProvider = ({ children }: any) => {
       const storageUser = await AsyncStorage.getItem('@RNAuth:user');
 
       if (storageToken && storageUser) {
+        api.defaults.headers['Content-Type'] ='application/json'
+        api.defaults.headers['Accept'] ='application/json'
         api.defaults.headers['Authorization'] = `Bearer ${storageToken}`;
 
         setUser(JSON.parse(storageUser));

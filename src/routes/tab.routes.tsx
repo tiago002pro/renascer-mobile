@@ -2,7 +2,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { MaterialIcons } from '@expo/vector-icons';
 
 import Feed from "../screens/Feed";
-import New from "../screens/New";
+import Sermons from "../pages/Sermons";
 
 const Tab = createBottomTabNavigator();
 
@@ -18,11 +18,11 @@ export default function TabRoutes() {
         }}
       />
       <Tab.Screen
-        name="New" 
-        component={New}
+        name="Sermons" 
+        component={Sermons}
         options={{
           tabBarIcon: ({ color, size }) => <MaterialIcons name="play-arrow" color={color} size={size} />,
-          tabBarLabel: "Novo",
+          tabBarLabel: "Palavras",
         }}
       />
     </Tab.Navigator>
