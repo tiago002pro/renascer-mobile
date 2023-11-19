@@ -3,9 +3,10 @@ import { StyleSheet, Text } from "react-native";
 import { getAll } from "./service/SermonService";
 import { Box, VStack } from "native-base";
 import CarouselVideo from "../../components/CarouselVideo";
+import { THEME } from "../../styles/theme";
 
 export default function Sermons() {
-  const [sermons, setSermon] = useState('') as any
+  const [sermons, setSermon] = useState('') as any[]
 
   useEffect(() => {
     async function getAllSermons() {
@@ -20,7 +21,7 @@ export default function Sermons() {
     <VStack style={styles.container} safeArea>
       <Box>
         <Text style={styles.title}>Em destaque</Text>
-        <CarouselVideo data={sermons}/>
+        {/* <CarouselVideo data={sermons}/> */}
       </Box>
     </VStack>
   );
@@ -29,7 +30,7 @@ export default function Sermons() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#000',
+    backgroundColor: THEME.colors.backgroud,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -37,7 +38,7 @@ const styles = StyleSheet.create({
     padding: '5%',
     fontSize: 20,
     fontWeight: 'bold',
-    color: '#FFF',
+    color: THEME.colors.white,
     justifyContent: 'flex-start'
   }
 });

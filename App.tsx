@@ -1,7 +1,7 @@
 import 'react-native-gesture-handler';
 import React, { useEffect } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { NativeBaseProvider } from 'native-base';
+import { NativeBaseProvider, StatusBar } from 'native-base';
 
 import Routes from './src/routes';
 import { AuthProvider } from './src/contexts/auth';
@@ -18,6 +18,7 @@ export default function registerRootComponentApp() {
     <NativeBaseProvider theme={THEME}>
       <NavigationContainer>
         <AuthProvider>
+          <StatusBar backgroundColor={THEME.colors.statusBar} barStyle='light-content'/>
           <Routes />
         </AuthProvider>
       </NavigationContainer>

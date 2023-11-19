@@ -3,13 +3,20 @@ import { MaterialIcons } from '@expo/vector-icons';
 import TabRoutes from "./tab.routes";
 import StackRoutes from "./stack.routes";
 import CustomDrawer from "../components/CustomDrawer";
+import { THEME } from "../styles/theme";
 
 const Drawer = createDrawerNavigator();
 
 export default function DrawerRoutes() {
   return (
     <Drawer.Navigator
-      screenOptions={{ title: "" }}
+      screenOptions={{
+        title: "",
+        headerStyle: {backgroundColor: THEME.colors.header},
+        headerTintColor: THEME.colors.white,
+        headerShadowVisible: false,
+        drawerActiveTintColor: 'orange'
+      }}
       drawerContent={CustomDrawer}
     >
       <Drawer.Screen

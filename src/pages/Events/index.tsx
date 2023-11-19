@@ -1,9 +1,10 @@
 import { StyleSheet, Text, View } from "react-native";
+import { THEME } from "../../styles/theme";
 
-export default function New() {
+export default function Events() {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>New</Text>
+      <Text style={styles.title}>Events</Text>
     </View>
   );
 }
@@ -11,12 +12,13 @@ export default function New() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: THEME.colors.backgroud,
     alignItems: 'center',
     justifyContent: 'center',
   },
   title: {
     fontSize: 22,
     fontWeight: 'bold',
+    color: THEME.colors.white,
   }
 });

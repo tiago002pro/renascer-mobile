@@ -1,10 +1,10 @@
 import { StyleSheet, Text, View } from "react-native";
 import { THEME } from "../../styles/theme";
 
-export default function Dashboard() {
+export default function More() {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Dashboard</Text>
+      <Text style={styles.title}>More</Text>
     </View>
   );
 }
