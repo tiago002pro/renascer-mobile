@@ -1,5 +1,5 @@
 import { createStackNavigator } from "@react-navigation/stack";
-import Dashboard from "../pages/Dashboard";
+import Dashboard from "../pages/tabs/Dashboard";
 
 const AppStack = createStackNavigator();
 

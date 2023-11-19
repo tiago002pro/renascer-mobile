@@ -1,10 +1,10 @@
 import { StyleSheet, Text, View } from "react-native";
-import { THEME } from "../../styles/theme";
+import { THEME } from "../../../styles/theme";
 
-export default function More() {
+export default function Events() {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>More</Text>
+      <Text style={styles.title}>Events</Text>
     </View>
   );
 }

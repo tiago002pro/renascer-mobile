@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View } from "react-native";
-import { THEME } from "../../styles/theme";
+import { THEME } from "../../../styles/theme";
 
 export default function Contribute() {
   return (

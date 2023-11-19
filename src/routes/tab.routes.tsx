@@ -1,12 +1,12 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { MaterialIcons } from '@expo/vector-icons';
 
-import Sermons from "../pages/Sermons";
-import Events from "../pages/Events";
-import Contribute from "../pages/Contribute";
-import More from "../pages/More";
+import Events from "../pages/tabs/Events";
+import Contribute from "../pages/tabs/Contribute";
+import More from "../pages/tabs/More";
 import { THEME } from "../styles/theme";
-import Dashboard from "../pages/Dashboard";
+import Dashboard from "../pages/tabs/Dashboard";
+import Videos from "../pages/tabs/Videos";
 
 const Tab = createBottomTabNavigator();
 
@@ -31,8 +31,8 @@ export default function TabRoutes() {
       />
 
       <Tab.Screen
-        name="Sermons" 
-        component={Sermons}
+        name="Videos" 
+        component={Videos}
         options={{
           tabBarIcon: ({ color, size }) => <MaterialIcons name="video-library" color={color} size={size} />,
           tabBarLabel: "Palavras",
