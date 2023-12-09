@@ -1,15 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import { Box, Text } from "native-base";
-import { StyleSheet, View, Dimensions, Platform } from "react-native";
-import Carousel, { ParallaxImage } from "react-native-snap-carousel-v4";
+import { StyleSheet, View, Dimensions } from "react-native";
+import Carousel, { Pagination, ParallaxImage } from "react-native-snap-carousel-v4";
 import { THEME } from "../styles/theme";
 import { MaterialIcons } from '@expo/vector-icons';
 
-const { width: screenWidth } = Dimensions.get('window')
-const SLIDER_WIDTH = Dimensions.get('window').width
-const SLIDER_HEIGHT = (Dimensions.get('window').height) / 3
-const ITEM_WIDTH = SLIDER_WIDTH * 0.70
-const ITEM_DESCRIPTION_HEIGHT = SLIDER_HEIGHT * 0.25
+const { width, height } = Dimensions.get('screen');
+
+const imageW = width * .9;
+const imageH = imageW * .55;
+const descriptionH = imageH * .3;
 
 type Props = {
   data: {
@@ -24,18 +24,27 @@ type Props = {
 }
 
 export default function CarouselVideo({data}: any) {
+  const [ activeSlide, setActiveSlide ] = useState();
+
+  function setState(index) {
+    setActiveSlide(index.activeSlide)
+  }
+
   return (
     <View style={styles.carouselContainer}>
       <Carousel
-        layout={'default'}
+        layout={'stack'}
+        layoutCardOffset={`18`}
         data={data}
         renderItem={__carouselCardItem}
-        sliderWidth={screenWidth}
-        sliderHeight={SLIDER_HEIGHT}
-        itemWidth={screenWidth - 60}
+        sliderWidth={width}
+        sliderHeight={height}
+        itemWidth={imageW}
         useScrollView={true}
         hasParallaxImages={true}
+        onSnapToItem={(index) => setState({ activeSlide: index }) }
       />
+      <MyPagination data={data} activeSlide={activeSlide}/>
     </View>
   )
 }
@@ -43,66 +52,102 @@ export default function CarouselVideo({data}: any) {
 function __carouselCardItem({item}: any, parallaxProps) {
   return (
     <View style={styles.carouselItemContainer} key={item.id}>
-      <ParallaxImage
-        source={{uri: item.img}}
-        containerStyle={styles.imageContainer}
-        style={styles.image}
-        {...parallaxProps}
-      />
-      <Box style={styles.playIcon}>
-        <MaterialIcons name="play-circle-filled" color={"#FFF"} size={screenWidth * .2} />
+      <Box style={styles.imageContainer}>
+        <ParallaxImage
+          source={{uri: item.img}}
+          containerStyle={styles.imageContainer}
+          style={styles.image}
+          {...parallaxProps}
+        />
       </Box>
-      <Box style={styles.description}>
+
+      <Box style={styles.descriptionContainer}>
         <Text style={styles.title}>{item.title}</Text>
-        {/* <Text style={styles.subtitle}>{item.speaker}</Text> */}
+        <Text style={styles.subtitle}>{item.speaker}</Text>
+      </Box>
+
+      <Box style={styles.playIcon}>
+        <MaterialIcons name="play-circle-filled" color={"#FFF"} size={width * .2} />
       </Box>
     </View>
   )
 }
 
+function MyPagination({data, activeSlide}) {
+  return (
+    <Pagination
+      dotsLength={data ? data.length : 0}
+      activeDotIndex={activeSlide}
+      containerStyle={{
+        width: width,
+      }}
+      dotStyle={{
+          width: 10,
+          height: 10,
+          borderRadius: 5,
+          marginHorizontal: imageW / 50,
+          backgroundColor: 'rgba(255, 255, 255, 0.92)'
+      }}
+      inactiveDotStyle={{
+        // Define styles for inactive dots here
+      }}
+      inactiveDotOpacity={0.1}
+      activeOpacity={1}
+      inactiveDotScale={1}
+    />
+  );
+}
+
 const styles = StyleSheet.create({
   carouselContainer: {
-    justifyContent: 'center',
-    alignItems: 'center',
+    width: width,
   },
   carouselItemContainer: {
-    width: screenWidth - 60,
-    height: screenWidth - 100,
+    width: imageW - 10,
+    height: imageH + descriptionH 
   },
   imageContainer: {
-    flex: 1,
-    marginBottom: Platform.select({ ios: 0, android: 1 }), // Prevent a random Android rendering issue
-    borderTopStartRadius: 10,
-    borderTopEndRadius: 10,
+    width: imageW,
+    height: imageH,
+    borderTopStartRadius: 5,
+    borderTopEndRadius: 5,
+    backgroundColor: '#000'
   },
   image: {
+    width: imageW - 20,
+    height: imageH,
     ...StyleSheet.absoluteFillObject,
     resizeMode: 'contain',
   },
-  playIcon: {
+  descriptionContainer: {
+    width: imageW,
+    height: descriptionH,
+    paddingLeft: 5,
+    paddingRight: 5,
+    bottom: 0,
     position: 'absolute',
-    width: screenWidth - 60,
-    height: (screenWidth - 100) - ITEM_DESCRIPTION_HEIGHT,
-    alignItems: 'center',
-    justifyContent: 'center',
-    opacity: .7,
-  },
-  description: {
-    height: ITEM_DESCRIPTION_HEIGHT,
-    padding: 10,
     backgroundColor:  THEME.colors.gray[800],
-    borderBottomStartRadius: 10,
-    borderBottomEndRadius: 10,
+    borderBottomStartRadius: 5,
+    borderBottomEndRadius: 5,
+    display: 'flex',
   },
   title: {
     fontSize: 14,
     fontWeight: 'bold',
     color: '#FFF',
-    marginBottom: 5,
     textTransform: 'uppercase',
+    paddingTop: 5,
   },
   subtitle: {
     fontSize: 10,
     color: '#FFF',
+  },
+  playIcon: {
+    position: 'absolute',
+    width: imageW,
+    height: height * .25,
+    alignItems: 'center',
+    justifyContent: 'center',
+    opacity: .7,
   },
 });

@@ -19,7 +19,7 @@ export default function CustomDrawer(props) {
   }
 
   function substringValues(value: string): string {
-    return value.length < 21 ? value : value.substring(0, 18) + "...";
+    return value && value.length < 21 ? value : value.substring(0, 18) + "...";
   }
 
   return(

@@ -21,7 +21,7 @@ export default function Sermons() {
     <VStack style={styles.container} safeArea>
       <Box>
         <Text style={styles.title}>Em destaque</Text>
-        {/* <CarouselVideo data={sermons}/> */}
+        <CarouselVideo data={sermons}/>
       </Box>
     </VStack>
   );
