@@ -2,7 +2,7 @@ import { StyleSheet, Text } from "react-native";
 import { Box, ScrollView, VStack } from "native-base";
 import { THEME } from "../../../styles/theme";
 import { useEffect, useState } from "react";
-import { getAll } from "../../Sermons/service/SermonService";
+import { getAll } from "../../../services/SermonService";
 import CarouselVideo from "../../../components/CarouselVideo";
 import SlideVideo from "../../../components/SlideVideo";
 

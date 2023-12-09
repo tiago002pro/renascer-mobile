@@ -1,5 +1,5 @@
-import api from "../../../services/api";
-import { Sermon } from "../interface/Sermon.interface";
+import api from "./api";
+import { Sermon } from "../interfaces/Sermon.interface";
 
 export async function getAll(): Promise<Sermon[]> {
   try {
