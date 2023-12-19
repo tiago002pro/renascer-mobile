@@ -1,10 +1,11 @@
 import { StyleSheet, Text } from "react-native";
-import { Box, ScrollView, VStack } from "native-base";
+import { Box, Button, ScrollView, VStack } from "native-base";
 import { THEME } from "../../../styles/theme";
 import { useEffect, useState } from "react";
 import { getAll } from "../../../services/SermonService";
 import CarouselVideo from "../../../components/CarouselVideo";
 import SlideVideo from "../../../components/SlideVideo";
+import { useNavigation } from "@react-navigation/native";
 
 const slide1 = [
   'https://firebasestorage.googleapis.com/v0/b/renascer-app.appspot.com/o/Bound_FEATURED-1.webp?alt=media&token=ead8b850-05b3-4288-8640-dbda783ee6b4',
@@ -31,6 +32,12 @@ export default function Videos() {
     getAllSermons()
   }, [])
 
+  const navigation: any = useNavigation()
+
+  function goProfile() {
+    navigation.navigate('StackRoutes', {screen: 'WatchVideo'});
+  }
+
   return (
     <VStack style={styles.container} safeArea>
       <ScrollView>
@@ -38,6 +45,7 @@ export default function Videos() {
           <Text style={styles.title}>Em destaque</Text>
           <CarouselVideo data={sermons}/>
         </Box>
+        <Button onPress={goProfile}>Teste</Button>
         <Box style={styles.slide}>
           <SlideVideo title={"Mais populares"} data={slide1}/>
         </Box>

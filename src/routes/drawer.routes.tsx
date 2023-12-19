@@ -11,7 +11,6 @@ export default function DrawerRoutes() {
   return (
     <Drawer.Navigator
       screenOptions={{
-        title: "",
         headerStyle: {backgroundColor: THEME.colors.header},
         headerTintColor: THEME.colors.white,
         headerShadowVisible: false,

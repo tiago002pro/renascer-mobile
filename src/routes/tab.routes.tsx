@@ -13,7 +13,7 @@ const Tab = createBottomTabNavigator();
 export default function TabRoutes() {
   return (
     <Tab.Navigator screenOptions={{
-      headerShown: false, 
+      headerShown: true, 
       tabBarStyle: {backgroundColor: THEME.colors.tabBar, borderTopWidth: 0},
       tabBarActiveTintColor: '#FFF',
       tabBarLabelStyle: {
