@@ -21,6 +21,16 @@ const slide2 = [
   'https://firebasestorage.googleapis.com/v0/b/renascer-app.appspot.com/o/CONF-2.jpg?alt=media&token=b656fbc2-be7e-4278-b180-1ac3a71a1a57',
 ]
 
+
+const video = {
+  id: '1',
+  videoId: '4p8frDNJng0',
+  title: 'DEVANEIO 03 - Confissão',
+  speaker: 'Marco Telles',
+  description: 'DEVANEIO é o disco 2 do álbum "O Precioso Evangelho de Cristo". No qual tratamos exclusivamente da doutrina do pecado e seus efeitos. Ouça a parte um do projeto (Prelúdios de Eternidade, dedicada exclusivamente à doutrina de Deus) e também a parte dois (DEVANEIO) bem como a parte três (Sublime Bem, dedicada à Cristologia) em todas as plataformas digitais e Streaming.',
+}
+
+
 export default function Videos() {
   const [sermons, setSermon] = useState('') as any[]
 
@@ -34,8 +44,13 @@ export default function Videos() {
 
   const navigation: any = useNavigation()
 
-  function goProfile() {
-    navigation.navigate('StackRoutes', {screen: 'WatchVideo'});
+  function goWathVideo() {
+    navigation.navigate('StackRoutes', {
+      screen: 'WatchVideo', 
+      params: {
+        video: video
+      }
+    });
   }
 
   return (
@@ -45,7 +60,7 @@ export default function Videos() {
           <Text style={styles.title}>Em destaque</Text>
           <CarouselVideo data={sermons}/>
         </Box>
-        <Button onPress={goProfile}>Teste</Button>
+        <Button onPress={goWathVideo}>Teste</Button>
         <Box style={styles.slide}>
           <SlideVideo title={"Mais populares"} data={slide1}/>
         </Box>

@@ -38,5 +38,6 @@ export const styles = StyleSheet.create({
     fontSize: THEME.fontSizes.md,
     color: THEME.colors.white,
     marginBottom: 10,
+    textAlign: 'justify'
   }
 })

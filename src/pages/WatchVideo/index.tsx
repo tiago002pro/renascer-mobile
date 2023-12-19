@@ -4,14 +4,18 @@ import YoutubeIframe from 'react-native-youtube-iframe';
 import * as ScreenOrientation from 'expo-screen-orientation';
 
 import { VIDEO_HEIGHT, VIDEO_WIDTH, styles } from "./styles";
+import { useNavigation } from "@react-navigation/native";
 
-export function WatchVideo({ navigation }) {
+export function WatchVideo({ route }) {
+  const navigation: any = useNavigation()
+  const { video } = route.params;
+
   React.useLayoutEffect(() => {
     navigation.getParent().setOptions({ headerShown: false })
   })
 
   React.useLayoutEffect(() => {
-    navigation.setOptions({ title: 'Joy To The World (You Are My Joy)' })
+    navigation.setOptions({ title: video.title })
   })
 
   const [videoReady, setVideoReady] = useState(false);
@@ -28,7 +32,7 @@ export function WatchVideo({ navigation }) {
     <View style={styles.container}>
       <View style={styles.player}>
         <YoutubeIframe
-          videoId="k7iPgWgeNsk"
+          videoId={video.videoId}
           width={VIDEO_WIDTH}
           height={videoReady ? VIDEO_HEIGHT : 0}
           onReady={() => setVideoReady(true)}
@@ -38,13 +42,13 @@ export function WatchVideo({ navigation }) {
       </View>
       <View style={styles.descriptionPlayer}>
         <Text style={styles.title}>
-          Joy To The World (You Are My Joy)
+          {video.title}
         </Text>
         <Text style={styles.speaker}>
-          Rend Collective
+          {video.speaker}
         </Text>
         <Text style={styles.description}>
-          Music video by Rend Collective performing Joy To The World (You Are My Joy). (C) 2014 Rend Collective
+          {video.description}
         </Text>
       </View>
     </View>
