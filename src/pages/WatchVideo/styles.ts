@@ -13,6 +13,7 @@ export const styles = StyleSheet.create({
   },
   player: {
     width: width,
+    height: VIDEO_HEIGHT,
     alignItems: 'center',
     justifyContent: 'center',
   },

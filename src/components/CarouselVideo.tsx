@@ -4,6 +4,9 @@ import { StyleSheet, View, Dimensions } from "react-native";
 import Carousel, { Pagination, ParallaxImage } from "react-native-snap-carousel-v4";
 import { THEME } from "../styles/theme";
 import { MaterialIcons } from '@expo/vector-icons';
+import { Video } from "../pages/WatchVideo/video";
+import { TouchableWithoutFeedback } from "react-native-gesture-handler";
+import { useNavigation } from "@react-navigation/native";
 
 const { width, height } = Dimensions.get('screen');
 
@@ -11,19 +14,7 @@ const imageW = width * .9;
 const imageH = imageW * .55;
 const descriptionH = imageH * .3;
 
-type Props = {
-  data: {
-    date: string,
-    description: string,
-    id: number,
-    img: string,
-    speaker: string,
-    title: string,
-    url: string,
-  },
-}
-
-export default function CarouselVideo({data}: any) {
+export default function CarouselVideo({data}) {
   const [ activeSlide, setActiveSlide ] = useState();
 
   function setState(index) {
@@ -33,8 +24,6 @@ export default function CarouselVideo({data}: any) {
   return (
     <View style={styles.carouselContainer}>
       <Carousel
-        layout={'stack'}
-        layoutCardOffset={`18`}
         data={data}
         renderItem={__carouselCardItem}
         sliderWidth={width}
@@ -50,26 +39,39 @@ export default function CarouselVideo({data}: any) {
 }
 
 function __carouselCardItem({item}: any, parallaxProps) {
+  
+  async function goWathVideo(video: Video): Promise<void> {
+    const navigation: any = useNavigation()
+    navigation.navigate('StackRoutes', {
+      screen: 'WatchVideo', 
+      params: {
+        video: video
+      }
+    });
+  }
+
   return (
-    <View style={styles.carouselItemContainer} key={item.id}>
-      <Box style={styles.imageContainer}>
-        <ParallaxImage
-          source={{uri: item.img}}
-          containerStyle={styles.imageContainer}
-          style={styles.image}
-          {...parallaxProps}
-        />
-      </Box>
+    <TouchableWithoutFeedback onPress={() => goWathVideo(item)}>
+      <View style={styles.carouselItemContainer} key={item.id}>
+        <Box style={styles.imageContainer}>
+          <ParallaxImage
+            source={{uri: item.coverImage}}
+            containerStyle={styles.imageContainer}
+            style={styles.image}
+            {...parallaxProps}
+          />
+        </Box>
 
-      <Box style={styles.descriptionContainer}>
-        <Text style={styles.title}>{item.title}</Text>
-        <Text style={styles.subtitle}>{item.speaker}</Text>
-      </Box>
+        <Box style={styles.descriptionContainer}>
+          <Text style={styles.title}>{item.title}</Text>
+          <Text style={styles.subtitle}>{item.author}</Text>
+        </Box>
 
-      <Box style={styles.playIcon}>
-        <MaterialIcons name="play-circle-filled" color={"#FFF"} size={width * .2} />
-      </Box>
-    </View>
+        <Box style={styles.playIcon}>
+          <MaterialIcons name="play-circle-filled" color={"#FFF"} size={width * .2} />
+        </Box>
+      </View>
+    </TouchableWithoutFeedback>
   )
 }
 

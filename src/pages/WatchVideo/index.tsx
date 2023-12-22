@@ -2,9 +2,9 @@ import React, { useCallback, useState } from "react";
 import { ActivityIndicator, View, Text } from "react-native";
 import YoutubeIframe from 'react-native-youtube-iframe';
 import * as ScreenOrientation from 'expo-screen-orientation';
+import { useNavigation } from "@react-navigation/native";
 
 import { VIDEO_HEIGHT, VIDEO_WIDTH, styles } from "./styles";
-import { useNavigation } from "@react-navigation/native";
 
 export function WatchVideo({ route }) {
   const navigation: any = useNavigation()
@@ -45,7 +45,7 @@ export function WatchVideo({ route }) {
           {video.title}
         </Text>
         <Text style={styles.speaker}>
-          {video.speaker}
+          {video.author}
         </Text>
         <Text style={styles.description}>
           {video.description}
