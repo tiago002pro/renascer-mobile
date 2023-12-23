@@ -10,7 +10,7 @@ interface ButtonProps extends ITagProps {
   props?: any;
 }
 
-export default function ButtonComponent({ children, color, bg, bntFunction, ...props }: any) {
+export default function ButtonComponent({ children, color, bg, bntFunction, textTransform, ...props }: any) {
   return (
     <Button
       onPress={bntFunction}
@@ -25,7 +25,7 @@ export default function ButtonComponent({ children, color, bg, bntFunction, ...p
         fontSize:"sm",
         lineHeight: "sm",
         color: color || "white",
-        textTransform: "uppercase",
+        textTransform: textTransform ? textTransform : "uppercase",
         fontWeight:"bold"
       }}
       {...props}

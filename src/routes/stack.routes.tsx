@@ -5,6 +5,7 @@ import { WatchVideo } from "../pages/WatchVideo";
 
 import { THEME } from "../styles/theme";
 import Profile from "../pages/Profile";
+import { Ticket } from "../pages/ticket";
 
 const Stack = createStackNavigator();
 
@@ -28,12 +29,17 @@ export default function StackRoutes() {
 						icon="chevron-left"
 						iconColor={"#FFF"} size={40}
 						onPress={goBack}
+						style={{padding: 0, margin: 0}}
 					/>
 				)
 			}}>
 			<Stack.Screen
 				name="WatchVideo"
 				component={WatchVideo}
+			/>
+			<Stack.Screen
+				name="Ticket"
+				component={Ticket}
 			/> 
 			<Stack.Screen
 				name="stack"
