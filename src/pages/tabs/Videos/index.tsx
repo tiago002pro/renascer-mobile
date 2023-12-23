@@ -1,26 +1,28 @@
-import { StyleSheet, Text } from "react-native";
+import React, { useEffect, useState } from "react";
 import { Box, ScrollView, VStack } from "native-base";
-import { THEME } from "../../../styles/theme";
-import { useEffect, useState } from "react";
-import { getAllByCategory, getAllVideos } from "../../../services/VideoService";
-import CarouselVideo from "../../../components/CarouselVideo";
+import { useNavigation } from "@react-navigation/native";
+
 import SlideVideo from "../../../components/SlideVideo";
-import { Video } from "../../WatchVideo/video";
+import { styles } from './styles';
+
+import { getAllByCategory } from "../../../services/VideoService";
 
 export default function Videos() {
-  const [videos, setVideo] = useState('') as Video[]
+  const navigation: any = useNavigation()
+  const [sermon, setSermon] = useState('') as any[]
   const [music, setMusic] = useState('') as any[]
   const [podcast, setPodcast] = useState('') as any[]
 
-  useEffect(() => {
-    async function getAllSermons() {
-      const result = await getAllVideos()
-      setVideo(result)
-    }
-    getAllSermons()
-  }, [])
+  React.useLayoutEffect(() => {
+    navigation.getParent().setOptions({ title: 'Palavras' })
+  })
 
   useEffect(() => {
+    async function getAllSermon() {
+      const result = await getAllByCategory('SERMON')
+      setSermon(result)
+    }
+
     async function getAllMusic() {
       const result = await getAllByCategory('MUSIC')
       setMusic(result)
@@ -31,6 +33,7 @@ export default function Videos() {
       setPodcast(result)
     }
     
+    getAllSermon()
     getAllMusic()
     getAllPodcast()
   }, [])
@@ -38,39 +41,16 @@ export default function Videos() {
   return (
     <VStack style={styles.container} safeArea>
       <ScrollView>
-        {/* <Box style={styles.carousel}>
-          <Text style={styles.title}>Em destaque</Text>
-          <CarouselVideo data={videos}/>
-        </Box> */}
+        <Box style={styles.slide}>
+          <SlideVideo title={"Palavras"} data={sermon}/>
+        </Box>
         <Box style={styles.slide}>
           <SlideVideo title={"Músicas"} data={music}/>
         </Box>
         <Box style={styles.slide}>
-          <SlideVideo title={"Podcast"} data={podcast}/>
+          <SlideVideo title={"Podcasts"} data={podcast}/>
         </Box>
       </ScrollView>
     </VStack>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: THEME.colors.backgroud,
-    padding: THEME.sizes.paddingPages,
-  },
-  carousel: {
-    marginTop: '5%',
-    marginBottom: '5%',
-  },
-  title: {
-    marginBottom: 10,
-    marginLeft: '5%',
-    fontSize: 20,
-    fontWeight: 'bold',
-    color: THEME.colors.white,
-  },
-  slide: {
-    marginBottom: '5%'
-  }
-});

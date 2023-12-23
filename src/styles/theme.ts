@@ -28,6 +28,6 @@ export const THEME = extendTheme({
     xl: 24,
   },
   sizes: {
-    paddingPages: 5
+    paddingPages: 10
   }
 });

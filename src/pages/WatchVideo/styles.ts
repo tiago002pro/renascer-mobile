@@ -19,7 +19,7 @@ export const styles = StyleSheet.create({
   },
   descriptionPlayer: {
     width: width,
-    padding: '5%',
+    padding: THEME.sizes.paddingPages,
     alignItems: 'flex-start',
     justifyContent: 'center',
   },
