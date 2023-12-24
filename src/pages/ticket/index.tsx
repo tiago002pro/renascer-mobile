@@ -12,7 +12,8 @@ import ButtonComponent from "../../components/ButtonComponent";
 export function Ticket({ route }) {
   const navigation: any = useNavigation();
   const { ticket } = route.params;
-  const [date, setDate] = useState('');
+  const [dateFirst, setDateFirst] = useState('');
+  const [dateSecound, setDateSecound] = useState('');
 
   React.useLayoutEffect(() => {
     navigation.getParent().setOptions({ headerShown: false });
@@ -23,11 +24,19 @@ export function Ticket({ route }) {
   })
 
   useEffect(() => {
-    function changeFormatDate() {
-      const date: string = moment(ticket.date).format('[Dia] DD.MM, dddd, [às] h[h]mm.');
-      setDate(date);
+    function changeFormatDateFirst() {
+      const date: string = moment(ticket.startDate).format('DD [de] MMMM, [das] h[h]mm [às]');
+      const endTIme: string = moment(ticket.endDate).format(' h[h]mm.');
+      setDateFirst(date + endTIme);
     }
-    changeFormatDate()
+
+    function changeFormatDateSecound() {
+      const date: string = moment(ticket.startDate).format('[Dia] DD.MM, dddd, [às] h[h]mm.');
+      setDateSecound(date);
+    }
+
+    changeFormatDateFirst()
+    changeFormatDateSecound()
   }, [])
 
   return(
@@ -49,7 +58,7 @@ export function Ticket({ route }) {
             </Box>
             <Box style={styles.info}>
               <Text style={styles.text}>
-                23 de dezembro, das 19:20h às 21:30h
+                {dateFirst}
               </Text>
 
               <Button
@@ -115,23 +124,26 @@ export function Ticket({ route }) {
                 {ticket.about}
               </Text>
               <Text style={styles.date}>
-                {date}
+                {dateSecound}
               </Text>
             </Box>
           </Box>
 
         </View>
       </View>
-      <VStack style={styles.footer} safeArea>
-        <ButtonComponent
-          children={"Ingressos"}
-          bg={'yellow.400'}
-          color={THEME.colors.backgroud}
-          bntFunction={() => {}}
-          textTransform={'capitalize'}
-          w={'100%'}
-        />
-      </VStack>
+      {ticket.registration ? 
+        <VStack style={styles.footer} safeArea>
+          <ButtonComponent
+            children={"Ingressos"}
+            bg={'yellow.400'}
+            color={THEME.colors.backgroud}
+            bntFunction={() => {}}
+            textTransform={'capitalize'}
+            w={'100%'}
+          />
+        </VStack>
+        : null
+      }
     </VStack>
   );
 }

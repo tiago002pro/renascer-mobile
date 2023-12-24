@@ -33,8 +33,6 @@ export default function DrawerRoutes() {
         options={{
           drawerIcon: ({ color, size }) => <MaterialIcons name="person" color={color} size={size} />,
           drawerLabel: "Perfil",
-          drawerItemStyle: {
-          }
         }}
       />
     </Drawer.Navigator>

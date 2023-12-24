@@ -1,23 +1,46 @@
 import { Box, Image, Text } from "native-base";
 import { StyleSheet, Dimensions } from 'react-native';
 import { THEME } from "../../../../../styles/theme";
+import { useEffect, useState } from "react";
+import moment from "moment";
 
 const { width: screenWidth } = Dimensions.get('window');
 
 export default function Schedule({item}) {
+  const [date, setDate] = useState('');
+  useEffect(() => {
+    function changeFormatDate() {
+      const date: string = moment(item.startDate).format('ddd, DD MMM [•] h[h]mm');
+      setDate(date);
+    }
+    changeFormatDate()
+  }, [])
+
   return (
     <Box style={styles.container}>
       <Box style={styles.imageContainer}>
         <Image
           source={{uri: item.image}}
-          alt={item.id}
+          alt={item.title}
           style={styles.image}
         />
       </Box>
 
       <Box style={styles.description}>
-        <Text style={styles.time}>{item.time}</Text>
-        <Text style={styles.title}>{item.title}</Text>
+        <Box style={styles.data}>
+          <Text style={styles.date}>{date}</Text>
+          <Text style={styles.title}>{item.title}</Text>
+        </Box>
+
+        {item.registration ? 
+          <Box style={styles.registrationArea}>
+            <Box style={styles.registration}>
+              <Text style={styles.registrationText}>Incrições abertas</Text>
+            </Box>
+          </Box> 
+          : null
+        }
+
       </Box>
     </Box>
   );
@@ -44,15 +67,36 @@ const styles = StyleSheet.create({
     width: screenWidth * .65,
     height: screenWidth * .20,
     padding: 0,
-    margin: 0
+    margin: 0,
+    display: 'flex',
   },
-  time: {
+  date: {
     color:  THEME.colors.yellow[400],
     fontSize: 10,
+    textTransform: 'uppercase',
   },
   title: {
     color: '#FFF',
     fontSize: 14,
     fontWeight: 'bold'
+  },
+  data: {
+    width: screenWidth * .65,
+    height: ((screenWidth * .20) - 30),
+  },
+  registrationArea: {
+    width: screenWidth * .65,
+  },
+  registration: {
+    width: screenWidth * .30,
+    alignItems: 'center',
+    backgroundColor: THEME.colors.yellow[400],
+    padding: 5,
+    borderRadius: 10,
+  },
+  registrationText: {
+    fontSize: THEME.fontSizes.sm - 2,
+    lineHeight: THEME.fontSizes.sm - 2,
+    color: THEME.colors.backgroud,
   }
 });
