@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { Box, Button, Text, VStack } from "native-base";
-import { StyleSheet } from "react-native";
-import TextInputComponent from "../../components/TextInputComponent";
-import ButtonComponent from "../../components/ButtonComponent";
-import { doRegister } from "../../services/auth";
+
+import TextInputComponent from "../../../components/TextInputComponent";
+import ButtonComponent from "../../../components/ButtonComponent";
+import { doRegister } from "../../../services/auth";
+import { styles } from "../styles/Register";
 
 export default function Register({ navigation }) {
   const [name, setName] = useState('')
@@ -65,21 +66,3 @@ export default function Register({ navigation }) {
     </VStack>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: '5%',
-    backgroundColor: '#fff',
-  },
-  footerArea: {
-    display: 'flex',
-    flexDirection: 'row',
-    marginTop: 40,
-    justifyContent: 'center'
-  },
-  footerBtn: {
-    backgroundColor: 'transparent',
-    left: 5
-  },
-});

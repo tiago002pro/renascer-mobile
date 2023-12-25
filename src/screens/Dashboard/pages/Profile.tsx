@@ -1,14 +1,11 @@
-import { Box, VStack, Image, Text, Button, Icon } from "native-base";
 import { useEffect } from "react";
-import { StyleSheet } from "react-native";
-import { Feather } from 'react-native-vector-icons';
-import { MaterialIcons } from 'react-native-vector-icons';
-import { THEME } from "./../../styles/theme";
+import { Box, VStack, Image, Text, Button, Icon } from "native-base";
+import { Feather, MaterialIcons } from 'react-native-vector-icons';
 
-import profileImage from './../../assets/images/profile.jpg';
-import { useAuth } from "../../contexts/auth";
-import { loadUser } from "../../services/UserService";
-
+import { useAuth } from "../../../contexts/auth";
+import { loadUser } from "../../../services/UserService";
+import profileImage from './../../../assets/images/profile.jpg';
+import { styles } from "../styles/Profile";
 
 export default function Profile() {
   const {user, signOut} = useAuth();
@@ -79,70 +76,3 @@ export default function Profile() {
     </VStack>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: '5%',
-    backgroundColor: THEME.colors.white,
-    display: 'flex',
-    justifyContent: 'space-between'
-  },
-  profile: {
-    width: '100%',
-    padding: '10%',
-    display: 'flex',
-    justifyContent: 'flex-start',
-    alignItems: 'center',
-    backgroundColor: THEME.colors.orange[400],
-    borderRadius: 5,
-    shadowOffset: {width: -2, height: 5},  
-    shadowColor: '#171717',  
-    shadowOpacity: 0.2,  
-    shadowRadius: 3,
-  },
-  imageArea: {
-    padding: '1%',
-    borderRadius: 100,
-    marginBottom: 30,
-    backgroundColor: '#fff'
-  },
-  image: {
-    width: 100,
-    height: 100,
-    borderRadius: 100,
-  },
-  name: {
-    fontSize: THEME.fontSizes.lg,
-    fontWeight: '500',
-    color: 'white',
-  },
-  text: {
-    fontSize: THEME.fontSizes.sm,
-  },
-  data: {
-    marginTop: 30,
-  },
-  info: {
-    backgroundColor: THEME.colors.gray[200],
-    borderRadius: 5,
-  },
-  infoArea: {
-    display: 'flex',
-    flexDirection: 'row',
-  },
-  iconArea: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: '5%'
-  },
-  icon: {
-    fontSize: 30
-  },
-  description: {
-    justifyContent: 'center',
-  },
-  footer: {
-    marginBottom: '5%',
-  },
-});

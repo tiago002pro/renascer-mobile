@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { Box, Button, Image, Text, VStack } from "native-base";
-import { StyleSheet } from "react-native";
 
-import TextInputComponent from "../../components/TextInputComponent";
-import ButtonComponent from "../../components/ButtonComponent";
+import TextInputComponent from "../../../components/TextInputComponent";
+import ButtonComponent from "../../../components/ButtonComponent";
+import { useAuth } from "../../../contexts/auth";
+import { styles } from "../styles/SignIn";
 
-import { useAuth } from "../../contexts/auth";
 
 export default function SignIn({ navigation }) {
   const {signed, signIn} = useAuth()
@@ -22,7 +22,7 @@ export default function SignIn({ navigation }) {
     <VStack style={styles.container} safeArea>
       <Box style={styles.containerLogo}>
         <Image
-          source={require("./../../assets/images/logo-cor.png")}
+          source={require("./../../../assets/images/logo-cor.png")}
           alt="logo"
           style={{ width: "40%" }}
           resizeMode='contain'
@@ -65,30 +65,3 @@ export default function SignIn({ navigation }) {
     </VStack>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: '5%',
-    backgroundColor: '#fff'
-  },
-  containerLogo: {
-    height: '30%',
-    padding: '5%',
-    display: 'flex',
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  containerForm: {
-  },
-  footerArea: {
-    display: 'flex',
-    flexDirection: 'row',
-    marginTop: 40,
-    justifyContent: 'center'
-  },
-  footerBtn: {
-    backgroundColor: 'transparent',
-    left: 5
-  },
-});

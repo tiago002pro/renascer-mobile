@@ -1,21 +1,18 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { MaterialIcons, Ionicons } from '@expo/vector-icons';
 
-import Events from "../screens/Schedule/pages/Schedule";
 import Contribute from "../pages/tabs/Contribute";
 import More from "../pages/tabs/More";
 import { THEME } from "../styles/theme";
-import Dashboard from "../pages/tabs/Dashboard";
+import Dashboard from "../screens/Dashboard/pages/Dashboard";
 import Videos from "../pages/tabs/Videos";
 import { Box, Button, Icon, IconButton, Image, Text, View } from "native-base";
-import StackRoutes from "./stack.routes";
 import { useNavigation } from "@react-navigation/native";
 import { useAuth } from "../contexts/auth";
-import Profile from "../pages/Profile";
 import ScheduleRoutes from "../screens/Schedule/routes/schedule.routes";
+import DashboardRoutes from "../screens/Dashboard/routes/dashboard.routes";
 
 const Tab = createBottomTabNavigator();
-const imageLogo = './../assets/images/logo.png';
 
 export default function TabRoutes() {
   const navigation: any = useNavigation()
@@ -25,11 +22,13 @@ export default function TabRoutes() {
   
 
   async function goSignIn(): Promise<void> {
-    navigation.navigate('SignIn');
+    // navigation.navigate('SignIn');
+    navigation.navigate('DashboardRoutes', {screen:'SignIn'});
   }
 
   async function goProfile(): Promise<void> {
-    navigation.navigate('Profile');
+    // navigation.navigate('Profile');
+    navigation.navigate('DashboardRoutes', {screen:'Profile'});
   }
 
   return (
@@ -50,8 +49,8 @@ export default function TabRoutes() {
       }
     }}>
       <Tab.Screen
-        name="Dashboard" 
-        component={Dashboard}
+        name="DashboardRoutes" 
+        component={DashboardRoutes}
         options={{
           tabBarIcon: ({ color, size }) => <MaterialIcons name="home" color={color} size={size} />,
           tabBarLabel: "Início",

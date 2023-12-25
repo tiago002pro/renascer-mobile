@@ -4,11 +4,11 @@ import { IconButton } from 'react-native-paper';
 import { WatchVideo } from "../pages/WatchVideo";
 
 import { THEME } from "../styles/theme";
-import Profile from "../pages/Profile";
+import Profile from "../screens/Dashboard/pages/Profile";
 import { Ticket } from "../screens/Schedule/pages/Ticket";
-import SignIn from "../pages/SignIn";
+import SignIn from "../screens/Dashboard/pages/SignIn";
 import TabRoutes from "./tab.routes";
-import Register from "../pages/Register";
+import Register from "../screens/Dashboard/pages/Register";
 import More from "../pages/tabs/More";
 
 const Stack = createStackNavigator();
