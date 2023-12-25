@@ -1,22 +1,22 @@
 import React, { useCallback, useState } from "react";
 import { ActivityIndicator, View, Text } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 import YoutubeIframe from 'react-native-youtube-iframe';
 import * as ScreenOrientation from 'expo-screen-orientation';
-import { useNavigation } from "@react-navigation/native";
 
-import { VIDEO_HEIGHT, VIDEO_WIDTH, styles } from "./styles";
+import { VIDEO_HEIGHT, VIDEO_WIDTH, styles } from "../styles/WatchVideo";
 
 export function WatchVideo({ route }) {
   const navigation: any = useNavigation()
-  const { video } = route.params;
+  const { video } = route.params; 
 
-  React.useLayoutEffect(() => {
-    navigation.getParent().setOptions({ headerShown: false })
-  })
+  // React.useLayoutEffect(() => {
+  //   navigation.getParent().setOptions({ headerShown: false })
+  // })
 
-  React.useLayoutEffect(() => {
-    navigation.setOptions({ title: video.title })
-  })
+  // React.useLayoutEffect(() => {
+  //   navigation.setOptions({ title: video.title })
+  // })
 
   const [videoReady, setVideoReady] = useState(false);
 

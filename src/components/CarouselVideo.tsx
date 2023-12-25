@@ -4,7 +4,6 @@ import { StyleSheet, View, Dimensions } from "react-native";
 import Carousel, { Pagination, ParallaxImage } from "react-native-snap-carousel-v4";
 import { THEME } from "../styles/theme";
 import { MaterialIcons } from '@expo/vector-icons';
-import { Video } from "../pages/WatchVideo/video";
 import { TouchableWithoutFeedback } from "react-native-gesture-handler";
 import { useNavigation } from "@react-navigation/native";
 
@@ -40,7 +39,7 @@ export default function CarouselVideo({data}) {
 
 function __carouselCardItem({item}: any, parallaxProps) {
   
-  async function goWathVideo(video: Video): Promise<void> {
+  async function goWathVideo(video: any): Promise<void> {
     const navigation: any = useNavigation()
     navigation.navigate('StackRoutes', {
       screen: 'WatchVideo', 

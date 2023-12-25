@@ -1,5 +1,5 @@
-import { Dimensions, StyleSheet, useWindowDimensions } from "react-native";
-import { THEME } from "../../styles/theme";
+import { Dimensions, StyleSheet } from "react-native";
+import { THEME } from "../../../styles/theme";
 
 const { width, height } = Dimensions.get('screen');
 export const VIDEO_WIDTH = width;

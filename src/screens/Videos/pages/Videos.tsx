@@ -2,12 +2,21 @@ import React, { useEffect, useState } from "react";
 import { Box, ScrollView, VStack } from "native-base";
 import { useNavigation } from "@react-navigation/native";
 
-import SlideVideo from "../../../components/SlideVideo";
-import { styles } from './styles';
-
+import { styles } from '../styles/Videos';
+import { SlideVideoComponent } from "../components/SlideVideo";
 import { getAllByCategory } from "../../../services/VideoService";
 
-export default function Videos() {
+// type video = {
+//   id?: number;
+//   videoId?: string; 
+//   title?: string;
+//   author?: string;
+//   description?: string;
+//   date?: Date;
+//   coverImage?: string;
+// }
+
+export function Videos() {
   const navigation: any = useNavigation()
   const [sermon, setSermon] = useState('') as any[]
   const [music, setMusic] = useState('') as any[]
@@ -24,33 +33,33 @@ export default function Videos() {
       setSermon(result)
     }
 
-    async function getAllMusic() {
-      const result = await getAllByCategory('MUSIC')
-      setMusic(result)
-    }
+    // async function getAllMusic() {
+    //   const result = await getAllByCategory('MUSIC')
+    //   setMusic(result)
+    // }
 
-    async function getAllPodcast() {
-      const result = await getAllByCategory('PODCAST')
-      setPodcast(result)
-    }
+    // async function getAllPodcast() {
+    //   const result = await getAllByCategory('PODCAST')
+    //   setPodcast(result)
+    // }
     
     getAllSermon()
-    getAllMusic()
-    getAllPodcast()
+    // getAllMusic()
+    // getAllPodcast()
   }, [])
 
   return (
     <VStack style={styles.container} safeArea>
       <ScrollView>
         <Box style={styles.slide}>
-          <SlideVideo title={"Palavras"} data={sermon}/>
+          <SlideVideoComponent title={"Palavras"} data={sermon}/>
+        </Box>
+        {/* <Box style={styles.slide}>
+          <SlideVideoComponent title={"Músicas"} data={music}/>
         </Box>
         <Box style={styles.slide}>
-          <SlideVideo title={"Músicas"} data={music}/>
-        </Box>
-        <Box style={styles.slide}>
-          <SlideVideo title={"Podcasts"} data={podcast}/>
-        </Box>
+          <SlideVideoComponent title={"Podcasts"} data={podcast}/>
+        </Box> */}
       </ScrollView>
     </VStack>
   );

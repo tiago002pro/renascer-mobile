@@ -1,11 +1,10 @@
 import { StyleSheet, Text, View } from "react-native";
-import { THEME } from "../../../styles/theme";
-import SlideComponent from "../../../components/SlideComponent";
+import { THEME } from "../../styles/theme";
 
-export default function Contribute() {
+export default function More() {
   return (
     <View style={styles.container}>
-      <SlideComponent/>
+      <Text style={styles.title}>More</Text>
     </View>
   );
 }

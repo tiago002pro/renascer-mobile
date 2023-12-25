@@ -1,16 +1,15 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { MaterialIcons, Ionicons } from '@expo/vector-icons';
 
-import Contribute from "../pages/tabs/Contribute";
-import More from "../pages/tabs/More";
+import Contribute from "../screens/Contribute";
+import More from "../screens/More";
 import { THEME } from "../styles/theme";
-import Dashboard from "../screens/Dashboard/pages/Dashboard";
-import Videos from "../pages/tabs/Videos";
 import { Box, Button, Icon, IconButton, Image, Text, View } from "native-base";
 import { useNavigation } from "@react-navigation/native";
 import { useAuth } from "../contexts/auth";
 import ScheduleRoutes from "../screens/Schedule/routes/schedule.routes";
 import DashboardRoutes from "../screens/Dashboard/routes/dashboard.routes";
+import VideosRoutes from "../screens/Videos/routes/videos.routes";
 
 const Tab = createBottomTabNavigator();
 
@@ -120,8 +119,8 @@ export default function TabRoutes() {
       />
 
       <Tab.Screen
-        name="Videos" 
-        component={Videos}
+        name="Palavras" 
+        component={VideosRoutes}
         options={{
           tabBarIcon: ({ color, size }) => <MaterialIcons name="video-library" color={color} size={size} />,
           tabBarLabel: "Palavras",
