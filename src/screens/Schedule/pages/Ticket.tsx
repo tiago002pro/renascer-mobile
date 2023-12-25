@@ -1,13 +1,12 @@
-import moment from 'moment'
-import 'moment/locale/pt-br' 
 import React, { useEffect, useState } from "react";
 import { Box, Button, Icon, Image, Text, VStack, View } from "native-base";
 import { useNavigation } from "@react-navigation/native";
 import { MaterialIcons, MaterialCommunityIcons } from '@expo/vector-icons';
+import moment from 'moment';
 
-import { styles } from "./styles";
-import { THEME } from "../../styles/theme";
-import ButtonComponent from "../../components/ButtonComponent";
+import ButtonComponent from "../../../components/ButtonComponent";
+import { styles } from "../styles/Ticket";
+import { THEME } from "../../../styles/theme";
 
 export function Ticket({ route }) {
   const navigation: any = useNavigation();
@@ -130,7 +129,7 @@ export function Ticket({ route }) {
         </View>
       </View>
       {ticket.registration ? 
-        <VStack style={styles.footer} safeArea>
+        <VStack style={styles.footer}>
           <ButtonComponent
             children={"Ingressos"}
             bg={'yellow.400'}

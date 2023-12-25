@@ -1,5 +1,6 @@
 import { Dimensions, StyleSheet } from "react-native";
-import { THEME } from "../../styles/theme";
+
+import { THEME } from "../../../styles/theme";
 
 const { width, height } = Dimensions.get('screen');
 const withDescription = (width - THEME.sizes.paddingPages * 2);

@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { NativeBaseProvider, StatusBar } from 'native-base';
+import 'moment/locale/pt-br';
 
 import Routes from './src/routes';
 import { AuthProvider } from './src/contexts/auth';

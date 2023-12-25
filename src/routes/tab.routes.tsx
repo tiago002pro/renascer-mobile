@@ -1,7 +1,7 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { MaterialIcons, Ionicons } from '@expo/vector-icons';
 
-import Events from "../pages/tabs/Events";
+import Events from "../screens/Schedule/pages/Schedule";
 import Contribute from "../pages/tabs/Contribute";
 import More from "../pages/tabs/More";
 import { THEME } from "../styles/theme";
@@ -9,10 +9,10 @@ import Dashboard from "../pages/tabs/Dashboard";
 import Videos from "../pages/tabs/Videos";
 import { Box, Button, Icon, IconButton, Image, Text, View } from "native-base";
 import StackRoutes from "./stack.routes";
-import EventsRoutes from "./teste.routes";
 import { useNavigation } from "@react-navigation/native";
 import { useAuth } from "../contexts/auth";
 import Profile from "../pages/Profile";
+import ScheduleRoutes from "../screens/Schedule/routes/schedule.routes";
 
 const Tab = createBottomTabNavigator();
 const imageLogo = './../assets/images/logo.png';
@@ -131,7 +131,7 @@ export default function TabRoutes() {
 
       <Tab.Screen
         name="Eventos"
-        component={EventsRoutes}
+        component={ScheduleRoutes}
         options={{
           tabBarIcon: ({ color, size }) => <MaterialIcons name="event" color={color} size={size} />,
           tabBarLabel: "Eventos",

@@ -1,11 +1,11 @@
-import { StyleSheet, Text } from "react-native";
-import { THEME } from "../../../styles/theme";
-import { FlatList, VStack } from "native-base";
-import Schedule from "./components/Schedule";
 import React from "react";
+import { FlatList, Text, VStack } from "native-base";
 import { useNavigation } from "@react-navigation/native";
 
-type Event = {
+import { ScheduleComponent } from "../components/ScheduleComponent";
+import { styles } from "../styles/Schedule";
+
+type Schedule = {
   id: string,
   title: string,
   startDate: Date,
@@ -16,7 +16,7 @@ type Event = {
   registration: boolean,
 }
 
-const events: Event[] = [
+const events: Schedule[] = [
   {
     id: '1',
     title: 'Tua presença vale mais',
@@ -49,7 +49,7 @@ const events: Event[] = [
   },
 ]
 
-export default function Events() {
+export function Schedule() {
   const navigation: any = useNavigation();
   // React.useLayoutEffect(() => {
   //   navigation.setOptions({ headerShown: true });
@@ -61,24 +61,10 @@ export default function Events() {
       <FlatList
         data={events}
         renderItem={
-          ({item}) => <Schedule item={item} />
+          ({item}) => <ScheduleComponent item={item} />
         }
         keyExtractor={item => item.id}
       />
     </VStack>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: THEME.colors.backgroud,
-    padding: '5%',
-  },
-  title: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    color: THEME.colors.white,
-    marginBottom: 20,
-  }
-});

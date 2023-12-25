@@ -5,7 +5,7 @@ import { WatchVideo } from "../pages/WatchVideo";
 
 import { THEME } from "../styles/theme";
 import Profile from "../pages/Profile";
-import { Ticket } from "../pages/ticket";
+import { Ticket } from "../screens/Schedule/pages/Ticket";
 import SignIn from "../pages/SignIn";
 import TabRoutes from "./tab.routes";
 import Register from "../pages/Register";
