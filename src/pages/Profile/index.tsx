@@ -11,7 +11,7 @@ import { loadUser } from "../../services/UserService";
 
 
 export default function Profile() {
-  const {user} = useAuth();
+  const {user, signOut} = useAuth();
 
   useEffect(() => {
     async function getUser() {
@@ -62,8 +62,9 @@ export default function Profile() {
 
       <Box style={styles.footer}>
         <Button
+          onPress={signOut}
           backgroundColor={'transparent'}
-          leftIcon={<Icon as={MaterialIcons} name="delete" color={'red.500'} size={'lg'}/>}
+          leftIcon={<Icon as={MaterialIcons} name="logout" color={'red.500'} size={'lg'}/>}
           _text={{
             color: 'red.500',
             fontSize: 'md'
@@ -72,7 +73,7 @@ export default function Profile() {
             backgroundColor: 'gray.200',
           }}
         >
-         Excluir minha conta
+         Sair
         </Button>
       </Box>
     </VStack>

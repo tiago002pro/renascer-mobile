@@ -53,11 +53,8 @@ export default function Events() {
   const navigation: any = useNavigation()
 
   async function goTicket(ticket: any): Promise<void> {
-    navigation.navigate('StackRoutes', {
-      screen: 'Ticket', 
-      params: {
-        ticket: ticket
-      }
+    navigation.navigate('Ticket', {
+      ticket: ticket
     });
   }
 

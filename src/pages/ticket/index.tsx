@@ -15,13 +15,13 @@ export function Ticket({ route }) {
   const [dateFirst, setDateFirst] = useState('');
   const [dateSecound, setDateSecound] = useState('');
 
-  React.useLayoutEffect(() => {
-    navigation.getParent().setOptions({ headerShown: false });
-  })
+  // React.useLayoutEffect(() => {
+  //   navigation.getParent().setOptions({ headerShown: false });
+  // })
 
-  React.useLayoutEffect(() => {
-    navigation.setOptions({ title: ticket.title });
-  })
+  // React.useLayoutEffect(() => {
+  //   navigation.setOptions({ title: ticket.title });
+  // })
 
   useEffect(() => {
     function changeFormatDateFirst() {

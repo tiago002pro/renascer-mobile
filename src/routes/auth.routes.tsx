@@ -7,7 +7,7 @@ const AuthStack = createStackNavigator();
 
 export default function AuthRoutes() {
 	return (
-		<AuthStack.Navigator screenOptions={{ headerShown: true }}>
+		<AuthStack.Navigator screenOptions={{ headerShown: false }}>
 			<AuthStack.Screen
 				name="SignIn"
 				component={SignIn}
