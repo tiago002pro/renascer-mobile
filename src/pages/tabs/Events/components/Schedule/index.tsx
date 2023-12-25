@@ -1,12 +1,23 @@
 import { Box, Image, Text } from "native-base";
-import { StyleSheet, Dimensions } from 'react-native';
+import { StyleSheet, Dimensions, TouchableWithoutFeedback } from 'react-native';
 import { THEME } from "../../../../../styles/theme";
 import { useEffect, useState } from "react";
 import moment from "moment";
+import { useNavigation } from "@react-navigation/native";
 
 const { width: screenWidth } = Dimensions.get('window');
 
 export default function Schedule({item}) {
+  const navigation: any = useNavigation()
+
+  async function goTicket(ticket: any): Promise<void> {
+    console.log('ticket', ticket);
+    
+    navigation.navigate('Ticket', {
+        ticket: ticket
+      });
+  }
+
   const [date, setDate] = useState('');
   useEffect(() => {
     function changeFormatDate() {
@@ -17,32 +28,34 @@ export default function Schedule({item}) {
   }, [])
 
   return (
-    <Box style={styles.container}>
-      <Box style={styles.imageContainer}>
-        <Image
-          source={{uri: item.image}}
-          alt={item.title}
-          style={styles.image}
-        />
-      </Box>
-
-      <Box style={styles.description}>
-        <Box style={styles.data}>
-          <Text style={styles.date}>{date}</Text>
-          <Text style={styles.title}>{item.title}</Text>
+    <TouchableWithoutFeedback onPress={() => goTicket(item)}>
+      <Box style={styles.container}>
+        <Box style={styles.imageContainer}>
+          <Image
+            source={{uri: item.image ? item.image : null}}
+            alt={item.title}
+            style={styles.image}
+          />
         </Box>
 
-        {item.registration ? 
-          <Box style={styles.registrationArea}>
-            <Box style={styles.registration}>
-              <Text style={styles.registrationText}>Incrições abertas</Text>
-            </Box>
-          </Box> 
-          : null
-        }
+        <Box style={styles.description}>
+          <Box style={styles.data}>
+            <Text style={styles.date}>{date}</Text>
+            <Text style={styles.title}>{item.title}</Text>
+          </Box>
 
+          {item.registration ? 
+            <Box style={styles.registrationArea}>
+              <Box style={styles.registration}>
+                <Text style={styles.registrationText}>Incrições abertas</Text>
+              </Box>
+            </Box> 
+            : null
+          }
+
+        </Box>
       </Box>
-    </Box>
+    </TouchableWithoutFeedback>
   );
 }
 

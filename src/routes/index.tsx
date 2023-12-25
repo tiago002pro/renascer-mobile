@@ -15,6 +15,6 @@ export default function Routes() {
   }
 
   return (
-    signed ? <StackRoutes /> : <AuthRoutes />
+    signed ? <TabRoutes /> : <TabRoutes />
   );
 }

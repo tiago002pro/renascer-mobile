@@ -12,14 +12,12 @@ import ButtonComponent from "../../components/ButtonComponent";
 export function Ticket({ route }) {
   const navigation: any = useNavigation();
   const { ticket } = route.params;
+  
   const [dateFirst, setDateFirst] = useState('');
   const [dateSecound, setDateSecound] = useState('');
 
   // React.useLayoutEffect(() => {
   //   navigation.getParent().setOptions({ headerShown: false });
-  // })
-
-  // React.useLayoutEffect(() => {
   //   navigation.setOptions({ title: ticket.title });
   // })
 

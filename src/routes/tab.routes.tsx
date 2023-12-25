@@ -9,6 +9,7 @@ import Dashboard from "../pages/tabs/Dashboard";
 import Videos from "../pages/tabs/Videos";
 import { Box, Button, Icon, IconButton, Image, Text, View } from "native-base";
 import StackRoutes from "./stack.routes";
+import EventsRoutes from "./teste.routes";
 import { useNavigation } from "@react-navigation/native";
 import { useAuth } from "../contexts/auth";
 import Profile from "../pages/Profile";
@@ -119,23 +120,23 @@ export default function TabRoutes() {
         }}
       />
 
-      {/* <Tab.Screen
+      <Tab.Screen
         name="Videos" 
         component={Videos}
         options={{
           tabBarIcon: ({ color, size }) => <MaterialIcons name="video-library" color={color} size={size} />,
           tabBarLabel: "Palavras",
         }}
-      /> */}
+      />
 
-      {/* <Tab.Screen
+      <Tab.Screen
         name="Eventos"
-        component={Events}
+        component={EventsRoutes}
         options={{
           tabBarIcon: ({ color, size }) => <MaterialIcons name="event" color={color} size={size} />,
           tabBarLabel: "Eventos",
         }}
-      /> */}
+      />
 
       <Tab.Screen
         name="Contribute" 
@@ -149,15 +150,6 @@ export default function TabRoutes() {
       <Tab.Screen
         name="More" 
         component={More}
-        options={{
-          tabBarIcon: ({ color, size }) => <MaterialIcons name="more-horiz" color={color} size={size} />,
-          tabBarLabel: "Mais",
-        }}
-      />
-
-      <Tab.Screen
-        name="Profile" 
-        component={Profile}
         options={{
           tabBarIcon: ({ color, size }) => <MaterialIcons name="more-horiz" color={color} size={size} />,
           tabBarLabel: "Mais",

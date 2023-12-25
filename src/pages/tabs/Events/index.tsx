@@ -1,8 +1,8 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text } from "react-native";
 import { THEME } from "../../../styles/theme";
 import { FlatList, VStack } from "native-base";
-import { ScrollView, TouchableWithoutFeedback } from "react-native-gesture-handler";
 import Schedule from "./components/Schedule";
+import React from "react";
 import { useNavigation } from "@react-navigation/native";
 
 type Event = {
@@ -50,28 +50,21 @@ const events: Event[] = [
 ]
 
 export default function Events() {
-  const navigation: any = useNavigation()
-
-  async function goTicket(ticket: any): Promise<void> {
-    navigation.navigate('Ticket', {
-      ticket: ticket
-    });
-  }
+  const navigation: any = useNavigation();
+  // React.useLayoutEffect(() => {
+  //   navigation.setOptions({ headerShown: true });
+  // })
 
   return (
     <VStack style={styles.container}>
-      <ScrollView>
-        <Text style={styles.title}>Próximos eventos</Text>
-        <FlatList
-          data={events}
-          renderItem={
-            ({item}) => <TouchableWithoutFeedback onPress={() => goTicket(item)}>
-              <Schedule item={item} />
-            </TouchableWithoutFeedback>
-          }
-          keyExtractor={item => item.id}
-        />
-      </ScrollView>
+      <Text style={styles.title}>Próximos eventos</Text>
+      <FlatList
+        data={events}
+        renderItem={
+          ({item}) => <Schedule item={item} />
+        }
+        keyExtractor={item => item.id}
+      />
     </VStack>
   );
 }

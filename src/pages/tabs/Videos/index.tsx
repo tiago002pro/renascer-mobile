@@ -13,9 +13,10 @@ export default function Videos() {
   const [music, setMusic] = useState('') as any[]
   const [podcast, setPodcast] = useState('') as any[]
 
-  React.useLayoutEffect(() => {
-    navigation.getParent().setOptions({ title: 'Palavras' })
-  })
+  // React.useLayoutEffect(() => {
+  //   navigation.getParent().setOptions({ title: 'Palavras' })
+  // })
+
 
   useEffect(() => {
     async function getAllSermon() {

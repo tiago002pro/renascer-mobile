@@ -1,6 +1,5 @@
-import { Box, Image, Text, View } from "native-base";
-import { StyleSheet, Dimensions } from "react-native";
-import { FlatList, TouchableWithoutFeedback } from "react-native-gesture-handler";
+import { Box, FlatList, Image, Text, View } from "native-base";
+import { StyleSheet, Dimensions, TouchableWithoutFeedback } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
 import { THEME } from "../styles/theme";
@@ -34,7 +33,7 @@ export default function SlideVideo({title, data}) {
           horizontal
           showsHorizontalScrollIndicator={false}
           keyExtractor={(_, index) => index.toString()}
-          renderItem={({item}) => {
+          renderItem={({item}: any) => {
             return <TouchableWithoutFeedback onPress={() => goWathVideo(item)}>
               <View style={styles.imageContainer}>
                 <Image source={{uri: item.coverImage}} alt={item.coverImage} style={styles.image} />

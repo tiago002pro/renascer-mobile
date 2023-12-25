@@ -9,6 +9,7 @@ import { Ticket } from "../pages/ticket";
 import SignIn from "../pages/SignIn";
 import TabRoutes from "./tab.routes";
 import Register from "../pages/Register";
+import More from "../pages/tabs/More";
 
 const Stack = createStackNavigator();
 
@@ -21,7 +22,7 @@ export default function StackRoutes() {
 
 	return (
 		<Stack.Navigator screenOptions={{
-				headerShown: false,
+				headerShown: true,
 				headerStyle: {
 					backgroundColor: THEME.colors.header,
 				},
@@ -37,20 +38,16 @@ export default function StackRoutes() {
 				)
 			}}>
 			<Stack.Screen
-				name="Home"
-				component={TabRoutes}
-			/>
-			<Stack.Screen
 				name="WatchVideo"
 				component={WatchVideo}
 			/>
 			<Stack.Screen
-				name="Ticket"
-				component={Ticket}
-			/> 
-			<Stack.Screen
 				name="Profile"
 				component={Profile}
+			/>
+			<Stack.Screen
+				name="More"
+				component={More}
 			/>
 		</Stack.Navigator>
 	);
