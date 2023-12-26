@@ -10,13 +10,10 @@ export function WatchVideo({ route }) {
   const navigation: any = useNavigation()
   const { video } = route.params; 
 
-  // React.useLayoutEffect(() => {
-  //   navigation.getParent().setOptions({ headerShown: false })
-  // })
-
-  // React.useLayoutEffect(() => {
-  //   navigation.setOptions({ title: video.title })
-  // })
+  React.useLayoutEffect(() => {
+    // navigation.getParent().setOptions({ headerShown: false });
+    navigation.setOptions({ title: video.title });
+  })
 
   const [videoReady, setVideoReady] = useState(false);
 
@@ -30,7 +27,7 @@ export function WatchVideo({ route }) {
 
   return(
     <View style={styles.container}>
-      <View style={styles.player}>
+      {/* <View style={styles.player}>
         <YoutubeIframe
           videoId={video.videoId}
           width={VIDEO_WIDTH}
@@ -39,7 +36,7 @@ export function WatchVideo({ route }) {
           onFullScreenChange={onFullScreenChange}
         />
         {!videoReady && <ActivityIndicator color={'red'}/>}
-      </View>
+      </View> */}
       <View style={styles.descriptionPlayer}>
         <Text style={styles.title}>
           {video.title}

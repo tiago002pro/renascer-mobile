@@ -1,9 +1,12 @@
-import React from "react";
-import { FlatList, Text, VStack } from "native-base";
+import React, { useEffect, useState } from "react";
+import { Box, FlatList, Text, VStack, View } from "native-base";
 import { useNavigation } from "@react-navigation/native";
+import { FontAwesome5 } from '@expo/vector-icons';
 
 import { ScheduleComponent } from "../components/ScheduleComponent";
 import { styles } from "../styles/Schedule";
+import { getAllByValidDeadline } from "../../../services/ScheduleService";
+import { THEME } from "../../../styles/theme";
 
 type Schedule = {
   id: string,
@@ -11,46 +14,35 @@ type Schedule = {
   startDate: Date,
   endDate: Date,
   address: string,
-  about: string,
+  description: string,
   image: string,
   registration: boolean,
+  deadline: Date,
 }
-
-const events: Schedule[] = [
-  {
-    id: '1',
-    title: 'Tua presença vale mais',
-    startDate: new Date(),
-    endDate: new Date(),
-    address: 'Avenida dos Holandeses, 5 - Calhau, São Luís - MA, 65071-380-Brasil',
-    about: 'Musical de Natal | De Glória Em Glória - O Nascimento.',
-    image: 'https://firebasestorage.googleapis.com/v0/b/renascer-app.appspot.com/o/CONF-2.jpg?alt=media&token=b656fbc2-be7e-4278-b180-1ac3a71a1a57',
-    registration: true,
-  },
-  {
-    id: '2',
-    title: 'Convite da trindade',
-    startDate: new Date(),
-    endDate: new Date(),
-    address: 'Avenida dos Holandeses, 5 - Calhau, São Luís - MA, 65071-380-Brasil',
-    about: 'Musical de Natal | De Glória Em Glória - O Nascimento.',
-    image: 'https://firebasestorage.googleapis.com/v0/b/renascer-app.appspot.com/o/CONF-40.jpg?alt=media&token=9e279ccb-38ff-4570-9c3b-f58548a3e9ef',
-    registration: false,
-  },
-  {
-    id: '3',
-    title: 'Hebreus 1',
-    startDate: new Date(),
-    endDate: new Date(),
-    address: 'Avenida dos Holandeses, 5 - Calhau, São Luís - MA, 65071-380-Brasil',
-    about: 'Musical de Natal | De Glória Em Glória - O Nascimento.',
-    image: 'https://firebasestorage.googleapis.com/v0/b/renascer-app.appspot.com/o/CONF-5.jpg?alt=media&token=778d6bd0-3b51-4ea3-8d2f-252d202d5c35',
-    registration: true,
-  },
-]
 
 export function Schedule() {
   const navigation: any = useNavigation();
+  const [schedules, setSchedules] = useState('') as any[]
+  const [withoutSchedules, setWithoutSchedules] = useState('') as any[]
+
+  useEffect(() => {
+    async function getSchedule() {
+      const result = await getAllByValidDeadline()
+      setSchedules(result)
+    }
+
+    async function checkSchedule() {
+      if (schedules && schedules.length > 0) {
+        setWithoutSchedules(true)
+      } else {
+        setWithoutSchedules(false)
+      }
+    }
+
+    getSchedule()
+    checkSchedule()
+  }, [])
+
   // React.useLayoutEffect(() => {
   //   navigation.setOptions({ headerShown: true });
   // })
@@ -58,13 +50,23 @@ export function Schedule() {
   return (
     <VStack style={styles.container}>
       <Text style={styles.title}>Próximos eventos</Text>
-      <FlatList
-        data={events}
-        renderItem={
-          ({item}) => <ScheduleComponent item={item} />
-        }
-        keyExtractor={item => item.id}
-      />
+      {withoutSchedules ? 
+        <FlatList
+          data={schedules}
+          renderItem={
+            ({item}) => <ScheduleComponent item={item} />
+          }
+          keyExtractor={(item) => item.toString()}
+        />
+      :
+        <View alignItems={'center'} justifyContent={'center'} mt={'50%'} >
+          <Box mb={3}>
+            <FontAwesome5 name="calendar-times" color={THEME.colors.yellow[400]} size={50}/>
+          </Box>
+          <Text color={'white'} fontSize={"lg"} textAlign={'center'}>Nenhum evento</Text>
+          <Text color={'white'} fontSize={"lg"} textAlign={'center'}>foi encontrado</Text>
+        </View>
+      }
     </VStack>
   );
 }

@@ -33,19 +33,19 @@ export function Videos() {
       setSermon(result)
     }
 
-    // async function getAllMusic() {
-    //   const result = await getAllByCategory('MUSIC')
-    //   setMusic(result)
-    // }
+    async function getAllMusic() {
+      const result = await getAllByCategory('MUSIC')
+      setMusic(result)
+    }
 
-    // async function getAllPodcast() {
-    //   const result = await getAllByCategory('PODCAST')
-    //   setPodcast(result)
-    // }
+    async function getAllPodcast() {
+      const result = await getAllByCategory('PODCAST')
+      setPodcast(result)
+    }
     
     getAllSermon()
-    // getAllMusic()
-    // getAllPodcast()
+    getAllMusic()
+    getAllPodcast()
   }, [])
 
   return (
@@ -54,12 +54,12 @@ export function Videos() {
         <Box style={styles.slide}>
           <SlideVideoComponent title={"Palavras"} data={sermon}/>
         </Box>
-        {/* <Box style={styles.slide}>
+        <Box style={styles.slide}>
           <SlideVideoComponent title={"Músicas"} data={music}/>
         </Box>
         <Box style={styles.slide}>
           <SlideVideoComponent title={"Podcasts"} data={podcast}/>
-        </Box> */}
+        </Box>
       </ScrollView>
     </VStack>
   );

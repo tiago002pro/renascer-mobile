@@ -15,16 +15,16 @@ export function Ticket({ route }) {
   const [dateFirst, setDateFirst] = useState('');
   const [dateSecound, setDateSecound] = useState('');
 
-  // React.useLayoutEffect(() => {
-  //   navigation.getParent().setOptions({ headerShown: false });
-  //   navigation.setOptions({ title: ticket.title });
-  // })
+  React.useLayoutEffect(() => {
+    // navigation.getParent().setOptions({ headerShown: false });
+    navigation.setOptions({ title: ticket.title });
+  })
 
   useEffect(() => {
     function changeFormatDateFirst() {
-      const date: string = moment(ticket.startDate).format('DD [de] MMMM, [das] h[h]mm [às]');
-      const endTIme: string = moment(ticket.endDate).format(' h[h]mm.');
-      setDateFirst(date + endTIme);
+      const startDate: string = moment(ticket.startDate).format('DD [de] MMMM, [das] h[h]mm [às]');
+      const endTime: string = moment(ticket.endDate).format(' h[h]mm.');
+      setDateFirst(startDate + endTime);
     }
 
     function changeFormatDateSecound() {
@@ -118,7 +118,7 @@ export function Ticket({ route }) {
             <Box style={styles.info}>
               <Text style={styles.subtitle}>Sobre</Text>
               <Text style={styles.text}>
-                {ticket.about}
+                {ticket.description}
               </Text>
               <Text style={styles.date}>
                 {dateSecound}
