@@ -3,15 +3,13 @@ import { useNavigation } from "@react-navigation/native";
 import { IconButton } from 'react-native-paper';
 
 import { THEME } from "../../../styles/theme";
-import Dashboard from "../pages/Dashboard";
-import Profile from "../pages/Profile";
-import SignIn from "../pages/SignIn";
-import Register from "../pages/Register";
-import ProfileForm from "../pages/ProfileForm";
+import { More } from "../pages/More";
+import Profile from "../../Dashboard/pages/Profile";
+import ProfileForm from "../../Dashboard/pages/ProfileForm";
 
 const { Navigator, Screen } = createStackNavigator();
 
-export default function DashboardRoutes() {
+export default function MoreRoutes() {
 	const navigation = useNavigation();
 
 	// function goBackSchedule(): any {
@@ -35,12 +33,9 @@ export default function DashboardRoutes() {
 			// 	/>
 			// )
 		}}>
-			<Screen
-				name="Dashboard"
-				component={Dashboard}
-				options={{
-					headerShown: false
-				}}
+      <Screen
+				name="More"
+				component={More}
 			/>
 
 			<Screen
@@ -48,20 +43,10 @@ export default function DashboardRoutes() {
 				component={Profile}
 			/>
 
-			<Screen
+      <Screen
 				name="ProfileForm"
 				component={ProfileForm}
 			/>
-
-      <Screen
-				name="SignIn"
-				component={SignIn}
-			/>
-
-      <Screen
-				name="Register"
-				component={Register}
-			/> 
 		</Navigator>
 	);
 };

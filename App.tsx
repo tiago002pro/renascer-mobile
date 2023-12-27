@@ -18,7 +18,7 @@ export default function registerRootComponentApp() {
     <NativeBaseProvider theme={THEME}>
       <NavigationContainer>
         <AuthProvider>
-          <StatusBar backgroundColor={THEME.colors.statusBar} barStyle='light-content'/>
+          <StatusBar backgroundColor={THEME.colors.header} barStyle='light-content'/>
           <Routes />
         </AuthProvider>
       </NavigationContainer>

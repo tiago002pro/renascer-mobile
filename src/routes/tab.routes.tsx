@@ -2,7 +2,6 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { MaterialIcons, Ionicons } from '@expo/vector-icons';
 
 import Contribute from "../screens/Contribute";
-import More from "../screens/More";
 import { THEME } from "../styles/theme";
 import { Box, Button, Icon, IconButton, Image, Text, View } from "native-base";
 import { useNavigation } from "@react-navigation/native";
@@ -10,6 +9,7 @@ import { useAuth } from "../contexts/auth";
 import ScheduleRoutes from "../screens/Schedule/routes/schedule.routes";
 import DashboardRoutes from "../screens/Dashboard/routes/dashboard.routes";
 import VideosRoutes from "../screens/Videos/routes/videos.routes";
+import MoreRoutes from "../screens/More/routes/more.routes";
 
 const Tab = createBottomTabNavigator();
 
@@ -56,12 +56,14 @@ export default function TabRoutes() {
           headerTitle: (() =>
             <View
               alignItems={'center'}
-              flex={1} display={'flex'} flexDirection={'row'} justifyContent={'center'}
+              display={'flex'}
+              flexDirection={'row'}
+              justifyContent={'center'}
             >
               <Image
                 source={require("./../assets/images/logo.png")}
                 alt="logo"
-                style={{ width: 27, height: 27, marginRight: 5 }}
+                style={{ width: 25, height: 25, padding: 2, marginRight: 7 }}
               />
               <Text
                 color={'#FFF'}
@@ -146,8 +148,8 @@ export default function TabRoutes() {
       />
 
       <Tab.Screen
-        name="More" 
-        component={More}
+        name="MoreRoutes" 
+        component={MoreRoutes}
         options={{
           tabBarIcon: ({ color, size }) => <MaterialIcons name="more-horiz" color={color} size={size} />,
           tabBarLabel: "Mais",
