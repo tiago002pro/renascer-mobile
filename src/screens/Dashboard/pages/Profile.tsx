@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { Box, VStack, Image, Text, Button, Icon } from "native-base";
-import { Feather, MaterialIcons } from 'react-native-vector-icons';
+import { MaterialIcons } from 'react-native-vector-icons';
 
 import { useAuth } from "../../../contexts/auth";
 import { loadUser } from "../../../services/UserService";
@@ -9,6 +9,10 @@ import { styles } from "../styles/Profile";
 
 export default function Profile() {
   const {user, signOut} = useAuth();
+  // const user = {
+  //   name: "Tiago Barbosa",
+  //   email: 'tiagobarbosa02@outlook.com'
+  // }
 
   useEffect(() => {
     async function getUser() {
@@ -29,30 +33,9 @@ export default function Profile() {
               style={styles.image}
             />
           </Box>
-          <Text style={styles.name}>{user?.name}</Text>
-          <Text style={styles.text} color={'white'}>{user?.email}</Text>
-        </Box>
-
-        <Box style={styles.data}>
-          <Box style={styles.info}>
-            <Box style={styles.infoArea}>
-              <Box style={styles.iconArea}>
-                <Feather name={'calendar'} style={styles.icon}/>
-              </Box>
-              <Box style={styles.description}>
-                <Text style={styles.text} fontWeight={'bold'}>Data de nascimento</Text>
-                <Text style={styles.text}>22/09/1996</Text>
-              </Box>
-            </Box>
-            <Box style={styles.infoArea}>
-              <Box style={styles.iconArea}>
-                <Feather name={'phone'} style={styles.icon}/>
-              </Box>
-              <Box style={styles.description}>
-                <Text style={styles.text} fontWeight={'bold'}>Telefone</Text>
-                <Text style={styles.text}>+55 (44) 98804-1230</Text>
-              </Box>
-            </Box>
+          <Box style={styles.textArea}>
+            <Text style={styles.name}>{user?.name}</Text>
+            <Text style={styles.email}>{user?.email}</Text>
           </Box>
         </Box>
       </Box>

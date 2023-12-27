@@ -5,64 +5,44 @@ import { THEME } from "../../../styles/theme";
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: '5%',
-    backgroundColor: THEME.colors.white,
+    padding: THEME.sizes.paddingPages,
+    backgroundColor: THEME.colors.backgroud,
     display: 'flex',
-    justifyContent: 'space-between'
   },
   profile: {
     width: '100%',
-    padding: '10%',
+    padding: 20,
     display: 'flex',
     justifyContent: 'flex-start',
     alignItems: 'center',
-    backgroundColor: THEME.colors.orange[400],
+    backgroundColor: THEME.colors.header,
     borderRadius: 5,
-    shadowOffset: {width: -2, height: 5},  
-    shadowColor: '#171717',  
-    shadowOpacity: 0.2,  
-    shadowRadius: 3,
+    marginBottom: THEME.sizes.paddingPages * 2
   },
   imageArea: {
-    padding: '1%',
+    padding: 5,
     borderRadius: 100,
-    marginBottom: 30,
-    backgroundColor: '#fff'
+    backgroundColor: THEME.colors.yellow[400],
+    marginBottom: 20,
   },
   image: {
-    width: 100,
-    height: 100,
-    borderRadius: 100,
+    width: 120,
+    height: 120,
+    borderRadius: 120,
+  },
+  textArea: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   name: {
+    color: '#FFF',
+    fontWeight:'500',
     fontSize: THEME.fontSizes.lg,
-    fontWeight: '500',
-    color: 'white',
   },
-  text: {
+  email: {
+    color: THEME.colors.yellow[400],
     fontSize: THEME.fontSizes.sm,
-  },
-  data: {
-    marginTop: 30,
-  },
-  info: {
-    backgroundColor: THEME.colors.gray[200],
-    borderRadius: 5,
-  },
-  infoArea: {
-    display: 'flex',
-    flexDirection: 'row',
-  },
-  iconArea: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: '5%'
-  },
-  icon: {
-    fontSize: 30
-  },
-  description: {
-    justifyContent: 'center',
   },
   footer: {
     marginBottom: '5%',
