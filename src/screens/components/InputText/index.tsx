@@ -1,7 +1,6 @@
-import { Input, Text, View } from "native-base";
+import { View } from "native-base";
 import { TextInput } from "react-native-paper";
 
-import { THEME } from "../../../styles/theme";
 import { styles } from "./InputText";
 import MaskInput from "react-native-mask-input";
 
@@ -15,13 +14,13 @@ interface InputProps {
 }
 
 export default function InputTextComponent({ label, type, valiable, setValiable, onChange, mask }: InputProps) {
-
   return (
     <View>
       <TextInput
         label={label}
         value={valiable}
         onChangeText={setValiable}
+        onChange={onChange}
         mode='outlined'
         keyboardType={type ? type : 'default'}
         style={styles.input}
@@ -38,26 +37,6 @@ export default function InputTextComponent({ label, type, valiable, setValiable,
           />
         }
       />
-      {/* <Input
-        value={valiable}
-        onChangeText={setValiable}
-        onChange={onChange}
-        borderRadius={10}
-        borderWidth={1}
-        h={45}
-        _input={{
-          backgroundColor: THEME.colors.backgroud,
-          borderColor: THEME.colors.white,
-          fontSize: 'md',
-          color: THEME.colors.white,
-        }}
-        _focus={{
-          backgroundColor: THEME.colors.backgroudLight,
-          borderColor: THEME.colors.yellow[400],
-          // borderWidth: 2,
-          color: THEME.colors.white,
-        }}
-      /> */}
     </View>
   );
 }
