@@ -17,7 +17,7 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: THEME.colors.header,
     borderRadius: 5,
-    marginBottom: THEME.sizes.paddingPages * 2
+    marginBottom: THEME.sizes.paddingPages,
   },
   imageArea: {
     padding: 5,
@@ -46,5 +46,59 @@ export const styles = StyleSheet.create({
   },
   footer: {
     marginBottom: '5%',
+  },
+  accordion: {
+    width: '100%',
+    backgroundColor: THEME.colors.header,
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginBottom: THEME.sizes.paddingPages,
+    borderRadius: 10,
+  },
+  area: {
+    width: '100%',
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    padding: 20,
+  },
+  data: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  iconArea: {
+    marginRight: 20,
+  },
+  infoArea: {
+  },
+  title: {
+    fontSize: THEME.fontSizes.md,
+    fontWeight: 'bold',
+    color: THEME.colors.white,
+    marginBottom: THEME.sizes.paddingPages *2
+  },
+  arrowArea: {},
+  arrowIcon: {
+    color: THEME.colors.white,
+  },
+  editBtn: {
+    // backgroundColor: 'red',
+    position: 'absolute',
+    bottom: 20,
+    right: 20,
+  },
+  iconDditBtn: {
+    backgroundColor: THEME.colors.yellow[400],
+    width: 30,
+    height: 30,
+    borderRadius: 30,
+  },
+  component: {
+    width: '100%',
+    padding: 20,
   },
 })
