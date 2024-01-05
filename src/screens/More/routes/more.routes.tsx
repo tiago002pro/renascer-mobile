@@ -6,6 +6,9 @@ import { THEME } from "../../../styles/theme";
 import { More } from "../pages/More";
 import Profile from "../../Dashboard/pages/Profile";
 import ProfileForm from "../../Dashboard/pages/ProfileForm";
+import { BasicData } from "../../Profile/pages/BasicData";
+import { ContactData } from "../../Profile/pages/ContactData";
+import { AddressData } from "../../Profile/pages/AddressData";
 
 const { Navigator, Screen } = createStackNavigator();
 
@@ -33,7 +36,7 @@ export default function MoreRoutes() {
 			// 	/>
 			// )
 		}}>
-      <Screen
+      	<Screen
 				name="More"
 				component={More}
 			/>
@@ -43,9 +46,19 @@ export default function MoreRoutes() {
 				component={Profile}
 			/>
 
-      <Screen
-				name="ProfileForm"
-				component={ProfileForm}
+      		<Screen
+				name="BasicData"
+				component={BasicData}
+			/>
+
+			<Screen
+				name="ContactData"
+				component={ContactData}
+			/>
+
+			<Screen
+				name="AddressData"
+				component={AddressData}
 			/>
 		</Navigator>
 	);
