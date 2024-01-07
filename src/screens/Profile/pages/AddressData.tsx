@@ -3,44 +3,72 @@ import { View } from "react-native";
 import { Box, Button } from "native-base";
 import { Masks } from "react-native-mask-input";
 
-import { getAddressByCep } from "../../../services/ProfileService";
-import { THEME } from "../../../styles/theme";
-import { styles } from "../styles/AddressData";
+import AddressService from "../service/AddressService";
+
 import InputTextComponent from "../../components/InputText";
 
-export function AddressData() {
+import { THEME } from "../../../styles/theme";
+import { styles } from "../styles/AddressData";
+
+export function AddressData({ navigation, route }) {
   const [showDataAddress, setShowDataAddress] = useState(false);
 
+  const [id, setId] = useState(null);
   const [country, setCountry] = useState(null);
-  const [zipCode, setZipCode] = useState('');
-  const [publicPlace, setPublicPlace] = useState('');
-  const [number, setNumber] = useState('');
-  const [complement, setComplement] = useState('');
-  const [neighborhood, setNeighborhood] = useState('');
-  const [city, setCity] = useState('');
-  const [state, setState] = useState('');
+  const [zipCode, setZipCode] = useState(null);
+  const [publicPlace, setPublicPlace] = useState(null);
+  const [number, setNumber] = useState(null);
+  const [complement, setComplement] = useState(null);
+  const [neighborhood, setNeighborhood] = useState(null);
+  const [city, setCity] = useState(null);
+  const [state, setState] = useState(null);
 
-  async function save() {
-    console.log("AddressData", {country, zipCode, publicPlace, number, complement, neighborhood, city, state});
-  }
+  useEffect(() => {
+    if (route.params?.person) {
+      const address = route.params?.person?.address
 
-  async function getAddress() {
-    const address = await getAddressByCep(zipCode)
-    setPublicPlace(address.logradouro)
-    setNeighborhood(address.bairro)
-    setCity(address.localidade)
-    setState(address.uf)
-    setShowDataAddress(true)
-  }
+      setId(address?.id)
+      setCountry(address?.country)
+      setZipCode(address?.zipCode)
+      setPublicPlace(address?.publicPlace)
+      setNumber(address?.number)
+      setComplement(address?.complement)
+      setNeighborhood(address?.neighborhood)
+      setCity(address?.city)
+      setState(address?.state)
+
+      if (zipCode) {
+        setShowDataAddress(true)
+      }
+    }
+  }, [route.params?.person])
 
   useEffect(() => {
     async function validateZipCode() {
-      if (zipCode.length == 9) {
-        await getAddress()
+      if (zipCode) {
+        const replaceZipCode = zipCode.replace(/-/, '')
+        if (replaceZipCode.length == 8) {
+          await getAddress(replaceZipCode)
+        }
       }
     }
     validateZipCode()
   }, [zipCode])
+
+  async function getAddress(replaceZipCode) {
+    const addressData = await AddressService.getAddressByCep(replaceZipCode)
+    setPublicPlace(addressData.logradouro)
+    setNeighborhood(addressData.bairro)
+    setCity(addressData.localidade)
+    setState(addressData.uf)
+    setShowDataAddress(true)
+  }
+
+  async function save() {
+    const address = { id, country, zipCode, publicPlace, number, complement, neighborhood, city, state }
+    await AddressService.update(address)
+    navigation.goBack()
+  }
 
   return (
     <View style={styles.container}>

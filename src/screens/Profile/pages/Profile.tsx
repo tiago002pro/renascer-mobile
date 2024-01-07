@@ -1,39 +1,49 @@
 import { useEffect, useState } from "react";
 import { Box, VStack, Image, Text, Button, Icon, View, ScrollView, IconButton } from "native-base";
+import { TouchableOpacity } from "react-native";
+import Animated from "react-native-reanimated";
 import { MaterialIcons, SimpleLineIcons } from 'react-native-vector-icons';
 
 import { useAuth } from "../../../contexts/auth";
-import { loadUser } from "../../../services/UserService";
-import profileImage from './../../../assets/images/profile.jpg';
-import { styles } from "../styles/Profile";
-import data from './AccordionProfileForm';
-import { TouchableOpacity } from "react-native";
-import Animated from "react-native-reanimated";
-import { BasicDataComponent } from "../components/BasicDataComponent";
+import UserService from "../../../services/UserService";
+
+import InfoProfileComponent from "../components/InfoProfileComponent";
+
 import { THEME } from "../../../styles/theme";
-import { useNavigation } from "@react-navigation/native";
+import { styles } from "../styles/Profile";
 
-export default function Profile() {
+import profileImage from './../../../assets/images/profile.jpg';
+import data from '../helper/ProfileFormData';
+
+export default function Profile({ navigation }) {
   const {user, signOut} = useAuth();
-  const [currentIndex, setCurrentIndex] = useState(null);
-  const navigation: any = useNavigation();
+  const [person, setPerson] = useState(null);
+  const [currentSection, setCurrentSection] = useState(null);
+  const [load, setLoad] = useState(null)
 
-  // const user = {
-  //   name: "Tiago Barbosa",
-  //   email: 'tiagobarbosa02@outlook.com'
-  // }
-
-  async function goEdit(route): Promise<void> {
-    navigation.navigate(route);
+  async function goToForm(route): Promise<void> {
+    navigation.navigate({
+      name: route,
+      params: {
+        person: person,
+      },
+    });
   }
 
-  // useEffect(() => {
-  //   async function getUser() {
-  //     const teste = await loadUser(parseInt(user.id))
-  //     console.log("teste", teste);
-  //   }
-  //   getUser()
-  // })
+  async function getUser() {
+    // if (!!load) {
+      const data = await UserService.loadUser(parseInt(user.id))
+      setPerson(data?.person)
+    // }
+  }
+
+  useEffect(() => {
+    function onInit() {
+      navigation.addListener('focus', () => setLoad(!load))
+      getUser()
+    }
+    onInit()
+  }, [load, navigation])
 
   return (
     <VStack style={styles.container}>
@@ -54,12 +64,12 @@ export default function Profile() {
           </Box>
         </Box>
 
-        {data.map(({title, icon, vectorIcon, editLink, subItens}, index) => {
+        {data.map(({title, icon, vectorIcon, route, key}) => {
           return (
             <TouchableOpacity
-              key={title}
+              key={key}
               onPress={() => {
-                setCurrentIndex(index === currentIndex ? null : index)
+                setCurrentSection(key === currentSection ? null : key)
               }}
               activeOpacity={0.8}
               style={styles.accordion}
@@ -83,7 +93,7 @@ export default function Profile() {
                 <Animated.View
                   style={
                     [styles.arrowArea, {
-                      transform: [{rotate: index === currentIndex ? '180deg' : '0deg'}]
+                      transform: [{rotate: key === currentSection ? '180deg' : '0deg'}]
                     }]
                   }
                 >
@@ -91,12 +101,16 @@ export default function Profile() {
                 </Animated.View>
               </Box>
 
-              {index === currentIndex && (
+              {key === currentSection && (
                 <View style={styles.component}>
-                  <BasicDataComponent section={index}/>
+                  <InfoProfileComponent
+                    section={key}
+                    person={person}
+                  />
+
                   <View style={styles.editBtn}>
                     <IconButton
-                      onPress={() => goEdit(editLink)}
+                      onPress={() => goToForm(route)}
                       style={styles.iconDditBtn}
                       icon={<Icon as={MaterialIcons} name="edit"/>}
                       _icon={{

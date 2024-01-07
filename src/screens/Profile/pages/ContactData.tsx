@@ -1,19 +1,40 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { View } from "react-native";
 import { Box, Button } from "native-base";
 import { Masks } from "react-native-mask-input";
 
-import { THEME } from "../../../styles/theme";
-import { styles } from "../styles/ContactData";
+import PersonService from "../service/PersonService";
+
 import InputTextComponent from "../../components/InputText";
 
-export function ContactData() {
-  const [email, setEmail] = useState(null);
-  const [cellPhone, setCellPhone] = useState(null);
-  const [phone, setPhone] = useState(null);
+import { THEME } from "../../../styles/theme";
+import { styles } from "../styles/ContactData";
+
+export function ContactData({ navigation, route }) {
+  const [person, setPerson] = useState(null);
+
+  useEffect(() => {
+    if (route.params?.person) {
+      const person = route.params?.person
+      setPerson(person)
+    }
+  }, [route.params?.person])
+
+  function setEmail(email) {
+    setPerson({...person, email: email})
+  }
+
+  function setCellPhone(cellPhone) {
+    setPerson({...person, cellPhone: cellPhone})
+  }
+
+  function setPhone(phone) {
+    setPerson({...person, phone: phone})
+  }
 
   async function save() {
-    console.log("ContactData", {email, cellPhone, phone});
+    await PersonService.update(person)
+    navigation.goBack()
   }
 
   return (
@@ -21,7 +42,7 @@ export function ContactData() {
       <Box style={styles.inputArea}>
         <InputTextComponent
           label={'E-mail'}
-          valiable={email}
+          valiable={person?.email}
           setValiable={setEmail}
         />
       </Box>
@@ -30,7 +51,7 @@ export function ContactData() {
         <InputTextComponent
           label={'Celular'}
           type={'phone-pad'}
-          valiable={cellPhone}
+          valiable={person?.cellPhone}
           setValiable={setCellPhone}
           mask={Masks.BRL_PHONE}
         />
@@ -40,7 +61,7 @@ export function ContactData() {
         <InputTextComponent
           label={'Telefone'}
           type={'phone-pad'}
-          valiable={phone}
+          valiable={person?.phone}
           setValiable={setPhone}
           mask={["(", /\d/, /\d/, ") ", /\d/, /\d/, /\d/, /\d/, "-", /\d/, /\d/, /\d/, /\d/]}
         />

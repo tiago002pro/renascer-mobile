@@ -86,7 +86,6 @@ export const styles = StyleSheet.create({
     color: THEME.colors.white,
   },
   editBtn: {
-    // backgroundColor: 'red',
     position: 'absolute',
     bottom: 20,
     right: 20,
@@ -99,6 +98,8 @@ export const styles = StyleSheet.create({
   },
   component: {
     width: '100%',
-    padding: 20,
+    paddingLeft: 20,
+    paddingRight: 20,
+    paddingBottom: 20,
   },
 })

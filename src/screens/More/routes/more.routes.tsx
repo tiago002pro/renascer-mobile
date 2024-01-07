@@ -4,8 +4,7 @@ import { IconButton } from 'react-native-paper';
 
 import { THEME } from "../../../styles/theme";
 import { More } from "../pages/More";
-import Profile from "../../Dashboard/pages/Profile";
-import ProfileForm from "../../Dashboard/pages/ProfileForm";
+import Profile from "../../Profile/pages/Profile";
 import { BasicData } from "../../Profile/pages/BasicData";
 import { ContactData } from "../../Profile/pages/ContactData";
 import { AddressData } from "../../Profile/pages/AddressData";

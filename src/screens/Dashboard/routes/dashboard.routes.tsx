@@ -4,10 +4,9 @@ import { IconButton } from 'react-native-paper';
 
 import { THEME } from "../../../styles/theme";
 import Dashboard from "../pages/Dashboard";
-import Profile from "../pages/Profile";
-import SignIn from "../pages/SignIn";
-import Register from "../pages/Register";
-import ProfileForm from "../pages/ProfileForm";
+import Profile from "../../Profile/pages/Profile";
+import SignIn from "../../Profile/pages/SignIn";
+import Register from "../../Profile/pages/Register";
 
 const { Navigator, Screen } = createStackNavigator();
 
@@ -46,11 +45,6 @@ export default function DashboardRoutes() {
 			<Screen
 				name="Profile"
 				component={Profile}
-			/>
-
-			<Screen
-				name="ProfileForm"
-				component={ProfileForm}
 			/>
 
       <Screen

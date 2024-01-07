@@ -1,10 +1,10 @@
 import { StyleSheet } from "react-native";
 
-import { THEME } from "../../../styles/theme";
+import { THEME } from "../../../../styles/theme";
 
 export const styles = StyleSheet.create({
   container: {
-    width: '100%'
+    width: '90%',
   },
   item: {
     display: 'flex',

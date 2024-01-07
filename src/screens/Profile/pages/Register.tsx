@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { Box, Button, Text, VStack } from "native-base";
 
+import { doRegister } from "../../../services/auth";
+
 import TextInputComponent from "../../../components/TextInputComponent";
 import ButtonComponent from "../../../components/ButtonComponent";
-import { doRegister } from "../../../services/auth";
+
 import { styles } from "../styles/Register";
 
 export default function Register({ navigation }) {

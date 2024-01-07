@@ -1,16 +1,15 @@
 import React, { useState } from "react";
 import { Box, Button, Image, Text, VStack } from "native-base";
 
+import { useAuth } from "../../../contexts/auth";
+
 import TextInputComponent from "../../../components/TextInputComponent";
 import ButtonComponent from "../../../components/ButtonComponent";
-import { useAuth } from "../../../contexts/auth";
-import { styles } from "../styles/SignIn";
 
+import { styles } from "../styles/SignIn";
 
 export default function SignIn({ navigation }) {
   const {signed, signIn} = useAuth()
-  console.log("signed", signed);
-
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
