@@ -7,6 +7,7 @@ export interface Person {
   maritalStatus?: string; 
   email?: string; 
   cellPhone?: string; 
-  phone?: string; 
+  phone?: string;
+  profileImage?: string;
   address?: Address; 
 }

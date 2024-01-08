@@ -1,20 +1,13 @@
 import React, { useCallback, useState } from "react";
 import { ActivityIndicator, View, Text } from "react-native";
-import { useNavigation } from "@react-navigation/native";
 import YoutubeIframe from 'react-native-youtube-iframe';
 import * as ScreenOrientation from 'expo-screen-orientation';
 
 import { VIDEO_HEIGHT, VIDEO_WIDTH, styles } from "../styles/WatchVideo";
+import { THEME } from "../../../styles/theme";
 
 export function WatchVideo({ route }) {
-  const navigation: any = useNavigation()
   const { video } = route.params; 
-
-  React.useLayoutEffect(() => {
-    // navigation.getParent().setOptions({ headerShown: false });
-    navigation.setOptions({ title: video.title });
-  })
-
   const [videoReady, setVideoReady] = useState(false);
 
   const onFullScreenChange = useCallback((isFullScreen: boolean) => {
@@ -27,7 +20,7 @@ export function WatchVideo({ route }) {
 
   return(
     <View style={styles.container}>
-      {/* <View style={styles.player}>
+      <View style={styles.player}>
         <YoutubeIframe
           videoId={video.videoId}
           width={VIDEO_WIDTH}
@@ -35,8 +28,8 @@ export function WatchVideo({ route }) {
           onReady={() => setVideoReady(true)}
           onFullScreenChange={onFullScreenChange}
         />
-        {!videoReady && <ActivityIndicator color={'red'}/>}
-      </View> */}
+        {!videoReady && <ActivityIndicator color={THEME.colors.yellow[400]}/>}
+      </View>
       <View style={styles.descriptionPlayer}>
         <Text style={styles.title}>
           {video.title}

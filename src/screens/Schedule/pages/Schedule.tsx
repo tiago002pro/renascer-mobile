@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { Box, FlatList, Text, VStack, View } from "native-base";
-import { useNavigation } from "@react-navigation/native";
 import { FontAwesome5 } from '@expo/vector-icons';
 
+import ScheduleService from "../service/ScheduleService";
+
 import { ScheduleComponent } from "../components/ScheduleComponent";
-import { styles } from "../styles/Schedule";
-import { getAllByValidDeadline } from "../../../services/ScheduleService";
+
 import { THEME } from "../../../styles/theme";
+import { styles } from "../styles/Schedule";
 
 type Schedule = {
   id: string,
@@ -21,13 +22,12 @@ type Schedule = {
 }
 
 export function Schedule() {
-  const navigation: any = useNavigation();
-  const [schedules, setSchedules] = useState('') as any[]
-  const [withoutSchedules, setWithoutSchedules] = useState('') as any[]
+  const [schedules, setSchedules] = useState(null);
+  const [withoutSchedules, setWithoutSchedules] = useState(null);
 
   useEffect(() => {
     async function getSchedule() {
-      const result = await getAllByValidDeadline()
+      const result = await ScheduleService.getAllByValidDeadline()
       setSchedules(result)
     }
 
@@ -38,27 +38,24 @@ export function Schedule() {
         setWithoutSchedules(false)
       }
     }
-
     getSchedule()
     checkSchedule()
   }, [])
 
-  // React.useLayoutEffect(() => {
-  //   navigation.setOptions({ headerShown: true });
-  // })
-
   return (
     <VStack style={styles.container}>
-      <Text style={styles.title}>Próximos eventos</Text>
       {withoutSchedules ? 
-        <FlatList
-          data={schedules}
-          renderItem={
-            ({item}) => <ScheduleComponent item={item} />
-          }
-          keyExtractor={(item) => item.toString()}
-        />
-      :
+        <View>
+          <Text style={styles.title}>Próximos eventos</Text>
+          <FlatList
+            data={schedules}
+            renderItem={
+              ({item}) => <ScheduleComponent item={item} />
+            }
+            keyExtractor={(item) => item.toString()}
+          />
+        </View>
+        :
         <View alignItems={'center'} justifyContent={'center'} mt={'50%'} >
           <Box mb={3}>
             <FontAwesome5 name="calendar-times" color={THEME.colors.yellow[400]} size={50}/>

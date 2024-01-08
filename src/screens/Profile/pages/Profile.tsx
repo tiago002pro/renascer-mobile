@@ -12,7 +12,7 @@ import InfoProfileComponent from "../components/InfoProfileComponent";
 import { THEME } from "../../../styles/theme";
 import { styles } from "../styles/Profile";
 
-import profileImage from './../../../assets/images/profile.jpg';
+import profileImage from './../../../assets/images/profile.png';
 import data from '../helper/ProfileFormData';
 
 export function Profile({ navigation }) {
@@ -57,11 +57,31 @@ export function Profile({ navigation }) {
         <Box>
           <Box style={styles.profile}>
             <Box style={styles.imageArea}>
-              <Image
-                source={profileImage}
-                alt="User"
-                style={styles.image}
-              />
+              {person?.profileImage ? 
+                <Image
+                  source={{uri: person?.profileImage}}
+                  alt="User"
+                  style={styles.image}
+                />
+                :
+                <Image
+                  source={profileImage}
+                  alt="User"
+                  style={styles.image}
+                />
+              }
+              <Box position={'absolute'} bottom={0} right={0}>
+                <IconButton
+                  padding={3}
+                  backgroundColor={THEME.colors.backgroud}
+                  icon={<Icon as={MaterialIcons} name="add-a-photo"/>}
+                  borderRadius={'full'}
+                  _icon={{
+                    color: THEME.colors.yellow[400],
+                    size: 5
+                  }}
+                />
+              </Box>
             </Box>
             <Box style={styles.textArea}>
               <Text style={styles.name}>{user?.name}</Text>

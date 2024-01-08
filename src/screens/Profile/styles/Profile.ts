@@ -20,15 +20,20 @@ export const styles = StyleSheet.create({
     marginBottom: THEME.sizes.paddingPages,
   },
   imageArea: {
-    padding: 5,
-    borderRadius: 100,
-    backgroundColor: THEME.colors.yellow[400],
-    marginBottom: 20,
-  },
-  image: {
     width: 120,
     height: 120,
     borderRadius: 120,
+    backgroundColor: THEME.colors.yellow[400],
+    marginBottom: 20,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  image: {
+    width: 110,
+    height: 110,
+    borderRadius: 110,
+  },
+  iconImage: {
   },
   textArea: {
     display: 'flex',

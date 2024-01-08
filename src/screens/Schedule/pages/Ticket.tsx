@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Box, Button, Icon, Image, Text, VStack, View } from "native-base";
-import { useNavigation } from "@react-navigation/native";
 import { MaterialIcons, MaterialCommunityIcons } from '@expo/vector-icons';
 import moment from 'moment';
 
@@ -9,16 +8,10 @@ import { styles } from "../styles/Ticket";
 import { THEME } from "../../../styles/theme";
 
 export function Ticket({ route }) {
-  const navigation: any = useNavigation();
   const { ticket } = route.params;
   
   const [dateFirst, setDateFirst] = useState('');
   const [dateSecound, setDateSecound] = useState('');
-
-  React.useLayoutEffect(() => {
-    // navigation.getParent().setOptions({ headerShown: false });
-    navigation.setOptions({ title: ticket.title });
-  })
 
   useEffect(() => {
     function changeFormatDateFirst() {
