@@ -1,20 +1,19 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { MaterialIcons, Ionicons } from '@expo/vector-icons';
+import { MaterialIcons } from '@expo/vector-icons';
 
-import Contribute from "../screens/Contribute";
-import { THEME } from "../styles/theme";
-import { Box, Button, Icon, IconButton, Image, Text, View } from "native-base";
-import { useNavigation } from "@react-navigation/native";
 import { useAuth } from "../contexts/auth";
+
+import { THEME } from "../styles/theme";
+
 import ScheduleRoutes from "../screens/Schedule/routes/schedule.routes";
 import DashboardRoutes from "../screens/Dashboard/routes/dashboard.routes";
 import VideosRoutes from "../screens/Videos/routes/videos.routes";
 import MoreRoutes from "../screens/More/routes/more.routes";
+import Contribute from "../screens/Contribute";
 
-const Tab = createBottomTabNavigator();
+const { Navigator, Screen } = createBottomTabNavigator();
 
-export default function TabRoutes() {
-  const navigation: any = useNavigation()
+export default function TabRoutes({ navigation }) {
   const {signed, signIn} = useAuth()
 
   console.log("signed TAB", signed);
@@ -31,7 +30,7 @@ export default function TabRoutes() {
   }
 
   return (
-    <Tab.Navigator screenOptions={{
+    <Navigator screenOptions={{
       headerShown: true,
       headerShadowVisible: false,
       headerStyle: {
@@ -47,80 +46,17 @@ export default function TabRoutes() {
         color: 'white'
       }
     }}>
-      <Tab.Screen
+      <Screen
         name="DashboardRoutes" 
         component={DashboardRoutes}
         options={{
           tabBarIcon: ({ color, size }) => <MaterialIcons name="home" color={color} size={size} />,
           tabBarLabel: "Início",
-          headerTitle: (() =>
-            <View
-              alignItems={'center'}
-              display={'flex'}
-              flexDirection={'row'}
-              justifyContent={'center'}
-            >
-              <Image
-                source={require("./../assets/images/logo.png")}
-                alt="logo"
-                style={{ width: 25, height: 25, padding: 2, marginRight: 7 }}
-              />
-              <Text
-                color={'#FFF'}
-                textTransform={'uppercase'}
-                fontSize={12}
-              >
-                Igreja Renascer
-              </Text>
-            </View>
-          ),
-          headerRight: (() =>
-            (!signed ?
-              <Button
-                onPress={goSignIn}
-                borderRadius={50}
-                height={8}
-                marginRight={5}
-                backgroundColor={'transparent'}
-                borderColor={'yellow.400'}
-                borderWidth={1}
-                _pressed={{
-                  backgroundColor: 'yellow.400',
-                  _text: {
-                    color: 'backgroud',
-                    fontWeight: 'bold'
-                  }
-                }}
-                _text={{
-                  color: 'yellow.400',
-                  textTransform: 'uppercase',
-                  fontSize: 12,
-                  lineHeight: 12,
-                }}
-              >
-                Login
-              </Button>
-            :
-              <Box alignItems="center">
-                <IconButton
-                  onPress={goProfile}
-                  icon={<Icon as={Ionicons} name="person-circle"/>}
-                  borderRadius={'full'}
-                  _icon={{
-                    color: '#FFF',
-                    size: 8
-                  }}
-                  _pressed={{
-                    bg: 'yellow.400:alpha.20'
-                  }}
-                />
-              </Box>
-            )
-          )
+          headerShown: false
         }}
       />
 
-      <Tab.Screen
+      <Screen
         name="Palavras" 
         component={VideosRoutes}
         options={{
@@ -129,7 +65,7 @@ export default function TabRoutes() {
         }}
       />
 
-      <Tab.Screen
+      <Screen
         name="Eventos"
         component={ScheduleRoutes}
         options={{
@@ -138,7 +74,7 @@ export default function TabRoutes() {
         }}
       />
 
-      <Tab.Screen
+      <Screen
         name="Contribute" 
         component={Contribute}
         options={{
@@ -147,14 +83,16 @@ export default function TabRoutes() {
         }}
       />
 
-      <Tab.Screen
+      <Screen
         name="MoreRoutes" 
         component={MoreRoutes}
         options={{
           tabBarIcon: ({ color, size }) => <MaterialIcons name="more-horiz" color={color} size={size} />,
           tabBarLabel: "Mais",
+          title: "Mais",
+          headerShown: false
         }}
       />
-    </Tab.Navigator>
+    </Navigator>
   );
 }

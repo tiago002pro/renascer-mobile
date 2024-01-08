@@ -1,10 +1,9 @@
 import { createStackNavigator } from "@react-navigation/stack";
-import { useNavigation } from "@react-navigation/native";
-import { IconButton } from 'react-native-paper';
 
 import { THEME } from "../../../styles/theme";
 import { More } from "../pages/More";
-import Profile from "../../Profile/pages/Profile";
+
+import { Profile } from "../../Profile/pages/Profile";
 import { BasicData } from "../../Profile/pages/BasicData";
 import { ContactData } from "../../Profile/pages/ContactData";
 import { AddressData } from "../../Profile/pages/AddressData";
@@ -12,12 +11,6 @@ import { AddressData } from "../../Profile/pages/AddressData";
 const { Navigator, Screen } = createStackNavigator();
 
 export default function MoreRoutes() {
-	const navigation = useNavigation();
-
-	// function goBackSchedule(): any {
-	// 	navigation.navigate('Schedule')
-	// }
-
 	return (
 		<Navigator screenOptions={{
 			headerShown: true,
@@ -26,36 +19,34 @@ export default function MoreRoutes() {
 			},
 			headerTintColor: THEME.colors.white,
 			headerShadowVisible: false,
-			// headerLeft: () => (
-			// 	<IconButton
-			// 		icon="chevron-left"
-			// 		iconColor={"#FFF"} size={40}
-			// 		onPress={goBackSchedule}
-			// 		style={{padding: 0, margin: 0}}
-			// 	/>
-			// )
+			headerBackTitleVisible: false,
 		}}>
-      	<Screen
+      		<Screen
+				options={{ headerTitle: 'Mais' }}
 				name="More"
 				component={More}
 			/>
 
 			<Screen
+				options={{ headerTitle: 'Meu Perfil' }}
 				name="Profile"
 				component={Profile}
 			/>
 
       		<Screen
+				options={{ headerTitle: 'Dados Básicos' }}
 				name="BasicData"
 				component={BasicData}
 			/>
 
 			<Screen
+				options={{ headerTitle: 'Contato' }}
 				name="ContactData"
 				component={ContactData}
 			/>
 
 			<Screen
+				options={{ headerTitle: 'Endereço' }}
 				name="AddressData"
 				component={AddressData}
 			/>

@@ -1,7 +1,7 @@
 import { useAuth } from "../contexts/auth";
 
 import Loading from "../screens/Loading";
-import TabRoutes from "./tab.routes";
+import StackRoutes from "./stack.routes";
 
 export default function Routes() {
   const {signed, loading} = useAuth();
@@ -13,6 +13,6 @@ export default function Routes() {
   }
 
   return (
-    signed ? <TabRoutes /> : <TabRoutes />
+    signed ? <StackRoutes /> : <StackRoutes />
   );
 }

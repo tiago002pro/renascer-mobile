@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { View } from "react-native";
-import { Box, Button } from "native-base";
+import { Box, Button, ScrollView, VStack } from "native-base";
 import { Masks } from "react-native-mask-input";
+import { showMessage } from "react-native-flash-message";
 
 import PersonService from "../service/PersonService";
 
@@ -33,51 +33,63 @@ export function ContactData({ navigation, route }) {
   }
 
   async function save() {
-    await PersonService.update(person)
-    navigation.goBack()
+    await PersonService.update(person).then(() => {
+      showMessage({
+        message: "Salvo com sucesso",
+        type: "success",
+      })
+      navigation.goBack()
+    }).catch(() => {
+      showMessage({
+        message: "Algo deu errado",
+        type: "warning",
+      })
+    })
   }
 
   return (
-    <View style={styles.container}>
-      <Box style={styles.inputArea}>
-        <InputTextComponent
-          label={'E-mail'}
-          valiable={person?.email}
-          setValiable={setEmail}
-        />
-      </Box>
+    <VStack style={styles.container}>
+      <ScrollView>
+        <Box style={styles.inputArea}>
+          <InputTextComponent
+            label={'E-mail'}
+            valiable={person?.email}
+            setValiable={setEmail}
+          />
+        </Box>
 
-      <Box style={styles.inputArea}>
-        <InputTextComponent
-          label={'Celular'}
-          type={'phone-pad'}
-          valiable={person?.cellPhone}
-          setValiable={setCellPhone}
-          mask={Masks.BRL_PHONE}
-        />
-      </Box>
+        <Box style={styles.inputArea}>
+          <InputTextComponent
+            label={'Celular'}
+            type={'phone-pad'}
+            valiable={person?.cellPhone}
+            setValiable={setCellPhone}
+            mask={Masks.BRL_PHONE}
+          />
+        </Box>
 
-      <Box style={styles.inputArea}>
-        <InputTextComponent
-          label={'Telefone'}
-          type={'phone-pad'}
-          valiable={person?.phone}
-          setValiable={setPhone}
-          mask={["(", /\d/, /\d/, ") ", /\d/, /\d/, /\d/, /\d/, "-", /\d/, /\d/, /\d/, /\d/]}
-        />
-      </Box>
+        <Box style={styles.inputArea}>
+          <InputTextComponent
+            label={'Telefone'}
+            type={'phone-pad'}
+            valiable={person?.phone}
+            setValiable={setPhone}
+            mask={["(", /\d/, /\d/, ") ", /\d/, /\d/, /\d/, /\d/, "-", /\d/, /\d/, /\d/, /\d/]}
+          />
+        </Box>
 
-      <Box mt={5}>
-        <Button
-          onPress={save}
-          backgroundColor={THEME.colors.white}
-          _text={{
-            color: THEME.colors.backgroud,
-          }}
-        >
-          Salvar
-        </Button>
-      </Box>
-    </View>
+        <Box mt={5}>
+          <Button
+            onPress={save}
+            backgroundColor={THEME.colors.white}
+            _text={{
+              color: THEME.colors.backgroud,
+            }}
+          >
+            Salvar
+          </Button>
+        </Box>
+      </ScrollView>
+    </VStack>
   );
 }

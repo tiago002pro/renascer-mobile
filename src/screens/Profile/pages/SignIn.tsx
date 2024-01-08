@@ -15,13 +15,14 @@ export default function SignIn({ navigation }) {
 
   async function handleSignIn() {
     signIn(email, password);
+    navigation.navigate('TabRoutes', {screen:'DashboardRoutes'});
   }
 
   return (
     <VStack style={styles.container} safeArea>
       <Box style={styles.containerLogo}>
         <Image
-          source={require("./../../../assets/images/logo-cor.png")}
+          source={require("./../../../assets/images/logo-cor-letra-branca.png")}
           alt="logo"
           style={{ width: "40%" }}
           resizeMode='contain'
@@ -48,7 +49,7 @@ export default function SignIn({ navigation }) {
         </ButtonComponent>
 
         <Box style={styles.footerArea}>
-          <Text color={'gray.500'}>Não possui conta?</Text>
+          <Text color={'white'}>Não possui conta?</Text>
           <Button
             onPress={() => navigation.navigate('Register')}
             style={styles.footerBtn}

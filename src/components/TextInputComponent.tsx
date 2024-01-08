@@ -29,17 +29,17 @@ export default function TextInputComponent({
           <Icon as = {
             <Feather 
               name={icon}
-              color={THEME.colors.gray[600]}
+              color={THEME.colors.white}
               style={styles.icon}
             />
           }/>
         }
         style={styles.input}
-        color={"black"}
-        borderColor={"transparent"}
+        color={"white"}
+        borderColor={"white"}
         fontSize={"sm"}
         lineHeight={"sm"}
-        backgroundColor={"gray.100"}
+        backgroundColor={"transparent"}
         _focus={{
           borderColor: "orange.500",
         }}
@@ -51,7 +51,7 @@ export default function TextInputComponent({
 const styles = StyleSheet.create({
   input: {
     height: 50,
-    color: '#000',
+    color: THEME.colors.white,
   },
   icon: {
     fontSize: THEME.fontSizes.lg,

@@ -15,7 +15,9 @@ export default function InfoProfileComponent({ section, person }: Props) {
   const address: Address = person?.address;
 
   function getAddress(): string {
-    return address?.publicPlace + ', ' + address?.number + ' - ' + address?.city + '/' + address?.state;
+    if (address && address?.zipCode) {
+      return address?.publicPlace + ', ' + address?.number + ' - ' + address?.city + '/' + address?.state;
+    }
   }
 
   function getGender() {
@@ -89,7 +91,6 @@ export default function InfoProfileComponent({ section, person }: Props) {
           <Box style={styles.item}>
             <Text style={styles.label}>Endereço:</Text>
             <Text style={styles.value}>{getAddress()}</Text>
-            <Text style={styles.value}>CEP {address?.zipCode}</Text>
           </Box>
         </View>
       ) : null}

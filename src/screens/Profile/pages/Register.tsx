@@ -12,11 +12,10 @@ export default function Register({ navigation }) {
   const [name, setName] = useState('')
   const [login, setLogin] = useState('')
   const [password, setPassword] = useState('')
-  const [phone, setPhone] = useState('')
   const [role] = useState('USER')
 
   async function register() {
-    const result = await doRegister({name, login, password, phone, role})
+    const result = await doRegister({name, login, password, role})
     if (result) {
       navigation.replace('SignIn')
     } else {
@@ -45,15 +44,9 @@ export default function Register({ navigation }) {
         value={password}
         onChangeText={setPassword}
       />
-      <TextInputComponent
-        placeholder={"Telefone"}
-        icon={"phone"}
-        value={phone}
-        onChangeText={setPhone}
-      />
       <ButtonComponent onPress={register}>Cadastrar</ButtonComponent>
       <Box style={styles.footerArea}>
-        <Text color={'gray.500'}>Já possui conta?</Text>
+        <Text color={'white'}>Já possui conta?</Text>
         <Button
           onPress={() => navigation.navigate('SignIn')}
           style={styles.footerBtn}

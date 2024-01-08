@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import { View } from "react-native";
-import { Box, Button } from "native-base";
+import { Box, Button, ScrollView, VStack } from "native-base";
 import { Masks } from "react-native-mask-input";
+import { showMessage } from "react-native-flash-message";
+import { ActivityIndicator } from "react-native-paper";
 
 import AddressService from "../service/AddressService";
 
@@ -12,6 +14,7 @@ import { styles } from "../styles/AddressData";
 
 export function AddressData({ navigation, route }) {
   const [showDataAddress, setShowDataAddress] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const [id, setId] = useState(null);
   const [country, setCountry] = useState(null);
@@ -47,7 +50,7 @@ export function AddressData({ navigation, route }) {
     async function validateZipCode() {
       if (zipCode) {
         const replaceZipCode = zipCode.replace(/-/, '')
-        if (replaceZipCode.length == 8) {
+        if (replaceZipCode && replaceZipCode.length == 8) {
           await getAddress(replaceZipCode)
         }
       }
@@ -56,109 +59,130 @@ export function AddressData({ navigation, route }) {
   }, [zipCode])
 
   async function getAddress(replaceZipCode) {
+    setLoading(true)
     const addressData = await AddressService.getAddressByCep(replaceZipCode)
     setPublicPlace(addressData.logradouro)
     setNeighborhood(addressData.bairro)
     setCity(addressData.localidade)
     setState(addressData.uf)
     setShowDataAddress(true)
+    setLoading(false)
   }
 
   async function save() {
     const address = { id, country, zipCode, publicPlace, number, complement, neighborhood, city, state }
-    await AddressService.update(address)
-    navigation.goBack()
+    await AddressService.update(address).then(() => {
+      showMessage({
+        message: "Salvo com sucesso",
+        type: "success",
+      })
+      navigation.goBack()
+    }).catch(() => {
+      showMessage({
+        message: "Algo deu errado",
+        type: "warning",
+      })
+    })
   }
 
   return (
-    <View style={styles.container}>
-      <Box style={styles.inputArea}>
-        <InputTextComponent
-          label={'País'}
-          valiable={country}
-          setValiable={setCountry}
-        />
-      </Box>
+    <VStack style={styles.container}>
+      <ScrollView>
+        <Box style={styles.inputArea}>
+          <InputTextComponent
+            label={'País'}
+            valiable={country}
+            setValiable={setCountry}
+          />
+        </Box>
 
-      <Box style={styles.inputArea}>
-        <InputTextComponent
-          label={'CEP'}
-          valiable={zipCode}
-          setValiable={setZipCode}
-          mask={Masks.ZIP_CODE}
-          type={'numeric'}
-        />
-      </Box>
+        <Box style={styles.inputArea}>
+          <InputTextComponent
+            label={'CEP'}
+            valiable={zipCode}
+            setValiable={setZipCode}
+            mask={Masks.ZIP_CODE}
+            type={'numeric'}
+          />
+        </Box>
 
-      {showDataAddress ? 
-        <View>
-          <Box style={styles.inputArea}>
-            <InputTextComponent
-              label={'Endereço'}
-              valiable={publicPlace}
-              setValiable={setPublicPlace}
-            />
+        {loading ?
+          <Box mt={20}>
+            <ActivityIndicator size={"large"} color={THEME.colors.yellow[500]} />
           </Box>
+          : null 
+        }   
 
-          <Box display={'flex'} flexDirection={'row'} justifyContent={'space-between'}>
-            <Box style={styles.inputArea} w={'48%'}>
+        {showDataAddress ? 
+          <View>
+            <Box style={styles.inputArea}>
               <InputTextComponent
-                label={'Nº'}
-                valiable={number}
-                setValiable={setNumber}
+                label={'Endereço'}
+                valiable={publicPlace}
+                setValiable={setPublicPlace}
               />
             </Box>
 
-            <Box style={styles.inputArea} w={'48%'}>
-              <InputTextComponent
-                label={'Complemento'}
-                valiable={complement}
-                setValiable={setComplement}
-              />
-            </Box>
-          </Box>
+            <Box display={'flex'} flexDirection={'row'} justifyContent={'space-between'}>
+              <Box style={styles.inputArea} w={'48%'}>
+                <InputTextComponent
+                  label={'Nº'}
+                  valiable={number}
+                  setValiable={setNumber}
+                />
+              </Box>
 
-          <Box style={styles.inputArea}>
-            <InputTextComponent
-              label={'Bairro'}
-              valiable={neighborhood}
-              setValiable={setNeighborhood}
-            />
-          </Box>
-
-          <Box display={'flex'} flexDirection={'row'} justifyContent={'space-between'}>
-            <Box style={styles.inputArea} w={'48%'}>
-              <InputTextComponent
-                label={'Cidade'}
-                valiable={city}
-                setValiable={setCity}
-              />
+              <Box style={styles.inputArea} w={'48%'}>
+                <InputTextComponent
+                  label={'Complemento'}
+                  valiable={complement}
+                  setValiable={setComplement}
+                />
+              </Box>
             </Box>
 
-            <Box style={styles.inputArea} w={'48%'}>
+            <Box style={styles.inputArea}>
               <InputTextComponent
-                label={'UF'}
-                valiable={state}
-                setValiable={setState}
+                label={'Bairro'}
+                valiable={neighborhood}
+                setValiable={setNeighborhood}
               />
             </Box>
 
-          </Box>
-        </View>
-        : null
-      }
+            <Box display={'flex'} flexDirection={'row'} justifyContent={'space-between'}>
+              <Box style={styles.inputArea} w={'48%'}>
+                <InputTextComponent
+                  label={'Cidade'}
+                  valiable={city}
+                  setValiable={setCity}
+                />
+              </Box>
 
-      <Box mt={5}>
-        <Button
-          onPress={save}
-          backgroundColor={THEME.colors.white}
-          _text={{
-            color: THEME.colors.backgroud,
-          }}
-        >
-          Salvar
-        </Button>
-      </Box>
-    </View>
+              <Box style={styles.inputArea} w={'48%'}>
+                <InputTextComponent
+                  label={'UF'}
+                  valiable={state}
+                  setValiable={setState}
+                />
+              </Box>
+
+            </Box>
+
+            <Box mt={5}>
+              <Button
+                onPress={save}
+                backgroundColor={THEME.colors.white}
+                _text={{
+                  color: THEME.colors.backgroud,
+                }}
+              >
+                Salvar
+              </Button>
+            </Box>
+          </View>
+          : null
+        }
+      </ScrollView>
+    </VStack>
   );
 }

@@ -27,7 +27,7 @@ export default function SelectComponent({ options, label, valiable, setValiable 
       <Select
         selectedValue={valiable}
         onValueChange={setValiable}
-        height={50}
+        height={39}
         borderRadius={5}
         borderColor={'#FFF'}
         borderWidth={1}

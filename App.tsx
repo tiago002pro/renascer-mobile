@@ -1,13 +1,14 @@
+import 'moment/locale/pt-br';
 import React, { useEffect } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { NativeBaseProvider, StatusBar } from 'native-base';
-import 'moment/locale/pt-br';
+import { LogBox } from 'react-native';
+import FlashMessage from 'react-native-flash-message';
 
-import Routes from './src/routes';
 import { AuthProvider } from './src/contexts/auth';
+import Routes from './src/routes';
 
 import { THEME } from './src/styles/theme';
-import { LogBox } from 'react-native';
 
 export default function registerRootComponentApp() {
   useEffect(() => {
@@ -22,6 +23,7 @@ export default function registerRootComponentApp() {
           <Routes />
         </AuthProvider>
       </NavigationContainer>
+      <FlashMessage position="top" />
     </NativeBaseProvider>
   );
 }

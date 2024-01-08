@@ -1,10 +1,12 @@
 import { StyleSheet } from "react-native";
 
+import { THEME } from "../../../styles/theme";
+
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: '5%',
-    backgroundColor: '#fff',
+    padding: THEME.sizes.paddingPages,
+    backgroundColor: THEME.colors.backgroud,
   },
   footerArea: {
     display: 'flex',

@@ -6,5 +6,6 @@ export const styles = StyleSheet.create({
   input: {
     backgroundColor: THEME.colors.backgroud,
     fontSize: THEME.fontSizes.md,
+    height: 39,
   },
 })

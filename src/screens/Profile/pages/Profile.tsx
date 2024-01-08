@@ -15,7 +15,7 @@ import { styles } from "../styles/Profile";
 import profileImage from './../../../assets/images/profile.jpg';
 import data from '../helper/ProfileFormData';
 
-export default function Profile({ navigation }) {
+export function Profile({ navigation }) {
   const {user, signOut} = useAuth();
   const [person, setPerson] = useState(null);
   const [currentSection, setCurrentSection] = useState(null);
@@ -44,6 +44,12 @@ export default function Profile({ navigation }) {
     }
     onInit()
   }, [load, navigation])
+
+  function out() {
+    signOut()
+    navigation.goBack()
+		navigation.navigate('DashboardRoutes', {screen: 'Dashboard'});
+  }
 
   return (
     <VStack style={styles.container}>
@@ -130,7 +136,7 @@ export default function Profile({ navigation }) {
 
         <Box style={styles.footer}>
           <Button
-            onPress={signOut}
+            onPress={out}
             backgroundColor={'transparent'}
             leftIcon={<Icon as={MaterialIcons} name="logout" color={'red.500'} size={'lg'}/>}
             _text={{
