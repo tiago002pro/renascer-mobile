@@ -10,62 +10,59 @@ import { THEME } from "../../../styles/theme";
 import { styles } from '../styles/Videos';
 
 export function Videos() {
-  const [sermon, setSermon] = useState('') as any[]
-  const [music, setMusic] = useState('') as any[]
-  const [podcast, setPodcast] = useState('') as any[]
+  const [familyService, setFamilyService] = useState(null);
+  const [celebrationService, setCelebrationService] = useState(null);
 
   useEffect(() => {
     async function getAllSermon() {
-      const result = await VideoService.getAllByCategory('SERMON')
-      setSermon(result)
+      const result = await VideoService.getAllByCategory('FAMILY')
+      setFamilyService(result)
     }
 
     async function getAllMusic() {
-      const result = await VideoService.getAllByCategory('MUSIC')
-      setMusic(result)
-    }
-
-    async function getAllPodcast() {
-      const result = await VideoService.getAllByCategory('PODCAST')
-      setPodcast(result)
+      const result = await VideoService.getAllByCategory('CELEBRATION')
+      setCelebrationService(result)
     }
     
     getAllSermon()
     getAllMusic()
-    getAllPodcast()
   }, [])
+
+  function existVideos(): boolean {
+    return (familyService && familyService.length > 0) || (celebrationService && celebrationService.length > 0)
+  }
+
+  
+  
 
   return (
     <VStack style={styles.container} safeArea>
       <ScrollView>
-        {sermon && sermon.length > 0 ?
+        {familyService && familyService.length > 0 ?
           <Box style={styles.slide}>
-            <SlideVideoComponent title={"Palavras"} data={sermon}/>
+            <SlideVideoComponent title={"Culto da familia"} data={familyService}/>
           </Box>
           : null
         }
         
-        {music && music.length > 0 ?
+        {celebrationService && celebrationService.length > 0 ?
           <Box style={styles.slide}>
-            <SlideVideoComponent title={"Músicas"} data={music}/>
+            <SlideVideoComponent title={"Culto de celebração"} data={celebrationService}/>
           </Box>
           : null
         }
 
-        {podcast && podcast.length > 0 ?
-          <Box style={styles.slide}>
-            <SlideVideoComponent title={"Podcasts"} data={podcast}/>
-          </Box>
-          : null
+        {!existVideos() ?
+          <View alignItems={'center'} justifyContent={'center'} mt={'50%'} >
+            <Box mb={3}>
+              <FontAwesome5 name="video-slash" color={THEME.colors.yellow[400]} size={50}/>
+            </Box>
+            <Text color={'white'} fontSize={"lg"} textAlign={'center'}>Nenhum vídeo</Text>
+            <Text color={'white'} fontSize={"lg"} textAlign={'center'}>foi encontrado</Text>
+          </View>
+          :
+          null
         }
-
-        <View alignItems={'center'} justifyContent={'center'} mt={'50%'} >
-          <Box mb={3}>
-            <FontAwesome5 name="video-slash" color={THEME.colors.yellow[400]} size={50}/>
-          </Box>
-          <Text color={'white'} fontSize={"lg"} textAlign={'center'}>Nenhum vídeo</Text>
-          <Text color={'white'} fontSize={"lg"} textAlign={'center'}>foi encontrado</Text>
-        </View>
       </ScrollView>
     </VStack>
   );

@@ -3,6 +3,7 @@ import { Box, FlatList, Image, Text, View } from "native-base";
 import { useNavigation } from "@react-navigation/native";
 
 import { styles } from "../styles/SlideVideo";
+import { Video } from "../interface/Video";
 
 export function SlideVideoComponent({title, data}) {
   const navigation: any = useNavigation()
@@ -14,7 +15,7 @@ export function SlideVideoComponent({title, data}) {
   }
   
   return (
-    <View style={styles.container}>
+    <View style={styles.container} key={title}>
       <Box style={styles.titleContainer}>
         <Text style={styles.title}>{title}</Text>
       </Box>
@@ -23,7 +24,7 @@ export function SlideVideoComponent({title, data}) {
           data={data}
           horizontal
           showsHorizontalScrollIndicator={false}
-          keyExtractor={(item) => item.toString()}
+          keyExtractor={(item: Video) => item.id.toString()}
           renderItem={({item}: any) => {
             return <TouchableWithoutFeedback onPress={() => goWathVideo(item)}>
               <View style={styles.imageContainer}>
