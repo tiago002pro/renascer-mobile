@@ -12,7 +12,7 @@ interface SelectProps {
 
 export default function SelectComponent({ options, label, valiable, setValiable }: SelectProps) {
   return (
-    <View mt={2}>
+    <View mt={2} id={label}>
       <Box
         backgroundColor={ THEME.colors.backgroud}
         position={'absolute'}
