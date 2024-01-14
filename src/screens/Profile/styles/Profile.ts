@@ -7,31 +7,30 @@ export const styles = StyleSheet.create({
     flex: 1,
     padding: THEME.sizes.paddingPages,
     backgroundColor: THEME.colors.backgroud,
-    display: 'flex',
   },
   profile: {
     width: '100%',
-    padding: 20,
+    padding: 40,
     display: 'flex',
     justifyContent: 'flex-start',
     alignItems: 'center',
-    backgroundColor: THEME.colors.header,
+    backgroundColor: THEME.colors.backgroud,
     borderRadius: 5,
-    marginBottom: THEME.sizes.paddingPages,
+    marginBottom: 10,
   },
   imageArea: {
-    width: 120,
-    height: 120,
-    borderRadius: 120,
-    backgroundColor: THEME.colors.yellow[400],
+    width: 130,
+    height: 130,
+    borderRadius: 130,
+    // backgroundColor: THEME.colors.yellow[300],
     marginBottom: 20,
     alignItems: 'center',
     justifyContent: 'center',
   },
   image: {
-    width: 110,
-    height: 110,
-    borderRadius: 110,
+    width: 130,
+    height: 130,
+    borderRadius: 130,
   },
   iconImage: {
   },
@@ -43,14 +42,15 @@ export const styles = StyleSheet.create({
   name: {
     color: '#FFF',
     fontWeight:'500',
-    fontSize: THEME.fontSizes.lg,
+    fontSize: THEME.fontSizes.lg + 10,
+    lineHeight: THEME.fontSizes.lg + 10,
+    marginBottom: 20,
   },
   email: {
-    color: THEME.colors.yellow[400],
+    color: THEME.colors.yellow[200],
     fontSize: THEME.fontSizes.sm,
-  },
-  footer: {
-    marginBottom: '5%',
+    lineHeight: THEME.fontSizes.sm,
+    fontWeight: '500'
   },
   accordion: {
     width: '100%',
@@ -66,7 +66,6 @@ export const styles = StyleSheet.create({
     width: '100%',
     display: 'flex',
     flexDirection: 'row',
-    alignItems: 'center',
     justifyContent: 'space-between',
     padding: 20,
   },
@@ -76,17 +75,20 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
   },
   iconArea: {
-    marginRight: 20,
+    marginRight: 10,
   },
   infoArea: {
   },
   title: {
     fontSize: THEME.fontSizes.md,
-    fontWeight: 'bold',
+    fontWeight: '500',
     color: THEME.colors.white,
-    marginBottom: THEME.sizes.paddingPages *2
   },
-  arrowArea: {},
+  arrowArea: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
   arrowIcon: {
     color: THEME.colors.white,
   },

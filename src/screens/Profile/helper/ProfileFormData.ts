@@ -1,24 +1,24 @@
-import { FontAwesome5, MaterialIcons, Octicons } from 'react-native-vector-icons';
+import { FontAwesome5, MaterialIcons, MaterialCommunityIcons, Octicons, Ionicons } from 'react-native-vector-icons';
 
 export default [
   { 
     title: 'Dados básicos',
-    icon: 'library-books',
-    vectorIcon: MaterialIcons,
+    icon: 'file-document-edit-outline',
+    vectorIcon: MaterialCommunityIcons,
     route: 'BasicData',
     key: 'BASIC',
   },
   { 
     title: 'Contato',
-    icon: 'contact-page',
-    vectorIcon: MaterialIcons,
+    icon: 'person-circle-outline',
+    vectorIcon: Ionicons,
     route: 'ContactData',
     key: 'CONTACT',
   },
   { 
     title: 'Endereço',
-    icon: 'location-on',
-    vectorIcon: MaterialIcons,
+    icon: 'location-outline',
+    vectorIcon: Ionicons,
     route: 'AddressData',
     key: 'ADDRESS',
   },

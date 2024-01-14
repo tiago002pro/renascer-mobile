@@ -16,7 +16,7 @@ import profileImage from './../../../assets/images/profile.png';
 import data from '../helper/ProfileFormData';
 
 export function Profile({ navigation }) {
-  const {user, signOut} = useAuth();
+  const {user} = useAuth();
   const [person, setPerson] = useState(null);
   const [currentSection, setCurrentSection] = useState(null);
   const [load, setLoad] = useState(null)
@@ -45,12 +45,6 @@ export function Profile({ navigation }) {
     onInit()
   }, [load, navigation])
 
-  function out() {
-    signOut()
-    navigation.goBack()
-		navigation.navigate('DashboardRoutes', {screen: 'Dashboard'});
-  }
-
   return (
     <VStack style={styles.container}>
       <ScrollView>
@@ -70,7 +64,7 @@ export function Profile({ navigation }) {
                   style={styles.image}
                 />
               }
-              <Box position={'absolute'} bottom={0} right={0}>
+              {/* <Box position={'absolute'} bottom={0} right={0}>
                 <IconButton
                   padding={3}
                   backgroundColor={THEME.colors.backgroud}
@@ -81,7 +75,7 @@ export function Profile({ navigation }) {
                     size: 5
                   }}
                 />
-              </Box>
+              </Box> */}
             </Box>
             <Box style={styles.textArea}>
               <Text style={styles.name}>{user?.name}</Text>
@@ -106,8 +100,8 @@ export function Profile({ navigation }) {
                     <Icon
                       as={vectorIcon}
                       name={icon}
-                      color={THEME.colors.yellow[400]}
-                      size={10}
+                      color={THEME.colors.white}
+                      size={7}
                     />
                   </Box>
 
@@ -153,23 +147,6 @@ export function Profile({ navigation }) {
             </TouchableOpacity>
           )
         })}
-
-        <Box style={styles.footer}>
-          <Button
-            onPress={out}
-            backgroundColor={'transparent'}
-            leftIcon={<Icon as={MaterialIcons} name="logout" color={'red.500'} size={'lg'}/>}
-            _text={{
-              color: 'red.500',
-              fontSize: 'md'
-            }}
-            _pressed={{
-              backgroundColor: 'gray.200',
-            }}
-          >
-          Sair
-          </Button>
-        </Box>
       </ScrollView>
     </VStack>
   );

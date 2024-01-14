@@ -7,32 +7,29 @@ import { useAuth } from "../../../contexts/auth";
 import { THEME } from "../../../styles/theme";
 
 import Dashboard from "../pages/Dashboard";
-import { Profile } from "../../Profile/pages/Profile";
-import { BasicData } from "../../Profile/pages/BasicData";
-import { ContactData } from "../../Profile/pages/ContactData";
-import { AddressData } from "../../Profile/pages/AddressData";
 
 const { Navigator, Screen } = createStackNavigator();
 
 export default function DashboardRoutes({ navigation }) {
-	const {signed, signIn} = useAuth()
+	const {signed} = useAuth()
 
 	async function goSignIn(): Promise<void> {
 		navigation.navigate('SignIn');
 	}
 	
 	async function goProfile(): Promise<void> {
-		navigation.navigate('DashboardRoutes', {screen:'Profile'});
+		navigation.navigate('ProfileRoutes', {screen: 'Profile'});
 	}
 	
 	return (
 		<Navigator screenOptions={{
 			headerShown: true,
 			headerStyle: {
-				backgroundColor: THEME.colors.header,
+				backgroundColor: THEME.colors.backgroud,
 			},
 			headerTintColor: THEME.colors.white,
 			headerShadowVisible: false,
+			headerBackTitleVisible: false,
 		}}>
 			<Screen
 				name="Dashboard"
@@ -99,38 +96,11 @@ export default function DashboardRoutes({ navigation }) {
 										color: '#FFF',
 										size: 8
 									}}
-									_pressed={{
-										bg: 'yellow.400:alpha.20'
-									}}
 								/>
 							</Box>
 						)
 					)
 				}}
-			/>
-
-			<Screen
-				options={{ headerTitle: 'Meu Perfil' }}
-				name="Profile"
-				component={Profile}
-			/>
-
-			<Screen
-				options={{ headerTitle: 'Dados Básicos' }}
-				name="BasicData"
-				component={BasicData}
-			/>
-
-			<Screen
-				options={{ headerTitle: 'Contato' }}
-				name="ContactData"
-				component={ContactData}
-			/>
-
-			<Screen
-				options={{ headerTitle: 'Endereço' }}
-				name="AddressData"
-				component={AddressData}
 			/>
 		</Navigator>
 	);

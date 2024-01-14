@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Box, Button, ScrollView, VStack } from "native-base";
+import { Box, Button, VStack } from "native-base";
 import { showMessage } from "react-native-flash-message";
 
 import PersonService from "../service/PersonService";
@@ -67,55 +67,53 @@ export function BasicData({ navigation, route }) {
 
   return (
     <VStack style={styles.container}>
-      <ScrollView>
-        <Box style={styles.inputArea}>
-          <InputTextComponent
-            label={'Nome Completo'}
-            valiable={person?.name}
-            setValiable={setName}
-          />
-        </Box>
+      <Box style={styles.inputArea}>
+        <InputTextComponent
+          label={'Nome Completo'}
+          valiable={person?.name}
+          setValiable={setName}
+        />
+      </Box>
 
-        <Box style={styles.inputArea}>
-          <SelectComponent
-            options={genderList}
-            label={'Gênero'}
-            valiable={person?.gender}
-            setValiable={setGender}
-          />
-        </Box>
+      <Box style={styles.inputArea}>
+        <SelectComponent
+          options={genderList}
+          label={'Gênero'}
+          valiable={person?.gender}
+          setValiable={setGender}
+        />
+      </Box>
 
-        <Box style={styles.inputArea}>
-          <InputTextComponent
-            label={'Data de nascimento'}
-            type={'numeric'}
-            valiable={person?.dateBirth}
-            setValiable={setDateBirth}
-            mask={[/\d/, /\d/, '/', /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/]}
-          />
-        </Box>
+      <Box style={styles.inputArea}>
+        <InputTextComponent
+          label={'Data de nascimento'}
+          type={'numeric'}
+          valiable={person?.dateBirth}
+          setValiable={setDateBirth}
+          mask={[/\d/, /\d/, '/', /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/]}
+        />
+      </Box>
 
-        <Box style={styles.inputArea}>
-          <SelectComponent
-            options={maritalStatusList}
-            label={'Estado civil'}
-            valiable={person?.maritalStatus}
-            setValiable={setMaritalStatus}  
-          />
-        </Box>
+      <Box style={styles.inputArea}>
+        <SelectComponent
+          options={maritalStatusList}
+          label={'Estado civil'}
+          valiable={person?.maritalStatus}
+          setValiable={setMaritalStatus}  
+        />
+      </Box>
 
-        <Box mt={5}>
-          <Button
-            onPress={save}
-            backgroundColor={THEME.colors.white}
-            _text={{
-              color: THEME.colors.backgroud,
-            }}
-          >
-            Salvar
-          </Button>
-        </Box>
-      </ScrollView>
+      <Box mt={5}>
+        <Button
+          onPress={save}
+          backgroundColor={THEME.colors.white}
+          _text={{
+            color: THEME.colors.backgroud,
+          }}
+        >
+          Salvar
+        </Button>
+      </Box>
     </VStack>
   );
 }

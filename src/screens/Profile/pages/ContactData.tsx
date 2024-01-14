@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Box, Button, ScrollView, VStack } from "native-base";
+import { Box, Button, VStack } from "native-base";
 import { Masks } from "react-native-mask-input";
 import { showMessage } from "react-native-flash-message";
 
@@ -49,47 +49,45 @@ export function ContactData({ navigation, route }) {
 
   return (
     <VStack style={styles.container}>
-      <ScrollView>
-        <Box style={styles.inputArea}>
-          <InputTextComponent
-            label={'E-mail'}
-            valiable={person?.email}
-            setValiable={setEmail}
-          />
-        </Box>
+      <Box style={styles.inputArea}>
+        <InputTextComponent
+          label={'E-mail'}
+          valiable={person?.email}
+          setValiable={setEmail}
+        />
+      </Box>
 
-        <Box style={styles.inputArea}>
-          <InputTextComponent
-            label={'Celular'}
-            type={'phone-pad'}
-            valiable={person?.cellPhone}
-            setValiable={setCellPhone}
-            mask={Masks.BRL_PHONE}
-          />
-        </Box>
+      <Box style={styles.inputArea}>
+        <InputTextComponent
+          label={'Celular'}
+          type={'phone-pad'}
+          valiable={person?.cellPhone}
+          setValiable={setCellPhone}
+          mask={Masks.BRL_PHONE}
+        />
+      </Box>
 
-        <Box style={styles.inputArea}>
-          <InputTextComponent
-            label={'Telefone'}
-            type={'phone-pad'}
-            valiable={person?.phone}
-            setValiable={setPhone}
-            mask={["(", /\d/, /\d/, ") ", /\d/, /\d/, /\d/, /\d/, "-", /\d/, /\d/, /\d/, /\d/]}
-          />
-        </Box>
+      <Box style={styles.inputArea}>
+        <InputTextComponent
+          label={'Telefone'}
+          type={'phone-pad'}
+          valiable={person?.phone}
+          setValiable={setPhone}
+          mask={["(", /\d/, /\d/, ") ", /\d/, /\d/, /\d/, /\d/, "-", /\d/, /\d/, /\d/, /\d/]}
+        />
+      </Box>
 
-        <Box mt={5}>
-          <Button
-            onPress={save}
-            backgroundColor={THEME.colors.white}
-            _text={{
-              color: THEME.colors.backgroud,
-            }}
-          >
-            Salvar
-          </Button>
-        </Box>
-      </ScrollView>
+      <Box mt={5}>
+        <Button
+          onPress={save}
+          backgroundColor={THEME.colors.white}
+          _text={{
+            color: THEME.colors.backgroud,
+          }}
+        >
+          Salvar
+        </Button>
+      </Box>
     </VStack>
   );
 }
