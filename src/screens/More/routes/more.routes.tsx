@@ -15,7 +15,12 @@ export default function MoreRoutes() {
 		<Navigator screenOptions={{
 			headerShown: true,
 			headerStyle: {
-				backgroundColor: THEME.colors.header,
+				backgroundColor: THEME.colors.backgroud,
+			},
+			headerTitleContainerStyle: { paddingVertical: 10 },
+			headerTitleStyle: {
+				color: 'red',
+				paddingLeft: 10
 			},
 			headerTintColor: THEME.colors.white,
 			headerShadowVisible: false,

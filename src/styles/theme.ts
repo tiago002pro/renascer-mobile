@@ -2,6 +2,7 @@ import { extendTheme } from "native-base";
 
 export const THEME = extendTheme({
   colors: {
+    primary: '#ffbf00',
     gray: {
       300: '#8D8D99',
       600: '#454545',
@@ -17,8 +18,8 @@ export const THEME = extendTheme({
     backgroudLight: "#f4f5f7",
     statusBar: '#3c3c3a',
     // header: '#3c3c3a',
-    header: '#333335',
-    backgroud: '#1b1b1b',
+    header: '#26282b',
+    backgroud: '#1d1f21',
     // backgroud: '#28282c',
     tabBar: '#333335',
     // tabBar: '#3c3c3a',

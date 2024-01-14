@@ -32,9 +32,6 @@ export function Videos() {
     return (familyService && familyService.length > 0) || (celebrationService && celebrationService.length > 0)
   }
 
-  
-  
-
   return (
     <VStack style={styles.container} safeArea>
       <ScrollView>

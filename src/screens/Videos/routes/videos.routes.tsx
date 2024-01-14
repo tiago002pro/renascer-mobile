@@ -9,12 +9,6 @@ import { WatchVideo } from "../pages/WatchVideo";
 const { Navigator, Screen } = createStackNavigator();
 
 export default function VideosRoutes() {
-	const navigation = useNavigation();
-
-	// function goBackSchedule(): any {
-	// 	navigation.navigate('Schedule')
-	// }
-
 	return (
 		<Navigator screenOptions={{
 			headerShown: true,
@@ -23,26 +17,18 @@ export default function VideosRoutes() {
 			},
 			headerTintColor: THEME.colors.white,
 			headerShadowVisible: false,
-			// headerLeft: () => (
-			// 	<IconButton
-			// 		icon="chevron-left"
-			// 		iconColor={"#FFF"} size={40}
-			// 		onPress={goBackSchedule}
-			// 		style={{padding: 0, margin: 0}}
-			// 	/>
-			// )
+			headerBackTitleVisible: false,
 		}}>
 			<Screen
 				name="Videos"
 				component={Videos}
-				options={{
-					headerShown: false
-				}}
+				options={{ headerTitle: 'Palavras' }}
 			/>
 
 			<Screen
 				name="WatchVideo"
 				component={WatchVideo}
+				options={{ headerTitle: 'Assistir video' }}
 			/> 
 		</Navigator>
 	);
