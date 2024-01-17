@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Box, VStack, Image, Text, Button, Icon, View, ScrollView, IconButton } from "native-base";
 import { TouchableOpacity } from "react-native";
 import Animated from "react-native-reanimated";
-import { MaterialIcons, SimpleLineIcons } from 'react-native-vector-icons';
+import { MaterialIcons, SimpleLineIcons, Ionicons } from 'react-native-vector-icons';
 
 import { useAuth } from "../../../contexts/auth";
 import UserService from "../../../services/UserService";
@@ -58,10 +58,10 @@ export function Profile({ navigation }) {
                   style={styles.image}
                 />
                 :
-                <Image
-                  source={profileImage}
-                  alt="User"
-                  style={styles.image}
+                <Ionicons
+                  name="person-circle"
+                  size={130}
+                  color={THEME.colors.primary}
                 />
               }
               {/* <Box position={'absolute'} bottom={0} right={0}>

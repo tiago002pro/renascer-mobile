@@ -19,6 +19,6 @@ export const styles = StyleSheet.create({
     color: THEME.colors.white,
   },
   slide: {
-    marginBottom: '5%'
+    marginBottom: 30
   }
 });

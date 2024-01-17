@@ -1,6 +1,6 @@
 import { Box, Icon, IconButton } from "native-base";
 import { createStackNavigator } from "@react-navigation/stack";
-import { Ionicons } from '@expo/vector-icons';
+import { Ionicons, MaterialIcons } from '@expo/vector-icons';
 
 import { THEME } from "../../../styles/theme";
 
@@ -22,6 +22,7 @@ export default function ProfileRoutes({ navigation }) {
 			headerTintColor: THEME.colors.white,
 			headerTitleAlign: 'center',
 			headerShadowVisible: false,
+			headerBackTitleVisible: false,
 		}}>
 
 			<Screen
@@ -41,8 +42,24 @@ export default function ProfileRoutes({ navigation }) {
 								color: '#FFF',
 								size: 6
 							}}
+							style={{marginEnd: THEME.sizes.paddingPages}}
 						/>
-					</Box>
+					</Box>,
+					headerLeft: () =>
+					<Box>
+						<IconButton
+							onPress={() => navigation.goBack()}
+							icon={
+								<Icon as={MaterialIcons} name="arrow-back-ios"/>
+							}
+							borderRadius={'full'}
+							_icon={{
+								color: '#FFF',
+								size: 6
+							}}
+							style={{marginStart: THEME.sizes.paddingPages}}
+						/>
+					</Box>,
 				}}
 			/>
 

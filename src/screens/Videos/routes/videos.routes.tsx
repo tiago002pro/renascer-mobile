@@ -13,8 +13,9 @@ export default function VideosRoutes() {
 		<Navigator screenOptions={{
 			headerShown: true,
 			headerStyle: {
-				backgroundColor: THEME.colors.header,
+				backgroundColor: THEME.colors.backgroud,
 			},
+			headerTitleAlign: 'center',
 			headerTintColor: THEME.colors.white,
 			headerShadowVisible: false,
 			headerBackTitleVisible: false,

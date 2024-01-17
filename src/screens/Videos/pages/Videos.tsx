@@ -5,6 +5,7 @@ import { FontAwesome5 } from '@expo/vector-icons';
 import VideoService from "../service/VideoService";
 
 import { SlideVideoComponent } from "../components/SlideVideo";
+import { SlideVideoComponent2 } from "../components/SlideVideo2";
 
 import { THEME } from "../../../styles/theme";
 import { styles } from '../styles/Videos';
@@ -37,14 +38,28 @@ export function Videos() {
       <ScrollView>
         {familyService && familyService.length > 0 ?
           <Box style={styles.slide}>
-            <SlideVideoComponent title={"Culto da familia"} data={familyService}/>
+            <SlideVideoComponent title={"Em destaque"} data={familyService}/>
           </Box>
           : null
         }
         
         {celebrationService && celebrationService.length > 0 ?
           <Box style={styles.slide}>
-            <SlideVideoComponent title={"Culto de celebração"} data={celebrationService}/>
+            <SlideVideoComponent2 title={"Culto da Família"} data={celebrationService}/>
+          </Box>
+          : null
+        }
+
+        {celebrationService && celebrationService.length > 0 ?
+          <Box style={styles.slide}>
+            <SlideVideoComponent2 title={"Culto de celebração"} data={celebrationService}/>
+          </Box>
+          : null
+        }
+
+        {celebrationService && celebrationService.length > 0 ?
+          <Box style={styles.slide}>
+            <SlideVideoComponent2 title={"Culto de ensino"} data={celebrationService}/>
           </Box>
           : null
         }
