@@ -9,14 +9,19 @@ import ProfileRoutes from "../screens/Profile/routes/profile.routes";
 
 const { Navigator, Screen } = createStackNavigator();
 
-export default function StackRoutes() {
+export default function StackRoutes({ navigation }) {
+  function goHome():void {
+    navigation.navigate('DashboardRoutes', {screen: 'DashboardRoutes'});
+  }
+
   return (
     <Navigator screenOptions={{
       headerShadowVisible: false,
       headerStyle: {
         backgroundColor: THEME.colors.backgroud,
       },
-      headerTintColor: THEME.colors.white,
+      headerTintColor: THEME.colors.backgroudLight,
+      headerBackTitleVisible: false,
       headerTitleAlign: 'center',
     }}>
       <Screen

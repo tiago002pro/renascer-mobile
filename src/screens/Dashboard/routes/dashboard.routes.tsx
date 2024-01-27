@@ -28,6 +28,7 @@ export default function DashboardRoutes({ navigation }) {
 				backgroundColor: THEME.colors.backgroud,
 			},
 			headerTintColor: THEME.colors.white,
+			headerTitleAlign: 'center',
 			headerShadowVisible: false,
 			headerBackTitleVisible: false,
 		}}>
@@ -38,15 +39,14 @@ export default function DashboardRoutes({ navigation }) {
 					headerTitle: (
 						() =>
 						<View
+							justifyContent={'space-between'}
 							alignItems={'center'}
-							display={'flex'}
 							flexDirection={'row'}
-							justifyContent={'center'}
 						>
 							<Image
 								source={require("./../../../assets/images/logo.png")}
 								alt="logo"
-								style={{ width: 25, height: 25, padding: 2, marginRight: 7 }}
+								style={{ width: 25, height: 25, marginRight: 7 }}
 							/>
 							<Text
 								color={'#FFF'}
@@ -64,7 +64,6 @@ export default function DashboardRoutes({ navigation }) {
 								onPress={goSignIn}
 								borderRadius={50}
 								height={8}
-								marginRight={5}
 								backgroundColor={'transparent'}
 								borderColor={'yellow.400'}
 								borderWidth={1}
@@ -81,6 +80,7 @@ export default function DashboardRoutes({ navigation }) {
 									fontSize: 12,
 									lineHeight: 12,
 								}}
+								style={{marginEnd: THEME.sizes.paddingPages}}
 							>
 								Login
 							</Button>
@@ -95,6 +95,9 @@ export default function DashboardRoutes({ navigation }) {
 									_icon={{
 										color: '#FFF',
 										size: 8
+									}}
+									_pressed={{
+										backgroundColor: 'transparent'
 									}}
 								/>
 							</Box>

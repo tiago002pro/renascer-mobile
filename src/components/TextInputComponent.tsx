@@ -29,19 +29,21 @@ export default function TextInputComponent({
           <Icon as = {
             <Feather 
               name={icon}
-              color={THEME.colors.white}
+              color={THEME.colors.backgroud}
               style={styles.icon}
             />
           }/>
         }
-        style={styles.input}
-        color={"white"}
-        borderColor={"white"}
+        color={THEME.colors.backgroud}
+        borderBottomWidth={1}
+        borderTopWidth={0}
+        borderLeftWidth={0}
+        borderRightWidth={0}
+        borderBottomColor={THEME.colors.backgroud}
         fontSize={"sm"}
         lineHeight={"sm"}
-        backgroundColor={"transparent"}
         _focus={{
-          borderColor: "orange.500",
+          backgroundColor: 'transparent'
         }}
       />
     </Box>
@@ -49,14 +51,9 @@ export default function TextInputComponent({
 }
 
 const styles = StyleSheet.create({
-  input: {
-    height: 50,
-    color: THEME.colors.white,
-  },
   icon: {
     fontSize: THEME.fontSizes.lg,
     lineHeight: THEME.fontSizes.lg,
-    left: 10,
-    marginRight: 10,
+    padding: 10
   }
 });

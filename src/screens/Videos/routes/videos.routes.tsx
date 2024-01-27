@@ -23,7 +23,9 @@ export default function VideosRoutes() {
 			<Screen
 				name="Videos"
 				component={Videos}
-				options={{ headerTitle: 'Palavras' }}
+				options={{
+					headerShown: false
+				}}
 			/>
 
 			<Screen

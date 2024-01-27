@@ -42,6 +42,9 @@ export default function ProfileRoutes({ navigation }) {
 								color: '#FFF',
 								size: 6
 							}}
+							_pressed={{
+								backgroundColor: 'transparent'
+							}}
 							style={{marginEnd: THEME.sizes.paddingPages}}
 						/>
 					</Box>,
@@ -56,6 +59,9 @@ export default function ProfileRoutes({ navigation }) {
 							_icon={{
 								color: '#FFF',
 								size: 6
+							}}
+							_pressed={{
+								backgroundColor: 'transparent'
 							}}
 							style={{marginStart: THEME.sizes.paddingPages}}
 						/>

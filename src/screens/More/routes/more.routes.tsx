@@ -15,16 +15,10 @@ export default function MoreRoutes() {
 		<Navigator screenOptions={{
 			headerShown: true,
 			headerStyle: {
-				backgroundColor: THEME.colors.backgroud,
-			},
-			headerTitleContainerStyle: { paddingVertical: 10 },
-			headerTitleStyle: {
-				color: 'red',
-				paddingLeft: 10
+				backgroundColor: THEME.colors.header,
 			},
 			headerTintColor: THEME.colors.white,
 			headerShadowVisible: false,
-			headerBackTitleVisible: false,
 		}}>
       		<Screen
 				options={{ headerTitle: 'Mais' }}

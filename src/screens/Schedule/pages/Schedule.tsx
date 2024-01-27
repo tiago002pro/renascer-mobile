@@ -43,7 +43,7 @@ export function Schedule() {
   }, [])
 
   return (
-    <VStack style={styles.container}>
+    <VStack style={styles.container} safeArea>
       {withoutSchedules ? 
         <View>
           <Text style={styles.title}>Próximos eventos</Text>

@@ -6,12 +6,12 @@ export const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: THEME.colors.backgroud,
-    padding: THEME.sizes.paddingPages,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   title: {
-    fontSize: 18,
+    fontSize: 22,
     fontWeight: 'bold',
     color: THEME.colors.white,
-    marginBottom: 20,
   }
 })

@@ -13,7 +13,7 @@ interface AuthContextData {
   signed: boolean;
   user: User | null;
   loading: boolean;
-  signIn(email: string, password: string): Promise<void>;
+  signIn(email: string, password: string): Promise<boolean>;
   signOut(): void;
 }
 
@@ -42,13 +42,17 @@ export const AuthProvider = ({ children }: any) => {
   }, []);
 
   async function signIn(email, password) {
-    const response = await doLogin(email, password)
-    setUser(response.user);
-
-    api.defaults.headers['Authorization'] = `Bearer ${response.token}`;
-
-    await AsyncStorage.setItem('@RNAuth:token', response.token);
-    await AsyncStorage.setItem('@RNAuth:user', JSON.stringify(response.user));
+    try {
+      const response = await doLogin(email, password)
+      setUser(response.user);
+      api.defaults.headers['Authorization'] = `Bearer ${response.token}`;
+      await AsyncStorage.setItem('@RNAuth:token', response.token);
+      await AsyncStorage.setItem('@RNAuth:user', JSON.stringify(response.user));
+      return true
+    } catch (e) {
+      console.log("Error", e);
+      return false
+    }
   }
 
   async function signOut() {

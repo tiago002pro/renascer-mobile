@@ -9,7 +9,7 @@ import ScheduleRoutes from "../screens/Schedule/routes/schedule.routes";
 import DashboardRoutes from "../screens/Dashboard/routes/dashboard.routes";
 import VideosRoutes from "../screens/Videos/routes/videos.routes";
 import MoreRoutes from "../screens/More/routes/more.routes";
-import Contribute from "../screens/Contribute";
+import Contribute from "../screens/Contribute/pages";
 
 const { Navigator, Screen } = createBottomTabNavigator();
 

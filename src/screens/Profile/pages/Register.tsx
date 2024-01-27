@@ -7,6 +7,7 @@ import TextInputComponent from "../../../components/TextInputComponent";
 import ButtonComponent from "../../../components/ButtonComponent";
 
 import { styles } from "../styles/Register";
+import { THEME } from "../../../styles/theme";
 
 export default function Register({ navigation }) {
   const [name, setName] = useState('')
@@ -44,15 +45,23 @@ export default function Register({ navigation }) {
         value={password}
         onChangeText={setPassword}
       />
-      <ButtonComponent onPress={register}>Cadastrar</ButtonComponent>
+      
+      <ButtonComponent
+        label={'Cadastrar'}
+        onPress={register}
+        mt={10}
+        mb={10}
+      />
+
       <Box style={styles.footerArea}>
-        <Text color={'white'}>Já possui conta?</Text>
+        <Text color={ THEME.colors.backgroud}>Já possui conta?</Text>
         <Button
           onPress={() => navigation.navigate('SignIn')}
           style={styles.footerBtn}
           p={0}
           _text={{
-            color: 'orange.400'
+            color: THEME.colors.primary,
+            fontWeight: 'bold',
           }}
         >
           Fazer Login

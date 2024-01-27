@@ -5,12 +5,12 @@ import { THEME } from "../../../styles/theme";
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: THEME.sizes.paddingPages,
-    backgroundColor: THEME.colors.backgroud
+    padding: THEME.sizes.paddingPages * 2,
+    backgroundColor: THEME.colors.backgroudLight
   },
   containerLogo: {
-    height: '30%',
-    padding: '5%',
+    height: 200,
+    marginBottom: 20,
     display: 'flex',
     justifyContent: "center",
     alignItems: "center",
@@ -20,7 +20,6 @@ export const styles = StyleSheet.create({
   footerArea: {
     display: 'flex',
     flexDirection: 'row',
-    marginTop: 40,
     justifyContent: 'center'
   },
   footerBtn: {

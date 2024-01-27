@@ -5,8 +5,8 @@ import { THEME } from "../../../styles/theme";
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: THEME.sizes.paddingPages,
-    backgroundColor: THEME.colors.backgroud,
+    padding: THEME.sizes.paddingPages * 2,
+    backgroundColor: THEME.colors.backgroudLight,
   },
   footerArea: {
     display: 'flex',
