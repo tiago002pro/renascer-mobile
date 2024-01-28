@@ -9,11 +9,7 @@ import ProfileRoutes from "../screens/Profile/routes/profile.routes";
 
 const { Navigator, Screen } = createStackNavigator();
 
-export default function StackRoutes({ navigation }) {
-  function goHome():void {
-    navigation.navigate('DashboardRoutes', {screen: 'DashboardRoutes'});
-  }
-
+export default function StackRoutes() {
   return (
     <Navigator screenOptions={{
       headerShadowVisible: false,

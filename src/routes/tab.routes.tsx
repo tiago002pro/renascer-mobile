@@ -1,34 +1,16 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { MaterialIcons } from '@expo/vector-icons';
 
-import { useAuth } from "../contexts/auth";
-
 import { THEME } from "../styles/theme";
 
 import ScheduleRoutes from "../screens/Schedule/routes/schedule.routes";
 import DashboardRoutes from "../screens/Dashboard/routes/dashboard.routes";
 import VideosRoutes from "../screens/Videos/routes/videos.routes";
 import MoreRoutes from "../screens/More/routes/more.routes";
-import Contribute from "../screens/Contribute/pages";
 
 const { Navigator, Screen } = createBottomTabNavigator();
 
-export default function TabRoutes({ navigation }) {
-  const {signed, signIn} = useAuth()
-
-  console.log("signed TAB", signed);
-  
-
-  async function goSignIn(): Promise<void> {
-    // navigation.navigate('SignIn');
-    navigation.navigate('DashboardRoutes', {screen:'SignIn'});
-  }
-
-  async function goProfile(): Promise<void> {
-    // navigation.navigate('Profile');
-    navigation.navigate('DashboardRoutes', {screen:'Profile'});
-  }
-
+export default function TabRoutes() {
   return (
     <Navigator screenOptions={{
       headerShown: true,
@@ -74,14 +56,14 @@ export default function TabRoutes({ navigation }) {
         }}
       />
 
-      <Screen
+      {/* <Screen
         name="Contribute" 
         component={Contribute}
         options={{
           tabBarIcon: ({ color, size }) => <MaterialIcons name="volunteer-activism" color={color} size={size} />,
           tabBarLabel: "Contribua",
         }}
-      />
+      /> */}
 
       <Screen
         name="MoreRoutes" 

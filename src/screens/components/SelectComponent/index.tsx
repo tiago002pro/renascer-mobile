@@ -25,7 +25,7 @@ export default function SelectComponent({ options, label, valiable, setValiable 
         <Text color={'white'} fontSize={12}>{label}</Text>
       </Box>
       <Select
-        id={label}
+        key={label}
         selectedValue={valiable}
         onValueChange={setValiable}
         height={39}
@@ -41,6 +41,7 @@ export default function SelectComponent({ options, label, valiable, setValiable 
             label={item.label}
             value={item.key}
             id={item.key}
+            key={item.key}
             _text={{
               color: THEME.colors.backgroud,
             }}

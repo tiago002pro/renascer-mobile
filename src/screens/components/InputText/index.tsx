@@ -17,7 +17,7 @@ export default function InputTextComponent({ label, type, valiable, setValiable,
   return (
     <View>
       <TextInput
-        id={label}
+        key={label}
         label={label}
         value={valiable}
         onChangeText={setValiable}

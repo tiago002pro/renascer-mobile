@@ -6,8 +6,6 @@ import StackRoutes from "./stack.routes";
 export default function Routes() {
   const {signed, loading} = useAuth();
 
-  console.log("routes", signed);
-  
   if (loading) {
     return <Loading />
   }

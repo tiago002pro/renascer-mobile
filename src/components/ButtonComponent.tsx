@@ -1,15 +1,6 @@
-import { Button, ITagProps } from "native-base";
+import { Button } from "native-base";
 import { StyleSheet } from "react-native";
-import { ReactNode } from "react";
 import { THEME } from "../styles/theme";
-
-interface ButtonProps extends ITagProps {
-  children?: ReactNode;
-  color?: string;
-  bg?: string;
-  bntFunction?: any;
-  props?: any;
-}
 
 export default function ButtonComponent({ label, color, bg, bntFunction, textTransform, isDisabled, ...props }: any) {
   return (

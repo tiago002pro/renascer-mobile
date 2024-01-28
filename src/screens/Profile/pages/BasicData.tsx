@@ -99,7 +99,7 @@ export function BasicData({ navigation, route }) {
           options={maritalStatusList}
           label={'Estado civil'}
           valiable={person?.maritalStatus}
-          setValiable={setMaritalStatus}  
+          setValiable={setMaritalStatus}
         />
       </Box>
 
