@@ -24,7 +24,7 @@
         "backgroundColor": "#ffffff"
       },
       "package": "renascer.mobile.android",
-      "versionCode": 3
+      "versionCode": 5
     },
     "web": {
       "favicon": "./assets/favicon.png"
